@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/md_grey_200"
+    tools:context="com.ichuk.coffee.activity.discount.GiftCardBuySuccessActivity">
+
+    <include layout="@layout/layout_activity_toolbar"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:background="@color/md_white_1000"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/tv_mine_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="储值卡购买成功\n请前往个人中心添加使用，并设置支付密码"
+                android:textColor="@color/brown"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_other_text_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="购买成功，请输入手机号码获取卡密码"
+                android:textColor="@color/brown"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_other_text_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="卡号密码已发送至手机，请前往个人中心\n添加使用"
+                android:textColor="@color/brown"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:id="@+id/ll_account_and_password"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="卡号为："/>
+
+                    <TextView
+                        android:id="@+id/tv_account"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="0001"
+                        android:textColor="@color/red"
+                        android:textSize="22sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="密码："/>
+
+                    <TextView
+                        android:id="@+id/tv_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="1000"
+                        android:textColor="@color/red"
+                        android:textSize="22sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_phone"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="手机号："/>
+
+                <EditText
+                    android:id="@+id/et_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="请填写手机号"
+                    android:paddingLeft="10dp"
+                    android:background="@drawable/bg_coffee_detail"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_no_receive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="若未收到短信，请点击"
+                android:textColor="@color/brown"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_to_center_or_resend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="前往个人中心"
+                android:textColor="@color/md_white_1000"
+                android:background="@drawable/coffee_detail_selected"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"/>
+
+            <Button
+                android:id="@+id/btn_view_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  查看订单  "
+                android:textColor="@color/md_grey_700"
+                android:background="@drawable/bg_coffee_detail"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

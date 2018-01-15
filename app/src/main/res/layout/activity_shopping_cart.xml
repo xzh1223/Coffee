@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/header"
+        layout="@layout/layout_activity_toolbar" />
+
+    <LinearLayout
+        android:id="@+id/ll_undo_delete"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/header"
+        android:background="@color/md_white_1000"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="成功删除1件产品，如果有误，可"/>
+
+        <TextView
+            android:id="@+id/tv_undo_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="撤销本次删除"
+            android:textColor="@color/brown"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/md_white_1000"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_continue_shopping"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_continue_shopping"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:text="继续购物?"
+                android:src="@mipmap/icon_go_shopping"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="合计：￥" />
+
+            <TextView
+                android:id="@+id/tv_pay_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="89.00"
+                android:layout_marginRight="10dp"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_to_pay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/brown"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="立即结账"
+                android:textColor="@color/md_white_1000"
+                android:textSize="17sp" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_shopping_cart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ll_bottom"
+        android:layout_below="@id/ll_undo_delete"></android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/md_grey_200"
+    tools:context="com.ichuk.coffee.activity.discount.GiftCardBuySuccessActivity">
+
+    <include layout="@layout/layout_activity_toolbar"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:background="@color/md_white_1000"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="恭喜您，领取成功"
+                android:textStyle="bold"
+                android:textColor="@color/brown"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="感谢您的参与，祝您购物愉快"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_to_use"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="立即使用"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/md_white_1000"
+                android:background="@drawable/coffee_detail_selected"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"/>
+
+            <Button
+                android:id="@+id/btn_to_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="返回首页"
+                android:textColor="@color/md_grey_700"
+                android:background="@drawable/bg_coffee_detail"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

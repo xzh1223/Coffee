@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="?attr/colorPrimary"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    app:titleTextAppearance="@style/ToolbarTitle">
+
+
+    <ImageView
+        android:id="@+id/iv_btn"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="right|center_vertical"
+        android:layout_marginRight="10dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher_round"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center_vertical"
+        android:text="保存"
+        android:textSize="18sp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/md_grey_700"
+        android:visibility="gone"/>
+
+
+    <TextView
+        android:id="@+id/tv_header_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/md_grey_700"
+        android:textSize="17sp"
+        android:text="title"/>
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@mipmap/ic_launcher_round"
+        android:id="@+id/iv_back"
+        android:visibility="gone"/>
+
+</android.support.v7.widget.Toolbar>

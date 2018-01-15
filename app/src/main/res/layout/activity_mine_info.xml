@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ichuk.coffee.activity.mine.MineInfoActivity">
+
+    <include layout="@layout/layout_activity_toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/md_white_1000"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_mine_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/avatar" />
+
+            <ImageView
+                android:id="@+id/iv_to"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginTop="17dp"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/ic_launcher_round" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_avatar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:src="@mipmap/ic_launcher_round"
+                android:layout_toLeftOf="@id/iv_to"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/md_grey_300" />
+
+        <RelativeLayout
+            android:id="@+id/rl_nickname"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/nickname" />
+
+            <ImageView
+                android:id="@+id/iv_to_2"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginTop="12dp"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/ic_launcher_round" />
+
+            <TextView
+                android:id="@+id/tv_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginRight="5dp"
+                android:text=""
+                android:layout_toLeftOf="@id/iv_to_2"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/md_grey_300" />
+
+        <RelativeLayout
+            android:id="@+id/rl_vip"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="会员等级" />
+
+            <ImageView
+                android:id="@+id/iv_to_5"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginTop="12dp"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/ic_launcher_round" />
+
+            <TextView
+                android:id="@+id/tv_vip"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginRight="5dp"
+                android:text=""
+                android:layout_toLeftOf="@id/iv_to_5"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/md_grey_300" />
+
+        <RelativeLayout
+            android:id="@+id/rl_sex"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/sex" />
+
+            <ImageView
+                android:id="@+id/iv_to_3"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginTop="17dp"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/ic_launcher_round" />
+
+            <TextView
+                android:id="@+id/tv_sex"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginRight="5dp"
+                android:text=""
+                android:layout_toLeftOf="@id/iv_to_3"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/md_grey_300" />
+
+        <RelativeLayout
+            android:id="@+id/rl_birthday"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/birthday" />
+
+            <ImageView
+                android:id="@+id/iv_to_4"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginTop="17dp"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/ic_launcher_round" />
+
+            <TextView
+                android:id="@+id/tv_birthday"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginRight="5dp"
+                android:text=""
+                android:layout_toLeftOf="@id/iv_to_4"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/md_grey_300" />
+
+        <RelativeLayout
+            android:id="@+id/rl_phone_num"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/phoneNum" />
+
+            <TextView
+                android:id="@+id/tv_phone_num"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_alignParentRight="true"
+                android:text="" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/md_grey_300" />
+
+        <RelativeLayout
+            android:id="@+id/rl_address"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/address" />
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginTop="17dp"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/ic_launcher_round" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/md_grey_300" />
+
+    </LinearLayout>
+
+</LinearLayout>

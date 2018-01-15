@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/header"
+        layout="@layout/layout_activity_toolbar" />
+
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_pay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/md_white_1000"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_coffee_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="合计：￥9.90"
+                android:textColor="@color/brown" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="立即付款"
+                android:textColor="@color/brown" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_add_cart"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/brown"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="加入购物车"
+                android:textColor="@color/md_white_1000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="继续选购"
+                android:textColor="@color/md_white_1000" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ll_bottom"
+        android:layout_below="@id/header">
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_coffee_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:src="@color/md_grey_500" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_coffee_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:gravity="center_vertical"
+                        android:text="拿铁"
+                        android:textColor="@color/md_grey_800"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/tv_coffee_taste"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:gravity="center_vertical"
+                        android:text="标准口味：" />
+
+                    <TextView
+                        android:id="@+id/tv_coffee_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:gravity="center_vertical"
+                        android:text="￥9.90"
+                        android:textColor="@color/red"
+                        android:textSize="16sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:background="@color/md_grey_200" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:gravity="center_vertical"
+                        android:text="饮品介绍："
+                        android:textColor="@color/md_grey_800"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:id="@+id/tv_coffee_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:lineSpacingMultiplier="1.2"
+                        android:text="这是一个测试数据这是一个测试数据这是一个测试数据这是一个测试数据这是一个测试数据这是一个测试数据这是一个测试数据这是一个测试数据这是一个测试数据这是一个测试数据这是一个测试数据这是一个测试数据这是一个测试数据这是一个测试数据这是一个测试数据这是一个测试数据这是一个测试数据这是一个测试数据这是一个测试数据这是一个测试数据这是一个测试数据这是一个测试数据"
+                        android:maxLines="4"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/rl_show_all">
+
+                        <ImageView
+                            android:id="@+id/iv_all"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_centerInParent="true"
+                            android:src="@mipmap/icon_show_all"/>
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:background="@color/md_grey_200" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:gravity="center_vertical"
+                            android:text="选几杯"
+                            android:textColor="@color/md_grey_800"
+                            android:textSize="17sp" />
+
+                        <com.ichuk.coffee.widget.AddOrLessView
+                            android:id="@+id/add_or_less"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:gravity="right|center_vertical">
+
+                        </com.ichuk.coffee.widget.AddOrLessView>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:gravity="center_vertical"
+                        android:text="选咖啡豆"
+                        android:textColor="@color/md_grey_700" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_coffee_caffeine_low"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:background="@drawable/coffee_detail_selected"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:text="低咖啡因"
+                            android:textColor="@color/md_white_1000" />
+
+                        <TextView
+                            android:id="@+id/tv_coffee_caffeine_high"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="20dp"
+                            android:background="@drawable/bg_coffee_detail"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:text="高咖啡因"
+                            android:textColor="@color/md_grey_600" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        android:text="如果您第一次喝咖啡，建议您选"
+                        android:textColor="@color/md_grey_700" />
+
+                    <TextView
+                        android:id="@+id/tv_coffee_taste_standard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:background="@drawable/coffee_detail_selected"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:text="标准口味"
+                        android:textColor="@color/md_white_1000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        android:text="如果您经常喝咖啡，建议您尝试"
+                        android:textColor="@color/md_grey_700" />
+
+                    <TextView
+                        android:id="@+id/tv_coffee_taste_custom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:background="@drawable/bg_coffee_detail"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:text="个性化定制配料"
+                        android:textColor="@color/md_grey_600" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        android:text="选择温度"
+                        android:textColor="@color/md_grey_700" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_coffee_hot"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:background="@drawable/coffee_detail_selected"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="20dp"
+                            android:text="热"
+                            android:textColor="@color/md_white_1000" />
+
+                        <TextView
+                            android:id="@+id/tv_coffee_cool"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="20dp"
+                            android:background="@drawable/bg_coffee_detail"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="20dp"
+                            android:text="冷"
+                            android:textColor="@color/md_grey_600" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        android:text="取杯门店"
+                        android:textColor="@color/md_grey_700" />
+
+                    <android.support.v7.widget.AppCompatSpinner
+                        android:id="@+id/spinner_store"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        ></android.support.v7.widget.AppCompatSpinner>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        android:text="取杯时间"
+                        android:textColor="@color/md_grey_700" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="60dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_coffee_time_1"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_coffee_detail"
+                            android:gravity="center"
+                            android:layout_marginBottom="1dp"
+                            android:text="马上取" />
+
+                        <TextView
+                            android:id="@+id/tv_coffee_time_5"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_coffee_detail"
+                            android:gravity="center"
+                            android:text="5分钟" />
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:id="@+id/spinner_time"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:background="@drawable/bg_coffee_detail"
+                            android:entries="@array/spinner_time"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_shopping_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginStart="18dp"
+                android:src="@mipmap/icon_shopping_cart" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</RelativeLayout>

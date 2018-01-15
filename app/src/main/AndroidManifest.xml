@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ichuk.coffee">
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!--用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!--用于访问GPS定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <!--用于获取运营商信息，用于支持提供运营商信息相关的接口-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!--用于访问wifi网络信息，wifi信息会用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!--用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <!--用于访问网络，网络定位需要上网-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!--用于读取手机当前的状态-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!--用于写入缓存数据到扩展存储卡-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!--用于申请调用A-GPS模块-->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+    <!--用于申请获取蓝牙信息进行室内定位-->
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:name=".application.LocationApplication"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/NoTitleTheme">
+        <activity android:name=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.home.CoffeeDetailActivity" />
+        <activity android:name=".activity.home.ShoppingCartActivity" />
+        <activity android:name=".activity.home.LoginActivity" />
+        <activity android:name=".activity.home.RegisterActivity" />
+        <activity android:name=".activity.home.AgreementActivity" />
+        <activity android:name=".activity.community.CommentActivity" />
+        <activity android:name=".activity.mine.SettingActivity" />
+        <activity android:name=".activity.mine.MineInfoActivity" />
+        <activity android:name=".activity.mine.UpdateLoginPasswordActivity" />
+        <activity android:name=".activity.mine.SetPayPasswordActivity" />
+        <activity android:name=".activity.mine.FeedbackActivity" />
+        <activity android:name=".activity.mine.AboutUsActivity" />
+        <activity android:name=".activity.mine.UpdateNickNameActivity" />
+        <activity android:name=".activity.mine.VIPActivity" />
+        <activity android:name=".activity.mine.MyAddressActivity" />
+        <activity android:name=".activity.mine.MyAddressAddActivity" />
+        <activity android:name=".activity.mine.MessageActivity" />
+        <activity android:name=".activity.mine.MessageDetailsActivity" />
+        <activity android:name=".activity.mine.OrderActivity" />
+        <activity android:name=".activity.mine.OrderDetailsActivity" />
+        <activity android:name=".activity.mine.RefundActivity" />
+        <activity android:name=".activity.mine.RefundResultActivity" />
+        <activity android:name=".activity.mine.InvoicingActivity" />
+        <activity android:name=".activity.mine.InvoicingSubmitActivity" />
+        <activity android:name=".activity.mine.InvoicingSubmitResultActivity" />
+        <activity android:name=".activity.mine.MyScoreActivity" />
+        <activity android:name=".activity.mine.MyPointActivity" />
+        <activity android:name=".activity.mine.MyCouponActivity" />
+        <activity android:name=".activity.mine.ProductListActivity" />
+        <activity android:name=".activity.mine.DonatedActivity" />
+        <activity android:name=".activity.mine.MyAllowanceActivity" />
+        <activity android:name=".activity.mine.MyGiftCardActivity" />
+        <activity android:name=".activity.mine.MyGiftCardListActivity" />
+        <activity android:name=".activity.discount.GiftCardActivity" />
+        <activity android:name=".activity.discount.GiftCardBuyActivity" />
+        <activity android:name=".activity.discount.GiftCardBuySuccessActivity" />
+        <activity android:name=".activity.discount.ExchangeCouponActivity" />
+        <activity android:name=".activity.discount.CouponReceiveActivity" />
+        <activity android:name=".activity.discount.ReceivedSuccessActivity" />
+        <activity android:name=".activity.discount.HolidayActivity" />
+        <activity android:name=".activity.discount.SecondHalfActivity" />
+        <activity android:name=".activity.community.LeaveMessageActivity" />
+        <activity android:name=".activity.mine.MyExpensesRecordActivity" />
+        <activity android:name=".activity.mine.MyLeaveMessageActivity" />
+        <activity android:name=".activity.home.SubmitOrderActivity" />
+        <activity android:name=".activity.home.SelectCouponActivity" />
+        <activity android:name=".activity.home.InvoiceActivity" />
+        <activity android:name=".activity.mine.MyRedEnvelopeActivity"/>
+
+        <!-- 高德定位服务 -->
+        <service android:name="com.amap.api.location.APSService"/>
+        <meta-data android:name="com.amap.api.v2.apikey" android:value="342b997bb16cca9c82b39c7a92762fbf">
+        </meta-data>
+
+        <!-- 微信 -->
+        <activity android:name="com.ichuk.coffee.wxapi.WXEntryActivity"
+            android:label="@string/app_name"
+            android:exported="true"/>
+        <!-- QQ -->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- 在tencent后面添加 key -->
+                <data android:scheme="tencent222222" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="behind"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+
+        <!-- 支付宝支付 -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" >
+        </activity>
+        <activity
+            android:name="com.alipay.sdk.app.H5AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" >
+        </activity>
+
+
+    </application>
+
+</manifest>

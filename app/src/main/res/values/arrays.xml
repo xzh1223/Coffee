@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinner_time">
+        <item>10分钟</item>
+        <item>20分钟 </item>
+        <item>30分钟</item>
+        <item>自定义</item>
+    </string-array>
+
+    <string-array name="spinner_tag">
+        <item>拿铁族</item>
+        <item>摩卡族 </item>
+        <item>焦糖族</item>
+        <item>美式控</item>
+    </string-array>
+</resources>
