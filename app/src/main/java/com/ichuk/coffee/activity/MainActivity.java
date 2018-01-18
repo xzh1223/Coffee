@@ -165,19 +165,35 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         setDefault();
         switch (position) {
             case 0:
-                tvMainHome.setTextColor(getResources().getColor(R.color.md_blue_600));
+                tvMainHome.setTextColor(getResources().getColor(R.color.brown));
+                ivMainHome.setImageResource(R.mipmap.icon_home_selected);
+                updateStatus(1);
+                setStatusTextColor(1);
+//                getWindow().getDecorView().findViewById(android.R.id.content).setPadding(0, 0, 0, CommonUtils.navigationHeight);
                 break;
             case 1:
-                tvMainNewProducts.setTextColor(getResources().getColor(R.color.md_blue_600));
+                tvMainNewProducts.setTextColor(getResources().getColor(R.color.brown));
+                ivMainNewProducts.setImageResource(R.mipmap.icon_new_products_selected);
+                updateStatus(1);
+                setStatusTextColor(1);
                 break;
             case 2:
-                tvMainDiscount.setTextColor(getResources().getColor(R.color.md_blue_600));
+                tvMainDiscount.setTextColor(getResources().getColor(R.color.brown));
+                ivMainDiscount.setImageResource(R.mipmap.icon_discount_selected);
+                updateStatus(1);
+                setStatusTextColor(1);
                 break;
             case 3:
-                tvMainCommunity.setTextColor(getResources().getColor(R.color.md_blue_600));
+                tvMainCommunity.setTextColor(getResources().getColor(R.color.brown));
+                ivMainCommunity.setImageResource(R.mipmap.icon_community_selected);
+                updateStatus(1);
+                setStatusTextColor(1);
                 break;
             case 4:
-                tvMainMine.setTextColor(getResources().getColor(R.color.md_blue_600));
+                tvMainMine.setTextColor(getResources().getColor(R.color.brown));
+                ivMainMine.setImageResource(R.mipmap.icon_mine_selected);
+                updateStatus(0);
+                setStatusTextColor(0);
                 break;
         }
     }
@@ -191,6 +207,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         tvMainDiscount.setTextColor(getResources().getColor(R.color.md_grey_600));
         tvMainCommunity.setTextColor(getResources().getColor(R.color.md_grey_600));
         tvMainMine.setTextColor(getResources().getColor(R.color.md_grey_600));
+        ivMainHome.setImageResource(R.mipmap.icon_home);
+        ivMainNewProducts.setImageResource(R.mipmap.icon_new_products);
+        ivMainDiscount.setImageResource(R.mipmap.icon_discount);
+        ivMainCommunity.setImageResource(R.mipmap.icon_community);
+        ivMainMine.setImageResource(R.mipmap.icon_mine);
     }
 
     /**

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     tools:context="com.ichuk.coffee.activity.mine.OrderActivity">
 
     <include layout="@layout/layout_activity_toolbar" />
@@ -37,7 +38,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="可使用" />
+            android:text="未取杯" />
 
         <TextView
             android:id="@+id/tv_order_refund"

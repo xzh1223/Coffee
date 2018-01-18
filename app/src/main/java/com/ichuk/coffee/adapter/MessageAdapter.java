@@ -49,7 +49,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     public void onBindViewHolder(MessageAdapter.ViewHolder holder, final int position) {
         final MessageBean messageBean = mList.get(position);
         if (messageBean != null) {
-            Glide.with(mContext).load(R.mipmap.ic_launcher).into(holder.ivMessageImage);
+            Glide.with(mContext).load(R.mipmap.icon_message_main).into(holder.ivMessageImage);
             holder.tvMessageTitle.setText(messageBean.getTitle());
             holder.tvMessageTime.setText(messageBean.getTime());
             holder.tvMessageContent.setText(messageBean.getContent());

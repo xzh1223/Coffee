@@ -4,26 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context="com.ichuk.coffee.activity.mine.RefundActivity">
 
-    <include layout="@layout/layout_activity_toolbar"
-        android:id="@+id/header"/>
+    <include
+        android:id="@+id/header"
+        layout="@layout/layout_activity_toolbar" />
 
     <Button
         android:id="@+id/btn_play_refund"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="申请退款"
-        android:background="@color/brown"
-        android:textColor="@color/md_white_1000"
         android:layout_alignParentBottom="true"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:background="@color/brown"
+        android:text="申请退款"
+        android:textColor="@color/md_white_1000" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/header"
         android:layout_above="@id/btn_play_refund"
+        android:layout_below="@id/header"
         android:orientation="vertical">
 
         <TextView
@@ -33,7 +35,12 @@
             android:gravity="center_vertical"
             android:text="订单取杯码" />
 
-        <RelativeLayout
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!--<RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@color/md_white_1000"
@@ -56,13 +63,13 @@
 
             <ImageView
                 android:id="@+id/iv_check_code"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/icon_checked" />
 
-        </RelativeLayout>
+        </RelativeLayout>-->
 
         <TextView
             android:layout_width="match_parent"
@@ -90,7 +97,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@id/tv_content_key"
-                android:text="1114" />
+                android:text="1114"
+                android:textColor="@color/red" />
 
         </RelativeLayout>
 
@@ -102,6 +110,28 @@
             android:text="退还方式" />
 
         <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/md_white_1000"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="原路退回" />
+
+            <ImageView
+                android:id="@+id/iv_old_back"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/icon_selected" />
+
+        </RelativeLayout>
+
+        <!--<RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@color/md_white_1000"
@@ -174,7 +204,7 @@
                 android:layout_marginTop="8dp"
                 android:src="@mipmap/ic_launcher" />
 
-        </RelativeLayout>
+        </RelativeLayout>-->
 
         <TextView
             android:layout_width="match_parent"
@@ -198,11 +228,11 @@
 
             <ImageView
                 android:id="@+id/iv_check_reason_find"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/icon_check" />
 
         </RelativeLayout>
 
@@ -211,7 +241,7 @@
             android:layout_height="1px"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:background="@color/md_grey_300"/>
+            android:background="@color/md_grey_300" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -228,11 +258,11 @@
 
             <ImageView
                 android:id="@+id/iv_check_reason_do_failed"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/icon_checked" />
 
         </RelativeLayout>
 
@@ -241,7 +271,7 @@
             android:layout_height="1px"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:background="@color/md_grey_300"/>
+            android:background="@color/md_grey_300" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -258,11 +288,11 @@
 
             <ImageView
                 android:id="@+id/iv_check_reason_other"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/icon_check" />
 
         </RelativeLayout>
 

@@ -2,6 +2,7 @@ package com.ichuk.coffee.activity.discount;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,12 +14,14 @@ import com.ichuk.coffee.bean.SecondHalfBean;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SecondHalfActivity extends BaseActivity {
+public class SecondHalfActivity extends BaseActivity implements View.OnClickListener {
 
     private ImageView ivLeft;
     private TextView tvTime;
     private RecyclerView rvCoffee;
     private List<SecondHalfBean> mList = new ArrayList<>();
+    private TextView tvHeaderTitle;
+    private ImageView ivBack;
 
     /**
      * Find the Views in the layout
@@ -27,6 +30,8 @@ public class SecondHalfActivity extends BaseActivity {
         ivLeft = findViewById(R.id.iv_left);
         tvTime = findViewById(R.id.tv_time);
         rvCoffee = findViewById(R.id.rv_coffee);
+        tvHeaderTitle = findViewById(R.id.tv_header_title);
+        ivBack = findViewById(R.id.iv_back);
     }
 
 
@@ -35,7 +40,7 @@ public class SecondHalfActivity extends BaseActivity {
      */
     @Override
     protected void setEvent() {
-
+        ivBack.setOnClickListener(this);
     }
 
     /**
@@ -44,8 +49,17 @@ public class SecondHalfActivity extends BaseActivity {
     @Override
     protected void initView() {
         findViews();
+        setHeader();
         getData();
         setRecyclerView();
+    }
+
+    /**
+     *  set header
+     */
+    private void setHeader() {
+        ivBack.setVisibility(View.VISIBLE);
+        tvHeaderTitle.setText(getResources().getString(R.string.second_half_price));
     }
 
     /**
@@ -74,5 +88,14 @@ public class SecondHalfActivity extends BaseActivity {
     @Override
     protected int setLayout() {
         return R.layout.activity_second_half;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_back:
+                finish();
+                break;
+        }
     }
 }

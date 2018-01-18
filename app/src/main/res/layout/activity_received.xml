@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/md_grey_200"
+    android:fitsSystemWindows="true"
     tools:context="com.ichuk.coffee.activity.discount.GiftCardBuySuccessActivity">
 
     <include layout="@layout/layout_activity_toolbar"/>

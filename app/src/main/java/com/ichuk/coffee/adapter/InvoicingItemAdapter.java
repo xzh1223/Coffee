@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.ichuk.coffee.R;
-import com.ichuk.coffee.activity.mine.InvoicingActivity;
+import com.ichuk.coffee.activity.mine.InvoicingPlayActivity;
 import com.ichuk.coffee.bean.MonthOrderBean;
 
 import java.util.List;
@@ -82,7 +82,7 @@ public class InvoicingItemAdapter extends RecyclerView.Adapter<InvoicingItemAdap
      */
     private void checkAll() {
         int num = 0;
-        InvoicingActivity activity = (InvoicingActivity) mContext;
+        InvoicingPlayActivity activity = (InvoicingPlayActivity) mContext;
         for (int i = 0; i < mList.size(); i++) {
             if (isChecked[i]) {
                 num++;

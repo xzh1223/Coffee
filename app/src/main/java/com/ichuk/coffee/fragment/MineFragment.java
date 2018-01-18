@@ -2,13 +2,13 @@ package com.ichuk.coffee.fragment;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,10 +25,12 @@ import com.ichuk.coffee.activity.mine.MyRedEnvelopeActivity;
 import com.ichuk.coffee.activity.mine.MyScoreActivity;
 import com.ichuk.coffee.activity.mine.OrderActivity;
 import com.ichuk.coffee.activity.mine.SettingActivity;
-import com.ichuk.coffee.adapter.MineGridAdapter;
+import com.ichuk.coffee.adapter.mine.MineAdapter;
 import com.ichuk.coffee.base.BaseFragment;
 import com.ichuk.coffee.bean.MineGridBean;
+import com.ichuk.coffee.listener.OnItemClickListener;
 import com.ichuk.coffee.utils.ToastUtil;
+import com.jauker.widget.BadgeView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,10 +39,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by xzh on 2017/12/4.
- *
  */
 
-public class MineFragment extends BaseFragment implements View.OnClickListener {
+public class MineFragment extends BaseFragment implements View.OnClickListener, OnItemClickListener {
 
     private ImageView ivMineSetting;
     private ImageView ivMineMessage;
@@ -51,11 +52,12 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     private TextView tvUsable;
     private ImageView ivRefund;
     private TextView tvRefund;
-    private GridView gvMine;
+    private RecyclerView rvMine;
     private List<MineGridBean> mList = new ArrayList<>();
     private CircleImageView civAccountPic;
     private TextView tvAccountName;
     private Dialog dialog;
+    private MineAdapter mAdapter;
 
     /**
      * Find the Views in the layout
@@ -73,7 +75,7 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
             tvUsable = getView().findViewById(R.id.tv_usable);
             ivRefund = getView().findViewById(R.id.iv_refund);
             tvRefund = getView().findViewById(R.id.tv_refund);
-            gvMine = getView().findViewById(R.id.gv_mine);
+            rvMine = getView().findViewById(R.id.rv_mine);
         }
     }
 
@@ -84,48 +86,36 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     protected void initView() {
         findViews();
         getData();
-        setGridView();
+        setBadgeView();
+        setRecyclerView();
         setEvent();
+    }
+
+    /**
+     * set badge view
+     */
+    private void setBadgeView() {
+        BadgeView badgeView = new BadgeView(context);
+        badgeView.setTargetView(ivUsable);
+        badgeView.setHideOnNull(true);
+        badgeView.setBadgeCount(1);
+    }
+
+    /**
+     * set recyclerView
+     */
+    private void setRecyclerView() {
+        GridLayoutManager manager = new GridLayoutManager(context, 4);
+        rvMine.setLayoutManager(manager);
+        mAdapter = new MineAdapter(context, mList);
+        rvMine.setAdapter(mAdapter);
     }
 
     /**
      * set listener
      */
     private void setEvent() {
-        gvMine.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                switch (position) {
-                    case 0:
-                        toActivity(MyScoreActivity.class);
-                        break;
-                    case 1:
-                        toActivity(MyPointActivity.class);
-                        break;
-                    case 2:
-                        toActivity(MyCouponActivity.class);
-                        break;
-                    case 3:
-                        toActivity(MyAllowanceActivity.class);
-                        break;
-                    case 4:
-                        toActivity(MyRedEnvelopeActivity.class);
-                        break;
-                    case 5:
-                        toActivity(MyGiftCardActivity.class);
-                        break;
-                    case 6:
-                        toActivity(MyExpensesRecordActivity.class);
-                        break;
-                    case 7:
-                        toActivity(MyLeaveMessageActivity.class);
-                        break;
-                    case 8:
-                        showDialog();
-                        break;
-                }
-            }
-        });
+        mAdapter.setOnItemClickListener(this);
         tvAccountName.setOnClickListener(this);
         ivMineSetting.setOnClickListener(this);
         ivMineMessage.setOnClickListener(this);
@@ -140,7 +130,8 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
      */
     private void showDialog() {
         dialog = new Dialog(context, R.style.ActionSheetDialogStyle);
-        View view = LayoutInflater.from(context).inflate(R.layout.item_dialog_mine_customer_service, null);
+        View view = LayoutInflater.from(context).inflate(
+                R.layout.item_dialog_mine_customer_service, null);
 
         TextView tvPlayPhone = view.findViewById(R.id.tv_play_phone);
         TextView tvLeaveMessage = view.findViewById(R.id.tv_leave_message);
@@ -163,35 +154,36 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
     }
 
     /**
-     * set gridView
-     */
-    private void setGridView() {
-        MineGridAdapter mAdapter = new MineGridAdapter(context, mList);
-        gvMine.setAdapter(mAdapter);
-    }
-
-    /**
      * get data
      */
     private void getData() {
         MineGridBean mineGridBean = new MineGridBean();
         mineGridBean.setName("我的积分");
+        mineGridBean.setImage(R.mipmap.icon_my_score);
         MineGridBean mineGridBean1 = new MineGridBean();
         mineGridBean1.setName("我的积点");
+        mineGridBean1.setImage(R.mipmap.icon_my_point);
         MineGridBean mineGridBean2 = new MineGridBean();
         mineGridBean2.setName("我的优惠券");
+        mineGridBean2.setImage(R.mipmap.icon_my_coupon);
         MineGridBean mineGridBean3 = new MineGridBean();
         mineGridBean3.setName("我的补贴");
+        mineGridBean3.setImage(R.mipmap.icon_my_allowance);
         MineGridBean mineGridBean4 = new MineGridBean();
-        mineGridBean4.setName("我的红包");
+        mineGridBean4.setName("我的储值卡");
+        mineGridBean4.setImage(R.mipmap.icon_my_gift_card);
         MineGridBean mineGridBean5 = new MineGridBean();
-        mineGridBean5.setName("我的储值卡");
+        mineGridBean5.setName("我的消费记录");
+        mineGridBean5.setImage(R.mipmap.icon_my_shopping_records);
         MineGridBean mineGridBean6 = new MineGridBean();
-        mineGridBean6.setName("我的消费记录");
+        mineGridBean6.setName("我的留言");
+        mineGridBean6.setImage(R.mipmap.icon_my_leave_message);
         MineGridBean mineGridBean7 = new MineGridBean();
-        mineGridBean7.setName("我的留言");
+        mineGridBean7.setName("开发票");
+        mineGridBean7.setImage(R.mipmap.icon_my_invoice);
         MineGridBean mineGridBean8 = new MineGridBean();
         mineGridBean8.setName("客服电话");
+        mineGridBean8.setImage(R.mipmap.icon_my_server);
         mList.add(mineGridBean);
         mList.add(mineGridBean1);
         mList.add(mineGridBean2);
@@ -264,6 +256,44 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
                 if (dialog != null) {
                     dialog.dismiss();
                 }
+                break;
+        }
+    }
+
+    /**
+     *  recyclerView's item click
+     * @param view
+     * @param position
+     */
+    @Override
+    public void onItemClickListener(View view, int position) {
+        switch (position) {
+            case 0:
+                toActivity(MyScoreActivity.class);
+                break;
+            case 1:
+                toActivity(MyPointActivity.class);
+                break;
+            case 2:
+                toActivity(MyCouponActivity.class);
+                break;
+            case 3:
+                toActivity(MyAllowanceActivity.class);
+                break;
+            case 4:
+                toActivity(MyGiftCardActivity.class);
+                break;
+            case 5:
+                toActivity(MyExpensesRecordActivity.class);
+                break;
+            case 6:
+                toActivity(MyLeaveMessageActivity.class);
+                break;
+            case 7:
+                toActivity(MyRedEnvelopeActivity.class);
+                break;
+            case 8:
+                showDialog();
                 break;
         }
     }

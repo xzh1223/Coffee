@@ -59,8 +59,6 @@ public class CommentActivity extends BaseActivity implements View.OnClickListene
      */
     @Override
     protected void setEvent() {
-        tvHeaderTitle.setText(getResources().getString(R.string.comment));
-        ivBack.setVisibility(View.VISIBLE);
         ivBack.setOnClickListener(this);
     }
 
@@ -70,8 +68,17 @@ public class CommentActivity extends BaseActivity implements View.OnClickListene
     @Override
     protected void initView() {
         findViews();
+        setHeader();
         getData();
         setRecyclerView();
+    }
+
+    /**
+     *  set header
+     */
+    private void setHeader() {
+        tvHeaderTitle.setText(getResources().getString(R.string.comment));
+        ivBack.setVisibility(View.VISIBLE);
     }
 
     private void setRecyclerView() {
@@ -96,8 +103,8 @@ public class CommentActivity extends BaseActivity implements View.OnClickListene
         tvCommunityNickname.setText(name);
         tvCommunityTime.setText(time);
         tvCommunityContent.setText(content);
-        tvLikeNum.setText("点赞 （" + likeNum + "）");
-        tvCommentNum.setText("评论 （" + commentNum + "）");
+        tvLikeNum.setText(likeNum + "");
+        tvCommentNum.setText("评论  " + commentNum);
 
         CommentBean commentBean = new CommentBean();
         commentBean.setName("xzh");

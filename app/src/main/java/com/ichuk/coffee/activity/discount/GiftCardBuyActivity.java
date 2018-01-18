@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
+import com.ichuk.coffee.activity.home.AgreementActivity;
 import com.ichuk.coffee.base.BaseActivity;
 import com.ichuk.coffee.bean.GiftCardBean;
 import com.ichuk.coffee.utils.ToastUtil;
@@ -34,6 +35,7 @@ public class GiftCardBuyActivity extends BaseActivity implements View.OnClickLis
     private int mMoney = 0;
     private boolean mMethod = true;
     private CheckBox cbRule;
+    private TextView tvAgreement;
 
     /**
      * Find the Views in the layout
@@ -54,6 +56,7 @@ public class GiftCardBuyActivity extends BaseActivity implements View.OnClickLis
         cbRule = findViewById(R.id.cb_rule);
         tvPayOther = findViewById(R.id.tv_pay_other);
         tvPayMine = findViewById(R.id.tv_pay_mine);
+        tvAgreement = findViewById(R.id.tv_agreement);
     }
 
     /**
@@ -73,6 +76,7 @@ public class GiftCardBuyActivity extends BaseActivity implements View.OnClickLis
         ivCheckZfb.setOnClickListener(this);
         tvPayMine.setOnClickListener(this);
         tvPayOther.setOnClickListener(this);
+        tvAgreement.setOnClickListener(this);
 
     }
 
@@ -144,6 +148,9 @@ public class GiftCardBuyActivity extends BaseActivity implements View.OnClickLis
                 } else {
                     toPay(1);
                 }
+                break;
+            case R.id.tv_agreement:
+                toActivity(AgreementActivity.class);
                 break;
         }
     }

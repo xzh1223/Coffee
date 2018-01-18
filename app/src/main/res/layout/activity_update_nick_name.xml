@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     tools:context="com.ichuk.coffee.activity.mine.UpdateNickNameActivity">
 
     <include layout="@layout/layout_activity_toolbar" />
@@ -13,14 +14,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:background="@color/md_white_1000"
         android:orientation="horizontal">
 
         <android.support.v7.widget.AppCompatSpinner
             android:id="@+id/spinner_tag"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
-            android:layout_weight="1"
+            android:background="@drawable/bg_coffee_detail"
             android:entries="@array/spinner_tag" />
 
         <EditText
@@ -30,7 +32,7 @@
             android:layout_marginLeft="5dp"
             android:hint="请填写昵称"
             android:gravity="center"
-            android:background="@drawable/bg_comment_et"/>
+            android:background="@null"/>
 
     </LinearLayout>
 

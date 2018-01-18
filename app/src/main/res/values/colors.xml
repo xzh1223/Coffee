@@ -25,6 +25,14 @@
 
     <color name="brown">#6A3A3D</color>
     <color name="red">#ff0000</color>
+    
+    <color name="leave_message_1">#FCA2A2</color>
+    <color name="leave_message_2">#FEB08A</color>
+    <color name="leave_message_3">#C2C3FC</color>
+    <color name="leave_message_4">#9ACC99</color>
+    <color name="leave_message_5">#7EC8ED</color>
+    <color name="leave_message_6">#6EDCDD</color>
+    <color name="leave_message_7">#DDDE56</color>
 
 
 </resources>

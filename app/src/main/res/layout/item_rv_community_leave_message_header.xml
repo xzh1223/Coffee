@@ -15,15 +15,15 @@
         android:gravity="center">
 
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@mipmap/ic_launcher_round"/>
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/icon_to_discuss"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="说点什么吧!"/>
+            android:text="我要评论！"/>
 
     </LinearLayout>
 

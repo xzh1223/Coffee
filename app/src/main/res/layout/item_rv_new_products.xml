@@ -22,9 +22,11 @@
                 android:src="@color/md_grey_500" />
 
             <LinearLayout
-                android:layout_width="100dp"
+                android:layout_width="80dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="40dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
                 android:alpha="0.5"
                 android:background="@color/md_grey_600"
                 android:gravity="center"
@@ -33,10 +35,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:ems="1"
                     android:gravity="center"
                     android:text="新品名称"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     android:textColor="@color/md_white_1000"/>
 
             </LinearLayout>
@@ -52,7 +56,8 @@
             <TextView
                 android:id="@+id/tv_new_products_info"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.2"
                 android:gravity="center_vertical"
                 android:text="新品介绍"
                 android:textColor="@color/md_grey_800" />
@@ -60,57 +65,12 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
+                android:layout_marginTop="10dp"
                 android:background="@color/md_grey_200" />
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:gravity="center_vertical"
-                    android:text="价格：￥"
-                    android:textColor="@color/md_grey_800" />
-
-                <TextView
-                    android:id="@+id/tv_new_products_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:gravity="center_vertical"
-                    android:text="9.9"
-                    android:textColor="@color/md_grey_800" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:gravity="right"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:scaleType="fitXY"
-                        android:src="@mipmap/ic_launcher_round" />
-
-                    <TextView
-                        android:id="@+id/tv_add_shopping_cart"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="center_vertical"
-                        android:text="加入购物车" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/md_grey_200" />
+                android:layout_height="40dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -118,6 +78,17 @@
                 android:gravity="center_vertical"
                 android:text="辅料搭配"
                 android:textColor="@color/md_grey_800" />
+
+                <ImageView
+                    android:id="@+id/iv_more"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="8dp"
+                    android:src="@mipmap/ic_launcher"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true" />
+
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -214,6 +185,56 @@
                 </LinearLayout>
 
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/md_grey_200" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:text="搭配价："
+                    android:textColor="@color/md_grey_800" />
+
+                <TextView
+                    android:id="@+id/tv_new_products_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:text="￥9.9"
+                    android:textColor="@color/red" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="right|center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iv_add_shopping_cart"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="4dp"
+                        android:layout_marginRight="4dp"
+                        android:src="@mipmap/icon_shopping_cart_no_bg" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/md_grey_200" />
+
 
         </LinearLayout>
 

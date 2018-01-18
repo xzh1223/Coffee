@@ -3,6 +3,7 @@ package com.ichuk.coffee.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,17 +12,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.ichuk.coffee.R;
 import com.ichuk.coffee.activity.mine.OrderDetailsActivity;
+import com.ichuk.coffee.adapter.mine.CodeAdapter;
 import com.ichuk.coffee.bean.CoffeeBean;
 import com.ichuk.coffee.bean.OrderBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by xzh on 2017/12/5.
- *
  */
 
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> {
@@ -54,9 +55,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     public void onBindViewHolder(OrderAdapter.ViewHolder holder, final int position) {
         final OrderBean orderBean = mList.get(position);
         if (orderBean != null) {
-            Glide.with(mContext).load(R.mipmap.ic_launcher).into(holder.ivShopLogo);
             holder.tvShopName.setText(orderBean.getShopName());
-            holder.tvType.setText("");
             holder.tvCoffeeNum.setText("共" + orderBean.getCoffeeBeanList().size() + "杯咖啡");
             holder.tvCoffeePrice.setText("合计：￥" + "65");
             holder.setRecyclerView(orderBean.getCoffeeBeanList());
@@ -66,12 +65,20 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                 holder.tvCancelOrder.setVisibility(View.VISIBLE);
                 holder.tvToPay.setText("立即付款");
                 holder.tvCancelOrder.setText("取消订单");
+                holder.tvType.setText("待付款");
+                holder.tvCancelOrder.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
             } else if (orderBean.getType() == 2) {
                 // 申请退款
                 holder.tvToPay.setVisibility(View.VISIBLE);
                 holder.tvCancelOrder.setVisibility(View.VISIBLE);
                 holder.tvToPay.setText("申请退款");
                 holder.tvCancelOrder.setText("查看取杯码");
+                holder.tvType.setText("待使用");
                 holder.tvCancelOrder.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -82,12 +89,15 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                 // 退款/售后
                 holder.tvToPay.setVisibility(View.GONE);
                 holder.tvCancelOrder.setVisibility(View.GONE);
+                holder.tvType.setText("已申请退款");
             } else if (orderBean.getType() == 0) {
                 // 全部
                 holder.tvCancelOrder.setVisibility(View.GONE);
                 holder.tvToPay.setVisibility(View.VISIBLE);
                 holder.tvToPay.setText("再来一单");
+                holder.tvType.setText("已完成");
             }
+
             holder.view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -112,7 +122,19 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         dialog.setView(view);
         mDialog = dialog.create();
         mDialog.show();
-        TextView tvCode = view.findViewById(R.id.tv_code);
+        int num = 2;
+        RecyclerView rvShowCode = view.findViewById(R.id.rv_show_code);
+        GridLayoutManager manager;
+        if (num>=2) {
+            manager = new GridLayoutManager(mContext, 2);
+        } else {
+            manager = new GridLayoutManager(mContext, 1);
+        }
+        rvShowCode.setLayoutManager(manager);
+        List<String> codeList = new ArrayList<>();
+        codeList.add("1124");
+        codeList.add("1134");
+        rvShowCode.setAdapter(new CodeAdapter(mContext, codeList));
         ImageView ivEsc = view.findViewById(R.id.iv_esc);
         ivEsc.setOnClickListener(new View.OnClickListener() {
             @Override

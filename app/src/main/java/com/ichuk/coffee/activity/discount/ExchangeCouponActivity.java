@@ -1,6 +1,6 @@
 package com.ichuk.coffee.activity.discount;
 
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -47,7 +47,7 @@ public class ExchangeCouponActivity extends BaseActivity implements View.OnClick
         ExchangeCouponBean exchangeCouponBean = new ExchangeCouponBean();
         exchangeCouponBean.setMoney("2");
         exchangeCouponBean.setCondition("满50使用");
-        exchangeCouponBean.setAddress("月亮湾商务广场店部分商品使用");
+        exchangeCouponBean.setAddress("月亮湾商务广场店");
         exchangeCouponBean.setVip("全部会员");
         exchangeCouponBean.setStartTime("2017/12/18 09:30:00");
         exchangeCouponBean.setEndTime("2017/12/18 10:00:00");
@@ -60,7 +60,8 @@ public class ExchangeCouponActivity extends BaseActivity implements View.OnClick
      *  set recyclerView
      */
     private void setRecyclerView() {
-        rvExchange.setLayoutManager(new LinearLayoutManager(context));
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 2);
+        rvExchange.setLayoutManager(gridLayoutManager);
         ExchangeAdapter exchangeAdapter = new ExchangeAdapter(context, mList);
         rvExchange.setAdapter(exchangeAdapter);
     }

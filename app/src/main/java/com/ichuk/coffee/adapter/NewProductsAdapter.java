@@ -49,7 +49,7 @@ public class NewProductsAdapter extends RecyclerView.Adapter<NewProductsAdapter.
         NewProductsBean newProductsBean = mList.get(position);
         holder.tvNewProductsInfo.setText(newProductsBean.getInfo());
         holder.tvNewProductsPrice.setText(newProductsBean.getPrice());
-        Glide.with(mContext).load(R.mipmap.ic_launcher).into(holder.ivNewProductsImage);
+//        Glide.with(mContext).load(R.mipmap.ic_launcher).into(holder.ivNewProductsImage);
         Glide.with(mContext).load(R.mipmap.ic_launcher).into(holder.ivAccessories1);
         Glide.with(mContext).load(R.mipmap.ic_launcher).into(holder.ivAccessories2);
         Glide.with(mContext).load(R.mipmap.ic_launcher).into(holder.ivAccessories3);
@@ -58,7 +58,7 @@ public class NewProductsAdapter extends RecyclerView.Adapter<NewProductsAdapter.
         holder.tvAccessories2.setText("Coffee");
         holder.tvAccessories3.setText("Coffee");
         holder.tvAccessories4.setText("Coffee");
-        holder.tvAddShoppingCart.setOnClickListener(new View.OnClickListener() {
+        holder.ivAddShoppingCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(mContext, "添加到购物车", Toast.LENGTH_SHORT).show();
@@ -81,7 +81,7 @@ public class NewProductsAdapter extends RecyclerView.Adapter<NewProductsAdapter.
         ImageView ivNewProductsImage;
         TextView tvNewProductsInfo;
         TextView tvNewProductsPrice;
-        TextView tvAddShoppingCart;
+        ImageView ivAddShoppingCart;
         ImageView ivAccessories1;
         TextView tvAccessories1;
         ImageView ivAccessories2;
@@ -90,13 +90,14 @@ public class NewProductsAdapter extends RecyclerView.Adapter<NewProductsAdapter.
         TextView tvAccessories3;
         ImageView ivAccessories4;
         TextView tvAccessories4;
+        ImageView ivMore;
 
         public ViewHolder(View itemView) {
             super(itemView);
             ivNewProductsImage = itemView.findViewById(R.id.iv_new_products_image);
             tvNewProductsInfo = itemView.findViewById(R.id.tv_new_products_info);
             tvNewProductsPrice = itemView.findViewById(R.id.tv_new_products_price);
-            tvAddShoppingCart = itemView.findViewById(R.id.tv_add_shopping_cart);
+            ivAddShoppingCart = itemView.findViewById(R.id.iv_add_shopping_cart);
             ivAccessories1 = itemView.findViewById(R.id.iv_accessories_1);
             tvAccessories1 = itemView.findViewById(R.id.tv_accessories_1);
             ivAccessories2 = itemView.findViewById(R.id.iv_accessories_2);
@@ -105,6 +106,7 @@ public class NewProductsAdapter extends RecyclerView.Adapter<NewProductsAdapter.
             tvAccessories3 = itemView.findViewById(R.id.tv_accessories_3);
             ivAccessories4 = itemView.findViewById(R.id.iv_accessories_4);
             tvAccessories4 = itemView.findViewById(R.id.tv_accessories_4);
+            ivMore = itemView.findViewById(R.id.iv_more);
         }
     }
 

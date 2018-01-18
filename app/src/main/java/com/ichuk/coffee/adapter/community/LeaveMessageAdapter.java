@@ -1,4 +1,4 @@
-package com.ichuk.coffee.adapter;
+package com.ichuk.coffee.adapter.community;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -18,10 +19,9 @@ import java.util.List;
 
 /**
  * Created by xzh on 2017/12/5.
- *
  */
 
-public class CommunityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class LeaveMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final List<CommunityBean> mList;
     private final Context mContext;
@@ -29,7 +29,7 @@ public class CommunityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public static final int TYPE_NORMAL = 1;
     private int currentType = TYPE_HEADER;
 
-    public CommunityAdapter(Context context, List<CommunityBean> mList) {
+    public LeaveMessageAdapter(Context context, List<CommunityBean> mList) {
         this.mContext = context;
         this.mList = mList;
     }
@@ -44,6 +44,7 @@ public class CommunityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 currentType = TYPE_NORMAL;
                 break;
             default:
+                currentType = TYPE_NORMAL;
                 break;
         }
         return currentType;
@@ -56,10 +57,10 @@ public class CommunityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == TYPE_HEADER) {
-            View itemView = View.inflate(mContext, R.layout.item_rv_community_header, null);
+            View itemView = View.inflate(mContext, R.layout.item_rv_community_leave_message_header, null);
             return new HeaderViewHolder(itemView);
         } else if (viewType == TYPE_NORMAL) {
-            View itemView = View.inflate(mContext, R.layout.item_rv_community, null);
+            View itemView = View.inflate(mContext, R.layout.item_rv_community_leave_message, null);
             return new ViewHolder(itemView);
         }
         return null;
@@ -83,7 +84,30 @@ public class CommunityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             });
         } else if (getItemViewType(position) == TYPE_NORMAL) {
             ViewHolder viewHolder = (ViewHolder) holder;
-            final CommunityBean communityBean = mList.get(position-1);
+            switch (position % 7) {
+                case 1:
+                    viewHolder.llView.setBackgroundResource(R.color.leave_message_1);
+                    break;
+                case 2:
+                    viewHolder.llView.setBackgroundResource(R.color.leave_message_2);
+                    break;
+                case 3:
+                    viewHolder.llView.setBackgroundResource(R.color.leave_message_3);
+                    break;
+                case 4:
+                    viewHolder.llView.setBackgroundResource(R.color.leave_message_4);
+                    break;
+                case 5:
+                    viewHolder.llView.setBackgroundResource(R.color.leave_message_5);
+                    break;
+                case 6:
+                    viewHolder.llView.setBackgroundResource(R.color.leave_message_6);
+                    break;
+                case 0:
+                    viewHolder.llView.setBackgroundResource(R.color.leave_message_7);
+                    break;
+            }
+            final CommunityBean communityBean = mList.get(position - 1);
             Glide.with(mContext).load(R.mipmap.ic_launcher_round).into(viewHolder.civCommunityAvatar);
             viewHolder.tvCommunityNickname.setText(communityBean.getName());
             viewHolder.tvCommunityContent.setText(communityBean.getContent());
@@ -124,6 +148,7 @@ public class CommunityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         TextView tvCommunityLikeNum;
         TextView tvCommunityCommentNum;
         View view;
+        LinearLayout llView;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -133,6 +158,7 @@ public class CommunityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             tvCommunityContent = itemView.findViewById(R.id.tv_community_content);
             tvCommunityLikeNum = itemView.findViewById(R.id.tv_community_like_num);
             tvCommunityCommentNum = itemView.findViewById(R.id.tv_community_comment_num);
+            llView = itemView.findViewById(R.id.ll_view);
         }
     }
 

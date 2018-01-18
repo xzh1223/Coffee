@@ -32,11 +32,9 @@ import java.util.List;
 public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     private Banner banner;
-    //    private EditText etOnlineNum;
     private RecyclerView rvHomeCoffee;
     private List<Integer> imageList = new ArrayList<>();
     private List<CoffeeBean> mList = new ArrayList<>();
-//    private FloatingActionButton fabGoods;
     private TextView tvToLogin;
     private TextView tvLocation;
     private ImageView ivShoppingCart;
@@ -48,12 +46,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         if (getView() != null) {
             tvLocation = getView().findViewById(R.id.tv_location);
             banner = getView().findViewById(R.id.banner);
-
             ivShoppingCart = getView().findViewById(R.id.iv_shopping_cart);
-//        etOnlineNum = (EditText) getView().findViewById(R.id.et_online_num);
             tvToLogin = getView().findViewById(R.id.tv_to_login);
             rvHomeCoffee = getView().findViewById(R.id.rv_home_coffee);
-//            fabGoods = getView().findViewById(R.id.fab_goods);
         }
     }
 
@@ -80,7 +75,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
     /**
-     *  get Location
+     * get Location
      */
     private void setLocation() {
         final LocationApplication app = (LocationApplication) getActivity().getApplication();
@@ -92,7 +87,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
     /**
-     *  set badge view
+     * set badge view
      */
     private void setBadgeView() {
         BadgeView badgeView = new BadgeView(context);

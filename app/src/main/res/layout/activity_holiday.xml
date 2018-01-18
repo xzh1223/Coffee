@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/md_grey_200"
+    android:fitsSystemWindows="true"
     tools:context="com.ichuk.coffee.activity.discount.HolidayActivity">
 
     <include layout="@layout/layout_activity_toolbar" />
@@ -27,13 +29,14 @@
                     android:id="@+id/iv_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@color/md_white_1000" />
+                    android:src="@color/md_grey_500" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="70dp"
+                android:background="@color/md_white_1000"
                 android:orientation="horizontal"
                 android:gravity="center">
 
@@ -48,7 +51,6 @@
                 <android.support.v7.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/md_white_1000"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:id="@+id/rv_coupon"></android.support.v7.widget.RecyclerView>
@@ -56,6 +58,7 @@
             </LinearLayout>
 
             <android.support.v7.widget.RecyclerView
+                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/rv_coffee"></android.support.v7.widget.RecyclerView>

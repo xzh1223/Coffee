@@ -48,7 +48,19 @@
         <activity android:name=".activity.home.LoginActivity" />
         <activity android:name=".activity.home.RegisterActivity" />
         <activity android:name=".activity.home.AgreementActivity" />
+        <activity android:name=".activity.home.SubmitOrderActivity" />
+        <activity android:name=".activity.home.SelectCouponActivity" />
+        <activity android:name=".activity.home.InvoiceActivity" />
+        <activity android:name=".activity.discount.GiftCardActivity" />
+        <activity android:name=".activity.discount.GiftCardBuyActivity" />
+        <activity android:name=".activity.discount.GiftCardBuySuccessActivity" />
+        <activity android:name=".activity.discount.ExchangeCouponActivity" />
+        <activity android:name=".activity.discount.CouponReceiveActivity" />
+        <activity android:name=".activity.discount.ReceivedSuccessActivity" />
+        <activity android:name=".activity.discount.HolidayActivity" />
+        <activity android:name=".activity.discount.SecondHalfActivity" />
         <activity android:name=".activity.community.CommentActivity" />
+        <activity android:name=".activity.community.LeaveMessageActivity" />
         <activity android:name=".activity.mine.SettingActivity" />
         <activity android:name=".activity.mine.MineInfoActivity" />
         <activity android:name=".activity.mine.UpdateLoginPasswordActivity" />
@@ -65,7 +77,8 @@
         <activity android:name=".activity.mine.OrderDetailsActivity" />
         <activity android:name=".activity.mine.RefundActivity" />
         <activity android:name=".activity.mine.RefundResultActivity" />
-        <activity android:name=".activity.mine.InvoicingActivity" />
+        <activity android:name=".activity.mine.InvoicingActivity"/>
+        <activity android:name=".activity.mine.InvoicingPlayActivity" />
         <activity android:name=".activity.mine.InvoicingSubmitActivity" />
         <activity android:name=".activity.mine.InvoicingSubmitResultActivity" />
         <activity android:name=".activity.mine.MyScoreActivity" />
@@ -76,21 +89,19 @@
         <activity android:name=".activity.mine.MyAllowanceActivity" />
         <activity android:name=".activity.mine.MyGiftCardActivity" />
         <activity android:name=".activity.mine.MyGiftCardListActivity" />
-        <activity android:name=".activity.discount.GiftCardActivity" />
-        <activity android:name=".activity.discount.GiftCardBuyActivity" />
-        <activity android:name=".activity.discount.GiftCardBuySuccessActivity" />
-        <activity android:name=".activity.discount.ExchangeCouponActivity" />
-        <activity android:name=".activity.discount.CouponReceiveActivity" />
-        <activity android:name=".activity.discount.ReceivedSuccessActivity" />
-        <activity android:name=".activity.discount.HolidayActivity" />
-        <activity android:name=".activity.discount.SecondHalfActivity" />
-        <activity android:name=".activity.community.LeaveMessageActivity" />
         <activity android:name=".activity.mine.MyExpensesRecordActivity" />
         <activity android:name=".activity.mine.MyLeaveMessageActivity" />
-        <activity android:name=".activity.home.SubmitOrderActivity" />
-        <activity android:name=".activity.home.SelectCouponActivity" />
-        <activity android:name=".activity.home.InvoiceActivity" />
         <activity android:name=".activity.mine.MyRedEnvelopeActivity"/>
+
+        <provider
+            android:authorities="com.ichuk.coffee.fileprovider"
+            android:name="android.support.v4.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
 
         <!-- 高德定位服务 -->
         <service android:name="com.amap.api.location.APSService"/>

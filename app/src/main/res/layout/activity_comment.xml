@@ -4,11 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context="com.ichuk.coffee.activity.community.CommentActivity">
 
     <include
         android:id="@+id/header"
         layout="@layout/layout_activity_toolbar" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_below="@id/header"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/md_grey_300"/>
 
     <!-- bottom -->
     <LinearLayout
@@ -47,7 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/ll_bottom"
-        android:layout_below="@id/header">
+        android:layout_below="@id/view">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -125,16 +133,45 @@
                     android:layout_marginLeft="20dp"
                     android:layout_weight="1"
                     android:gravity="left|center_vertical"
-                    android:text="评论 (88)" />
+                    android:text="评论 88" />
 
-                <TextView
-                    android:id="@+id/tv_like_num"
+                <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="20dp"
-                    android:layout_weight="1"
-                    android:gravity="right|center_vertical"
-                    android:text="点赞 (88)" />
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@mipmap/icon_primise_red"
+                        android:layout_toLeftOf="@id/tv_like_num"
+                        android:layout_marginRight="10dp"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tv_like_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20dp"
+                        android:text="88" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:orientation="vertical"
+                android:background="@color/md_white_1000">
+
+                <View
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/brown"
+                    android:layout_marginLeft="10dp"/>
 
             </LinearLayout>
 

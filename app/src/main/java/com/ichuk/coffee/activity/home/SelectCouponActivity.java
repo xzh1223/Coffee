@@ -1,9 +1,11 @@
 package com.ichuk.coffee.activity.home;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
@@ -31,6 +33,7 @@ public class SelectCouponActivity extends BaseActivity implements View.OnClickLi
     List<AllowanceBean> allowanceBeanList = new ArrayList<>();
     List<CouponBean> couponBeanList = new ArrayList<>();
     private int mPosition = -1;
+    private RelativeLayout rlUnused;
 
     /**
      * Find the Views in the layout
@@ -38,6 +41,7 @@ public class SelectCouponActivity extends BaseActivity implements View.OnClickLi
     private void findViews() {
         tvSelectText1 = findViewById(R.id.tv_select_text_1);
         ivCheck = findViewById(R.id.iv_check);
+        rlUnused = findViewById(R.id.rl_unused);
         tvSelectText2 = findViewById(R.id.tv_select_text_2);
         rvCoupon = findViewById(R.id.rv_coupon);
         tvHeaderTitle = findViewById(R.id.tv_header_title);
@@ -52,7 +56,7 @@ public class SelectCouponActivity extends BaseActivity implements View.OnClickLi
     protected void setEvent() {
         ivBack.setVisibility(View.VISIBLE);
         ivBack.setOnClickListener(this);
-        ivCheck.setOnClickListener(this);
+        rlUnused.setOnClickListener(this);
     }
 
     /**
@@ -144,7 +148,7 @@ public class SelectCouponActivity extends BaseActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.iv_check:
+            case R.id.rl_unused:
                 if (mFlag == 0) {
                     for (int i = 0; i < couponBeanList.size(); i++) {
                         couponBeanList.get(i).isSelected = false;
@@ -159,6 +163,9 @@ public class SelectCouponActivity extends BaseActivity implements View.OnClickLi
                 ivCheck.setImageResource(R.mipmap.icon_selected);
                 break;
             case R.id.iv_back:
+                Intent intent = getIntent();
+                intent.putExtra("money", "");
+                setResult(RESULT_OK, intent);
                 finish();
                 break;
         }

@@ -72,7 +72,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
      */
     @Override
     protected void setEvent() {
-        ivBack.setVisibility(View.VISIBLE);
+
         ivBack.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
         tvForgetPassword.setOnClickListener(this);
@@ -88,8 +88,15 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     @Override
     protected void initView() {
         findViews();
-        tvHeaderTitle.setText(getResources().getString(R.string.to_login));
+        setHeader();
+    }
 
+    /**
+     * set header
+     */
+    private void setHeader() {
+        tvHeaderTitle.setText(getResources().getString(R.string.to_login));
+        ivBack.setVisibility(View.VISIBLE);
     }
 
     /**

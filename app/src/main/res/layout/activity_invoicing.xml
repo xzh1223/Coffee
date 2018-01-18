@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.ichuk.coffee.activity.mine.InvoicingActivity">
+    android:fitsSystemWindows="true"
+    tools:context="com.ichuk.coffee.activity.mine.InvoicingPlayActivity">
 
     <include
         android:id="@+id/header"

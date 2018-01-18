@@ -3,11 +3,11 @@ package com.ichuk.coffee.activity.mine;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
-import com.ichuk.coffee.adapter.MineGridAdapter;
 import com.ichuk.coffee.base.BaseActivity;
 import com.ichuk.coffee.bean.MineGridBean;
 import com.ichuk.coffee.utils.ToastUtil;
@@ -15,10 +15,12 @@ import com.ichuk.coffee.utils.ToastUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class VIPActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView tvLevelInfo;
-    private ImageView civAccountPic;
+    private CircleImageView civAccountPic;
     private TextView tvNickname;
     private TextView tvVipLevel;
     private TextView tvVip1;
@@ -29,6 +31,9 @@ public class VIPActivity extends BaseActivity implements View.OnClickListener {
     private List<MineGridBean> mList = new ArrayList<>();
     private ImageView ivBack;
     private TextView tvHeaderTitle;
+    private LinearLayout llHalf;
+    private LinearLayout llSecondHalf;
+    private LinearLayout llBirth;
 
     /**
      * Find the Views in the layout
@@ -44,7 +49,9 @@ public class VIPActivity extends BaseActivity implements View.OnClickListener {
         seekBar = findViewById(R.id.seek_bar);
         tvVip2 = findViewById(R.id.tv_vip_2);
         tvVipNum = findViewById(R.id.tv_vip_num);
-        gvWelfare = findViewById(R.id.gv_welfare);
+        llHalf = findViewById(R.id.ll_half);
+        llSecondHalf = findViewById(R.id.ll_second_half);
+        llBirth = findViewById(R.id.ll_birth);
     }
 
 
@@ -53,14 +60,6 @@ public class VIPActivity extends BaseActivity implements View.OnClickListener {
      */
     @Override
     protected void setEvent() {
-        tvHeaderTitle.setText(getResources().getString(R.string.vip_level));
-        tvNickname.setText("拿铁学徒-小明");
-        tvVipLevel.setText("普金豆豆");
-        tvVip1.setText("普金豆豆");
-        tvVip2.setText("银金可可");
-        String vimNum = "咖啡豆 " + seekBar.getProgress() + "/" + seekBar.getMax() + "颗";
-        tvVipNum.setText(vimNum);
-        ivBack.setVisibility(View.VISIBLE);
         tvLevelInfo.setOnClickListener(this);
         ivBack.setOnClickListener(this);
     }
@@ -71,39 +70,36 @@ public class VIPActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void initView() {
         findViews();
+        setHeader();
         getData();
-        setSeekBar();
-        setGridView();
-
+        showView();
     }
 
     /**
-     * set seekBar
+     *  show data on widget
      */
-    private void setSeekBar() {
-        seekBar.setMax(25);
-        seekBar.setProgress(14);
-        seekBar.setEnabled(false);
+    private void showView() {
+        tvNickname.setText("拿铁学徒-小明");
+        tvVipLevel.setText("普金豆豆");
+        tvVip1.setText("普金豆豆");
+        tvVip2.setText("银金可可");
+        String vimNum = "咖啡豆 " + seekBar.getProgress() + "/" + seekBar.getMax() + "颗";
+        tvVipNum.setText(vimNum);
     }
 
     /**
-     * get data
+     *  get data from http
      */
     private void getData() {
-        MineGridBean mineGridBean = new MineGridBean();
-        mineGridBean.setName("一杯半价标准咖啡");
-        MineGridBean mineGridBean2 = new MineGridBean();
-        mineGridBean2.setName("一次第二杯半价");
-        MineGridBean mineGridBean3 = new MineGridBean();
-        mineGridBean3.setName("生日免费一杯咖啡");
-        mList.add(mineGridBean);
-        mList.add(mineGridBean2);
-        mList.add(mineGridBean3);
+
     }
 
-    private void setGridView() {
-        MineGridAdapter mAdapter = new MineGridAdapter(context, mList);
-        gvWelfare.setAdapter(mAdapter);
+    /**
+     * set header
+     */
+    private void setHeader() {
+        tvHeaderTitle.setText(getResources().getString(R.string.vip_level));
+        ivBack.setVisibility(View.VISIBLE);
     }
 
     /**

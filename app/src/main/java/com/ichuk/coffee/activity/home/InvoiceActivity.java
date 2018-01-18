@@ -7,12 +7,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
 import com.ichuk.coffee.base.BaseActivity;
 
-public class InvoiceActivity extends BaseActivity implements View.OnClickListener {
+public class InvoiceActivity extends BaseActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
     private ImageView ivBack;
     private TextView tvHeaderTitle;
     private ImageView ivCheckNo;
@@ -26,6 +27,11 @@ public class InvoiceActivity extends BaseActivity implements View.OnClickListene
     private TextView tvMoney;
     private EditText etEmail;
     private Button btnOk;
+    private RelativeLayout rlUnused;
+    private RelativeLayout rlUsed;
+    private LinearLayout llMakeInvoice;
+    private int mPosition = 0;
+    private boolean isPersonal = true;
 
     /**
      * Find the Views in the layout
@@ -44,6 +50,9 @@ public class InvoiceActivity extends BaseActivity implements View.OnClickListene
         tvMoney = findViewById(R.id.tv_money);
         etEmail = findViewById(R.id.et_email);
         btnOk = findViewById(R.id.btn_ok);
+        rlUnused = findViewById(R.id.rl_unused);
+        rlUsed = findViewById(R.id.rl_used);
+        llMakeInvoice = findViewById(R.id.ll_make_invoice);
     }
 
     /**
@@ -54,6 +63,9 @@ public class InvoiceActivity extends BaseActivity implements View.OnClickListene
         tvHeaderTitle.setText(getResources().getString(R.string.play_invoice));
         ivBack.setVisibility(View.VISIBLE);
         ivBack.setOnClickListener(this);
+        rlUnused.setOnClickListener(this);
+        rlUsed.setOnClickListener(this);
+        rgType.setOnCheckedChangeListener(this);
     }
 
     /**
@@ -62,6 +74,7 @@ public class InvoiceActivity extends BaseActivity implements View.OnClickListene
     @Override
     protected void initView() {
         findViews();
+        selected(mPosition);
     }
 
     /**
@@ -78,6 +91,56 @@ public class InvoiceActivity extends BaseActivity implements View.OnClickListene
             case R.id.iv_back:
                 finish();
                 break;
+            case R.id.rl_unused:
+                mPosition = 0;
+                selected(mPosition);
+                break;
+            case R.id.rl_used:
+                mPosition = 1;
+                selected(mPosition);
+                break;
+        }
+    }
+
+    /**
+     *  select to used or unused invoice
+     */
+    private void selected(int position) {
+        if (position == 0) {
+            // unused
+            llMakeInvoice.setVisibility(View.GONE);
+            ivCheckNo.setImageResource(R.mipmap.icon_selected);
+            ivCheckYes.setImageResource(R.mipmap.icon_unselected);
+        } else if (position == 1) {
+            // used
+            llMakeInvoice.setVisibility(View.VISIBLE);
+            ivCheckNo.setImageResource(R.mipmap.icon_unselected);
+            ivCheckYes.setImageResource(R.mipmap.icon_selected);
+
+            checkShowTax(isPersonal);
+        }
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+        RadioButton radioButton = radioGroup.findViewById(i);
+        if ("企业".equals(radioButton.getText().toString())) {
+            isPersonal = false;
+            checkShowTax(isPersonal);
+        } else if("个人".equals(radioButton.getText().toString())) {
+            isPersonal = true;
+            checkShowTax(isPersonal);
+        }
+    }
+
+    /**
+     *  check personal orr enterprise
+     */
+    private void checkShowTax(boolean isPersonal) {
+        if (isPersonal) {
+            llTaxId.setVisibility(View.GONE);
+        } else {
+            llTaxId.setVisibility(View.VISIBLE);
         }
     }
 }

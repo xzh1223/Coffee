@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
@@ -50,9 +49,17 @@ public class ExchangeAdapter extends RecyclerView.Adapter<ExchangeAdapter.ViewHo
             holder.tvMoney.setText(exchangeCouponBean.getMoney());
             holder.tvCondition.setText(exchangeCouponBean.getCondition());
             holder.tvAddress.setText(exchangeCouponBean.getAddress());
-            holder.tvLimit.setText(exchangeCouponBean.getVip());
-            holder.tvTime.setText(exchangeCouponBean.getStartTime() + "-" + exchangeCouponBean.getEndTime());
-            holder.llToReceive.setOnClickListener(new View.OnClickListener() {
+//            holder.tvLimit.setText(exchangeCouponBean.getVip());
+//            holder.tvTime.setText(exchangeCouponBean.getStartTime() + "-" + exchangeCouponBean.getEndTime());
+//            holder.llToReceive.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    Intent intent = new Intent(mContext, CouponReceiveActivity.class);
+//                    intent.putExtra("bean", exchangeCouponBean);
+//                    mContext.startActivity(intent);
+//                }
+//            });
+            holder.tvToReceive.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(mContext, CouponReceiveActivity.class);
@@ -78,9 +85,10 @@ public class ExchangeAdapter extends RecyclerView.Adapter<ExchangeAdapter.ViewHo
         private TextView tvMoney;
         private TextView tvCondition;
         private TextView tvAddress;
-        private TextView tvLimit;
-        private TextView tvTime;
-        private LinearLayout llToReceive;
+//        private TextView tvLimit;
+//        private TextView tvTime;
+//        private LinearLayout llToReceive;
+        private TextView tvToReceive;
         View view;
 
         public ViewHolder(View itemView) {
@@ -89,9 +97,10 @@ public class ExchangeAdapter extends RecyclerView.Adapter<ExchangeAdapter.ViewHo
             tvMoney = itemView.findViewById(R.id.tv_money);
             tvCondition = itemView.findViewById(R.id.tv_condition);
             tvAddress = itemView.findViewById(R.id.tv_address);
-            tvLimit = itemView.findViewById(R.id.tv_limit);
-            tvTime = itemView.findViewById(R.id.tv_time);
-            llToReceive = itemView.findViewById(R.id.ll_to_receive);
+//            tvLimit = itemView.findViewById(R.id.tv_limit);
+//            tvTime = itemView.findViewById(R.id.tv_time);
+//            llToReceive = itemView.findViewById(R.id.ll_to_receive);
+            tvToReceive = itemView.findViewById(R.id.tv_to_receive);
         }
     }
 

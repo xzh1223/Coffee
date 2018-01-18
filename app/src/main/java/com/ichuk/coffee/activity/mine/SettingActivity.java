@@ -103,6 +103,9 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
             case R.id.btn_esc:
                 toActivity(LoginActivity.class);
                 break;
+            case R.id.iv_back:
+                finish();
+                break;
 
         }
     }
@@ -120,7 +123,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         rlClearCache.setOnClickListener(this);
         rlFeedback.setOnClickListener(this);
         rlAboutUs.setOnClickListener(this);
-        ivBack.setVisibility(View.VISIBLE);
+
 
     }
 
@@ -130,14 +133,36 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     @Override
     protected void initView() {
         findViews();
-        tvHeaderTitle.setText(getResources().getString(R.string.setting));
+        setHeader();
+        setCache();
+        setVersion();
+    }
+
+    /**
+     * set version
+     */
+    private void setVersion() {
+        String version = "V" + getVersionName();
+        tvCurrentVersion.setText(version);
+    }
+
+    /**
+     * set cache
+     */
+    private void setCache() {
         try {
             tvCache.setText(ClearCacheUtil.getTotalCacheSize(getApplicationContext()));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        String version = "V" + getVersionName();
-        tvCurrentVersion.setText(version);
+    }
+
+    /**
+     * set header
+     */
+    private void setHeader() {
+        tvHeaderTitle.setText(getResources().getString(R.string.setting));
+        ivBack.setVisibility(View.VISIBLE);
     }
 
     /**

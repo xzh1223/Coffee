@@ -5,18 +5,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     tools:context="com.ichuk.coffee.activity.community.LeaveMessageActivity">
 
     <include layout="@layout/layout_activity_toolbar" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/md_grey_300"/>
 
     <EditText
         android:id="@+id/et_content"
         android:layout_width="match_parent"
         android:layout_height="250dp"
+        android:background="@color/md_white_1000"
         android:gravity="start"
-        android:padding="10dp"
+        android:hint="说说您的评论（请不要少于五个字）"
         android:lineSpacingMultiplier="1.2"
-        android:background="@drawable/bg_cloud_view"
-        android:hint="说说您的评论（请不要少于五个字）" />
+        android:padding="10dp" />
+
+    <LinearLayout
+        android:id="@+id/ll_photo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:gravity="center"
+        android:background="@drawable/bg_coffee_detail"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/ic_launcher"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/md_grey_400"
+            android:text="上传照片"/>
+
+    </LinearLayout>
 
 </LinearLayout>

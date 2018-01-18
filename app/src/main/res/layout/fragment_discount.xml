@@ -6,6 +6,11 @@
 
     <include layout="@layout/layout_activity_toolbar" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/md_grey_300"/>
+
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -37,20 +42,21 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:scaleType="fitXY"
-                        android:src="@mipmap/ic_launcher" />
+                        android:src="@mipmap/icon_new_coupon" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:text="新客优惠" />
 
                 </LinearLayout>
 
                 <View
-                    android:layout_width="3dp"
+                    android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:background="@color/md_grey_200" />
 
@@ -62,20 +68,21 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:scaleType="fitXY"
-                        android:src="@mipmap/ic_launcher" />
+                        android:src="@mipmap/icon_vip" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:text="新注册会员礼包" />
 
                 </LinearLayout>
 
                 <View
-                    android:layout_width="3dp"
+                    android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:background="@color/md_grey_200" />
 
@@ -87,14 +94,15 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:scaleType="fitXY"
-                        android:src="@mipmap/ic_launcher" />
+                        android:src="@mipmap/icon_gift_card" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:text="优惠充值卡" />
 
                 </LinearLayout>
@@ -122,7 +130,7 @@
                         android:layout_height="40dp"
                         android:layout_marginLeft="5dp"
                         android:scaleType="fitXY"
-                        android:src="@mipmap/ic_launcher" />
+                        android:src="@mipmap/icon_point" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -167,7 +175,7 @@
                         android:layout_height="40dp"
                         android:layout_marginLeft="5dp"
                         android:scaleType="fitXY"
-                        android:src="@mipmap/ic_launcher" />
+                        android:src="@mipmap/icon_score" />
 
                     <LinearLayout
                         android:layout_width="match_parent"

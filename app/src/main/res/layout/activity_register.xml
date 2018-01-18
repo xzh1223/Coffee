@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
     tools:context="com.ichuk.coffee.activity.home.RegisterActivity">
 
     <include
         android:id="@+id/header"
         layout="@layout/layout_activity_toolbar" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/md_grey_300" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,8 +47,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
-                    android:inputType="number"
-                    android:hint="@string/input_phone" />
+                    android:hint="@string/input_phone"
+                    android:inputType="number" />
 
             </LinearLayout>
 
@@ -78,11 +85,11 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
-                    android:text="@string/verification_code"
-                    android:gravity="center"
+                    android:layout_weight="1"
                     android:background="@drawable/coffee_detail_selected"
-                    android:textColor="@color/md_white_1000"
-                    android:layout_weight="1"/>
+                    android:gravity="center"
+                    android:text="@string/verification_code"
+                    android:textColor="@color/md_white_1000" />
 
             </LinearLayout>
 
@@ -101,22 +108,62 @@
 
                 <EditText
                     android:id="@+id/et_password"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="@null"
-                    android:hint="@string/input_password" />
+                    android:hint="@string/input_password_1"
+                    android:inputType="textPassword" />
+
+                <ImageView
+                    android:id="@+id/iv_show"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp"
+                    android:padding="4dp"
+                    android:src="@mipmap/icon_hide_password" />
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/tv_agreement"
+            <RelativeLayout
+                android:id="@+id/rl_agreement"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/agreement"
-                android:textColor="@color/brown"
-                android:visibility="gone"/>
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_agreement_key"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/agreement_key"
+                    android:textColor="@color/md_grey_500" />
+
+                <TextView
+                    android:id="@+id/tv_agreement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/tv_agreement_key"
+                    android:gravity="center_vertical"
+                    android:text="@string/agreement"
+                    android:textColor="@color/md_blue_400" />
+
+                <TextView
+                    android:id="@+id/tv_to_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="@string/to_login_account"
+                    android:textColor="@color/md_blue_400" />
+
+
+            </RelativeLayout>
 
             <Button
                 android:id="@+id/btn_ok"
@@ -132,4 +179,4 @@
 
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -12,6 +13,8 @@ import com.ichuk.coffee.R;
 import com.ichuk.coffee.base.BaseActivity;
 
 public class SubmitOrderActivity extends BaseActivity implements View.OnClickListener {
+    private static final int COUPON = 1;
+    private static final int ALLOWANCE = 2;
     private ImageView ivBack;
     private TextView tvHeaderTitle;
     private LinearLayout llBottom;
@@ -23,15 +26,24 @@ public class SubmitOrderActivity extends BaseActivity implements View.OnClickLis
     private TextView tvMoney;
     private TextView tvScore;
     private Switch switchUseOrNot;
+    private RelativeLayout rlCoupon;
+    private ImageView ivTo;
     private TextView tvUsableCoupon;
+    private RelativeLayout rlAllowance;
+    private ImageView ivTo2;
     private TextView tvUsableAllowance;
+    private RelativeLayout rlInvoice;
+    private ImageView ivTo3;
     private TextView tvInvoice;
+    private RelativeLayout rlPayWx;
     private ImageView ivWx;
-    private ImageView ivCheckWx;
+    private TextView tvWxKey;
+    private RelativeLayout rlPayZfb;
     private ImageView ivZfb;
-    private ImageView ivCheckZfb;
+    private TextView tvZfbKey;
+    private RelativeLayout rlPayCzk;
     private ImageView ivGiftCard;
-    private ImageView ivCheckGiftCard;
+    private TextView tvCardKey;
 
     /**
      * Find the Views in the layout
@@ -48,16 +60,26 @@ public class SubmitOrderActivity extends BaseActivity implements View.OnClickLis
         tvMoney = findViewById(R.id.tv_money);
         tvScore = findViewById(R.id.tv_score);
         switchUseOrNot = findViewById(R.id.switch_use_or_not);
+        rlCoupon = findViewById(R.id.rl_coupon);
+        ivTo = findViewById(R.id.iv_to);
         tvUsableCoupon = findViewById(R.id.tv_usable_coupon);
+        rlAllowance = findViewById(R.id.rl_allowance);
+        ivTo2 = findViewById(R.id.iv_to_2);
         tvUsableAllowance = findViewById(R.id.tv_usable_allowance);
+        rlInvoice = findViewById(R.id.rl_invoice);
+        ivTo3 = findViewById(R.id.iv_to_3);
         tvInvoice = findViewById(R.id.tv_invoice);
+        rlPayWx = findViewById(R.id.rl_pay_wx);
         ivWx = findViewById(R.id.iv_wx);
-        ivCheckWx = findViewById(R.id.iv_check_wx);
+        tvWxKey = findViewById(R.id.tv_wx_key);
+        rlPayZfb = findViewById(R.id.rl_pay_zfb);
         ivZfb = findViewById(R.id.iv_zfb);
-        ivCheckZfb = findViewById(R.id.iv_check_zfb);
+        tvZfbKey = findViewById(R.id.tv_zfb_key);
+        rlPayCzk = findViewById(R.id.rl_pay_czk);
         ivGiftCard = findViewById(R.id.iv_gift_card);
-        ivCheckGiftCard = findViewById(R.id.iv_check_gift_card);
+        tvCardKey = findViewById(R.id.tv_card_key);
     }
+
 
     /**
      * set event
@@ -67,9 +89,9 @@ public class SubmitOrderActivity extends BaseActivity implements View.OnClickLis
         tvHeaderTitle.setText(getResources().getString(R.string.submit_order));
         ivBack.setVisibility(View.VISIBLE);
         ivBack.setOnClickListener(this);
-        tvUsableCoupon.setOnClickListener(this);
-        tvUsableAllowance.setOnClickListener(this);
-        tvInvoice.setOnClickListener(this);
+        rlCoupon.setOnClickListener(this);
+        rlAllowance.setOnClickListener(this);
+        rlInvoice.setOnClickListener(this);
     }
 
     /**
@@ -82,7 +104,7 @@ public class SubmitOrderActivity extends BaseActivity implements View.OnClickLis
     }
 
     /**
-     *  get data from http
+     * get data from http
      */
     private void getData() {
 
@@ -99,24 +121,41 @@ public class SubmitOrderActivity extends BaseActivity implements View.OnClickLis
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.tv_usable_coupon: {
+            case R.id.rl_coupon: {
                 Intent intent = new Intent(context, SelectCouponActivity.class);
                 intent.putExtra("page", "coupon");
-                startActivity(intent);
+                startActivityForResult(intent, COUPON);
                 break;
             }
-            case R.id.tv_usable_allowance: {
+            case R.id.rl_allowance: {
                 Intent intent = new Intent(context, SelectCouponActivity.class);
                 intent.putExtra("page", "allowance");
-                startActivity(intent);
+                startActivityForResult(intent, ALLOWANCE);
                 break;
             }
-            case R.id.tv_invoice:
+            case R.id.rl_invoice:
                 toActivity(InvoiceActivity.class);
                 break;
             case R.id.iv_back:
                 finish();
                 break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case COUPON: {
+                String money = "减￥"+data.getStringExtra("money");
+                tvUsableCoupon.setText(money);
+                break;
+            }
+            case ALLOWANCE: {
+                String money = "减￥"+data.getStringExtra("money");
+                tvUsableAllowance.setText(money);
+                break;
+            }
         }
     }
 }

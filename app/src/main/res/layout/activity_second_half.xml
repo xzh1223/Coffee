@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/md_grey_200"
+    android:fitsSystemWindows="true"
     tools:context="com.ichuk.coffee.activity.discount.SecondHalfActivity">
 
     <include layout="@layout/layout_activity_toolbar"/>
@@ -15,9 +17,9 @@
         android:background="@color/md_white_1000">
 
         <ImageView
-            android:layout_width="26dp"
-            android:layout_height="26dp"
-            android:src="@mipmap/ic_launcher"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/icon_quick_shop"
             android:layout_marginLeft="10dp"
             android:layout_centerVertical="true"
             android:id="@+id/iv_left"/>

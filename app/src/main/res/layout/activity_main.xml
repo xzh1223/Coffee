@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context="com.ichuk.coffee.activity.MainActivity">
 
     <!--<include layout="@layout/layout_main_toolbar"-->
@@ -29,15 +30,16 @@
 
             <ImageView
                 android:id="@+id/iv_main_home"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@mipmap/ic_launcher" />
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/icon_home" />
 
             <TextView
                 android:id="@+id/tv_main_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/index" />
+                android:text="@string/index"
+                android:layout_marginTop="5dp"/>
 
         </LinearLayout>
 
@@ -51,15 +53,16 @@
 
             <ImageView
                 android:id="@+id/iv_main_new_products"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@mipmap/ic_launcher" />
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/icon_new_products" />
 
             <TextView
                 android:id="@+id/tv_main_new_products"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/new_products" />
+                android:text="@string/new_products"
+                android:layout_marginTop="5dp"/>
 
         </LinearLayout>
 
@@ -73,15 +76,17 @@
 
             <ImageView
                 android:id="@+id/iv_main_discount"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@mipmap/ic_launcher" />
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/icon_discuss"
+                />
 
             <TextView
                 android:id="@+id/tv_main_discount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/discount" />
+                android:text="@string/discount"
+                android:layout_marginTop="5dp"/>
 
         </LinearLayout>
 
@@ -95,15 +100,16 @@
 
             <ImageView
                 android:id="@+id/iv_main_community"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@mipmap/ic_launcher" />
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/icon_community" />
 
             <TextView
                 android:id="@+id/tv_main_community"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/community" />
+                android:text="@string/community"
+                android:layout_marginTop="5dp"/>
 
         </LinearLayout>
 
@@ -117,25 +123,33 @@
 
             <ImageView
                 android:id="@+id/iv_main_mine"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@mipmap/ic_launcher" />
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/icon_mine" />
 
             <TextView
                 android:id="@+id/tv_main_mine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mine" />
+                android:text="@string/mine"
+                android:layout_marginTop="5dp"/>
 
         </LinearLayout>
 
     </LinearLayout>
 
+    <View
+        android:id="@+id/view"
+        android:layout_above="@id/ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/md_grey_300"/>
+
     <FrameLayout
         android:id="@+id/fl_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/ll_bottom"></FrameLayout>
+        android:layout_above="@id/view"></FrameLayout>
 
 
 </RelativeLayout>

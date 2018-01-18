@@ -46,9 +46,8 @@ public class MyAddressActivity extends BaseActivity implements View.OnClickListe
             llNoAddress.setVisibility(View.VISIBLE);
             btnAddAddress.setOnClickListener(this);
         }
-        ivBack.setVisibility(View.VISIBLE);
         ivBack.setOnClickListener(this);
-        tvHeaderTitle.setText(getResources().getString(R.string.my_address));
+
     }
 
     /**
@@ -57,7 +56,16 @@ public class MyAddressActivity extends BaseActivity implements View.OnClickListe
     @Override
     protected void initView() {
         findViews();
+        setHeader();
         getData();
+    }
+
+    /**
+     *  set header
+     */
+    private void setHeader() {
+        ivBack.setVisibility(View.VISIBLE);
+        tvHeaderTitle.setText(getResources().getString(R.string.my_address));
     }
 
     /**

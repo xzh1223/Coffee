@@ -13,4 +13,9 @@
         <item>焦糖族</item>
         <item>美式控</item>
     </string-array>
+    
+    <string-array name="picture_item">
+        <item>从相册中选择</item>
+        <item>用相机拍摄</item>
+    </string-array>
 </resources>

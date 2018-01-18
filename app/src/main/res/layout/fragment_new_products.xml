@@ -4,11 +4,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/layout_activity_toolbar"/>
+    <include layout="@layout/layout_activity_toolbar" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/md_grey_300"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_new_products"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

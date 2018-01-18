@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     tools:context="com.ichuk.coffee.activity.home.InvoiceActivity">
 
     <include layout="@layout/layout_activity_toolbar" />
@@ -19,6 +20,7 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:id="@+id/rl_unused"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@color/md_white_1000"
@@ -29,7 +31,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
-                    android:text="不需要发票" />
+                    android:text="@string/no_need_invoice" />
 
                 <ImageView
                     android:id="@+id/iv_check_no"
@@ -38,7 +40,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="8dp"
-                    android:src="@mipmap/ic_launcher_round" />
+                    android:src="@mipmap/icon_selected" />
 
             </RelativeLayout>
 
@@ -48,6 +50,7 @@
                 android:background="@color/md_grey_300" />
 
             <RelativeLayout
+                android:id="@+id/rl_used"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@color/md_white_1000"
@@ -59,7 +62,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@id/iv_wx"
                     android:gravity="center_vertical"
-                    android:text="需要发票" />
+                    android:text="@string/need_invoice" />
 
                 <ImageView
                     android:id="@+id/iv_check_yes"
@@ -68,16 +71,18 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="8dp"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@mipmap/icon_unselected" />
 
             </RelativeLayout>
 
             <LinearLayout
+                android:id="@+id/ll_make_invoice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_above="@id/btn_submit"
                 android:layout_below="@id/header"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -92,7 +97,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:text="发票类型" />
+                        android:text="@string/invoice_type" />
 
                     <EditText
                         android:layout_width="0dp"
@@ -100,7 +105,8 @@
                         android:layout_weight="4"
                         android:background="@null"
                         android:enabled="false"
-                        android:hint="电子发票（默认电子发票不可更改）" />
+                        android:hint="@string/e_invoice"
+                        android:textSize="15sp"/>
 
                 </LinearLayout>
 
@@ -109,7 +115,7 @@
                     android:layout_height="40dp"
                     android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
-                    android:text="发票详情" />
+                    android:text="@string/invoice_details" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -129,7 +135,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
-                            android:text="抬头类型" />
+                            android:text="@string/invoice_header_type" />
 
                         <RadioGroup
                             android:id="@+id/rg_type"
@@ -143,15 +149,15 @@
                                 android:id="@+id/rb_enterprise"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="企业" />
+                                android:text="@string/invoice_enterprise" />
 
                             <RadioButton
                                 android:id="@+id/rb_personal"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="20dp"
-                                android:text="个人"
-                                android:checked="true"/>
+                                android:checked="true"
+                                android:text="@string/invoice_personal" />
 
                         </RadioGroup>
 
@@ -172,7 +178,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
-                            android:text="发票抬头" />
+                            android:text="@string/invoice_header_type" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -187,7 +193,8 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="4"
                                 android:background="@null"
-                                android:hint="请填写发票抬头" />
+                                android:hint="@string/invoice_header_type_input"
+                                android:textSize="15sp"/>
 
 
                         </LinearLayout>
@@ -211,7 +218,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
-                            android:text="税号" />
+                            android:text="@string/invoice_tax_id" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -226,7 +233,8 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="4"
                                 android:background="@null"
-                                android:hint="请填写纳税人识别号" />
+                                android:hint="@string/invoice_tax_id_input"
+                                android:textSize="15sp"/>
 
 
                         </LinearLayout>
@@ -248,7 +256,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
-                            android:text="发票内容" />
+                            android:text="@string/invoice_content" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -263,7 +271,8 @@
                                 android:layout_weight="4"
                                 android:background="@null"
                                 android:enabled="false"
-                                android:hint="咖啡采购费（默认发票内容，不可更改）" />
+                                android:hint="@string/invoice_content_input"
+                                android:textSize="15sp"/>
 
 
                         </LinearLayout>
@@ -285,7 +294,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
-                            android:text="发票金额" />
+                            android:text="@string/invoice_money" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -299,8 +308,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="4"
-                                android:gravity="center_vertical"
-                                android:hint="36.00元" />
+                                android:gravity="center_vertical" />
 
                         </LinearLayout>
 
@@ -318,7 +326,7 @@
                     android:layout_height="40dp"
                     android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
-                    android:text="收件信息" />
+                    android:text="@string/invoice_received_info" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -332,7 +340,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:text="电子邮件" />
+                        android:text="@string/invoice_email" />
 
                     <EditText
                         android:id="@+id/et_email"
@@ -340,19 +348,20 @@
                         android:layout_height="match_parent"
                         android:layout_weight="4"
                         android:background="@null"
-                        android:hint="用于向您发送电子发票" />
+                        android:hint="@string/invoice_email_input"
+                        android:textSize="15sp"/>
 
                 </LinearLayout>
-            </LinearLayout>
 
-            <Button
-                android:id="@+id/btn_ok"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/coffee_detail_selected"
-                android:text="确认"
-                android:textColor="@color/md_white_1000" />
+                <Button
+                    android:id="@+id/btn_ok"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/coffee_detail_selected"
+                    android:text="@string/ok"
+                    android:textColor="@color/md_white_1000" />
+            </LinearLayout>
 
         </LinearLayout>
 
