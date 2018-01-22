@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
-import com.ichuk.coffee.adapter.OrderAdapter;
+import com.ichuk.coffee.adapter.mine.OrderAdapter;
 import com.ichuk.coffee.base.BaseActivity;
 import com.ichuk.coffee.bean.CoffeeBean;
 import com.ichuk.coffee.bean.OrderBean;

@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingBottom="10dp">
+            android:paddingBottom="6dp">
 
             <RelativeLayout
                 android:layout_width="0dp"
@@ -27,6 +27,7 @@
                     android:id="@+id/iv_image"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
+                    android:padding="10dp"
                     android:src="@mipmap/icon_allowance" />
 
             </RelativeLayout>
@@ -34,6 +35,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
                 android:layout_weight="4"
                 android:orientation="vertical">
 
@@ -43,8 +45,8 @@
                     android:orientation="horizontal"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp">
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
 
                     <LinearLayout
                         android:layout_width="0dp"

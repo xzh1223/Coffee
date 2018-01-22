@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
-import com.ichuk.coffee.adapter.HolidayCouponAdapter;
+import com.ichuk.coffee.adapter.discount.HolidayCouponAdapter;
 import com.ichuk.coffee.adapter.home.HomeAdapter;
 import com.ichuk.coffee.base.BaseActivity;
 import com.ichuk.coffee.bean.CoffeeBean;

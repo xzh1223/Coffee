@@ -24,6 +24,7 @@
     <color name="md_white_1000">#FFFFFF</color>
 
     <color name="brown">#6A3A3D</color>
+    <color name="md_brown_500">#dd6A3A3D</color>
     <color name="red">#ff0000</color>
     
     <color name="leave_message_1">#FCA2A2</color>
@@ -33,6 +34,7 @@
     <color name="leave_message_5">#7EC8ED</color>
     <color name="leave_message_6">#6EDCDD</color>
     <color name="leave_message_7">#DDDE56</color>
-
+    <color name="md_green_800">#0CD432</color>
+    <color name="md_green_200">#C9F1CF</color>
 
 </resources>

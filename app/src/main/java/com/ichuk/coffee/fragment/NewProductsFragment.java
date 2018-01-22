@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
-import com.ichuk.coffee.adapter.NewProductsAdapter;
+import com.ichuk.coffee.adapter.new_products.NewProductsAdapter;
 import com.ichuk.coffee.base.BaseFragment;
 import com.ichuk.coffee.bean.NewProductsBean;
 

@@ -11,68 +11,10 @@
         android:layout_height="1px"
         android:background="@color/md_grey_200" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="47dp"
-        android:background="@color/md_white_1000"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv_article"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:text="文章"
-                android:textColor="@color/brown" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv_leave_message"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:text="留言" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_indicator"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:gravity="center"
-        android:background="@color/md_white_1000"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="3dp"
-            android:background="@color/brown" />
-
-    </LinearLayout>
+    <include layout="@layout/layout_menu_nav"/>
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/vp_community"
+        android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

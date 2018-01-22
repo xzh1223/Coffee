@@ -12,6 +12,7 @@ public class MyGiftCardBean {
     private String money;
     private String number;
     private String password;
+    private int added;
 
     public int getId() {
         return id;
@@ -59,5 +60,13 @@ public class MyGiftCardBean {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public int getAdded() {
+        return added;
+    }
+
+    public void setAdded(int added) {
+        this.added = added;
     }
 }

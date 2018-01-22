@@ -63,10 +63,13 @@
     <string name="to_login">登录</string>
     <string name="refund_coupon">优惠券转赠</string>
     <string name="refund_allowance">补贴转赠</string>
+    <string name="refund_gift_card">储值卡转赠</string>
     <string name="allowance">补贴</string>
     <string name="coupon">优惠券</string>
+    <string name="gift_card">储值卡</string>
     <string name="play_invoice">开发票</string>
     <string name="write_invoice">填写发票抬头</string>
+    <string name="play_invoice_by_order">按订单开票</string>
     <string name="submit_success">提交成功</string>
     <string name="message">消息</string>
     <string name="message_detail">消息详情</string>
@@ -106,8 +109,8 @@
     <string name="invoice_details">发票详情</string>
     <string name="invoice_header_type">抬头类型</string>
     <string name="invoice_header_type_input">请填写发票抬头</string>
-    <string name="invoice_enterprise">企业</string>
-    <string name="invoice_personal">个人</string>
+    <string name="invoice_enterprise"> \t 企业</string>
+    <string name="invoice_personal"> \t 个人</string>
     <string name="invoice_tax_id">税号</string>
     <string name="invoice_tax_id_input">请填写纳税人识别号</string>
     <string name="invoice_content">发票内容</string>
@@ -120,5 +123,14 @@
 
     <string name="select">请选择...</string>
     <string name="to_login_account">登录账号</string>
-
+    <string name="invoicing_record">开票历史</string>
+    <string name="invoicing_detail">开票详情</string>
+    <string name="point_record">兑换记录</string>
+    <string name="point_detail">积点明细</string>
+    <string name="gift_card_details">储值卡详情</string>
+    <string name="gift_card_add">添加储值卡</string>
+    <string name="set_gift_card_password">设置储值卡密码</string>
+    <string name="gift_card_ok">确认</string>
+    <string name="gift_card_ok_add">确认添加</string>
+    <string name="transaction_details">交易明细</string>
 </resources>

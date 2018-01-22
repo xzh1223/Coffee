@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
-import com.ichuk.coffee.adapter.MyRedEnvelopeAdapter;
+import com.ichuk.coffee.adapter.mine.MyRedEnvelopeAdapter;
 import com.ichuk.coffee.base.BaseActivity;
 import com.ichuk.coffee.bean.AllowanceBean;
 

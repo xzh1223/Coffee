@@ -1,7 +1,6 @@
 package com.ichuk.coffee.activity.mine;
 
 import android.os.Handler;
-import android.os.Message;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,29 +13,35 @@ public class InvoicingSubmitResultActivity extends BaseActivity implements View.
     private static final int DELAY_INTENT = 0x00;
     private ImageView ivBack;
     private TextView tvHeaderTitle;
-
-    Handler handler = new Handler(new Handler.Callback() {
+    private TextView tvSecondTime;
+    private int num = 3;
+    Handler mHandler = new Handler();
+    private Runnable runnable = new Runnable() {
         @Override
-        public boolean handleMessage(Message msg) {
-            switch (msg.what) {
-                case DELAY_INTENT:
-                    finish();
-                    break;
+        public void run() {
+            num--;
+            if (num >= 0) {
+                tvSecondTime.setText(num + "");
+                mHandler.postDelayed(this, 1000);
+            } else {
+                finish();
             }
-            return false;
         }
-    });
+    };
 
     /**
      * set event
      */
     @Override
     protected void setEvent() {
-        tvHeaderTitle.setText(getResources().getString(R.string.submit_success));
-        ivBack.setVisibility(View.VISIBLE);
         ivBack.setOnClickListener(this);
-        long waitTime = 3 * 1000;
-        handler.sendEmptyMessageDelayed(DELAY_INTENT, waitTime);
+    }
+
+    /**
+     * time to intent
+     */
+    private void countdown() {
+        mHandler.postDelayed(runnable, 1000);
     }
 
     /**
@@ -44,8 +49,26 @@ public class InvoicingSubmitResultActivity extends BaseActivity implements View.
      */
     @Override
     protected void initView() {
+        findViews();
+        setHeader();
+        countdown();
+    }
+
+    /**
+     * set header
+     */
+    private void setHeader() {
+        tvHeaderTitle.setText(getResources().getString(R.string.submit_success));
+        ivBack.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * findViewById
+     */
+    private void findViews() {
         ivBack = findViewById(R.id.iv_back);
         tvHeaderTitle = findViewById(R.id.tv_header_title);
+        tvSecondTime = findViewById(R.id.tv_second_time);
     }
 
     /**

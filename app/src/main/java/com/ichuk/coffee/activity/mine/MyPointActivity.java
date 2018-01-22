@@ -1,5 +1,6 @@
 package com.ichuk.coffee.activity.mine;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -8,7 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
-import com.ichuk.coffee.adapter.PointAdapter;
+import com.ichuk.coffee.adapter.mine.PointAdapter;
 import com.ichuk.coffee.base.BaseActivity;
 import com.ichuk.coffee.bean.PointBean;
 
@@ -43,9 +44,9 @@ public class MyPointActivity extends BaseActivity implements View.OnClickListene
      */
     @Override
     protected void setEvent() {
-        tvHeaderTitle.setText(getResources().getString(R.string.my_point));
-        ivBack.setVisibility(View.VISIBLE);
         ivBack.setOnClickListener(this);
+        llPoint.setOnClickListener(this);
+        llRecord.setOnClickListener(this);
     }
 
     /**
@@ -54,8 +55,17 @@ public class MyPointActivity extends BaseActivity implements View.OnClickListene
     @Override
     protected void initView() {
         findViews();
+        setHeader();
         getData();
         setRecyclerView();
+    }
+
+    /**
+     *  set header
+     */
+    private void setHeader() {
+        tvHeaderTitle.setText(getResources().getString(R.string.my_point));
+        ivBack.setVisibility(View.VISIBLE);
     }
 
     /**
@@ -99,6 +109,17 @@ public class MyPointActivity extends BaseActivity implements View.OnClickListene
             case R.id.iv_back:
                 finish();
                 break;
+            case R.id.ll_record:{
+                Intent intent=  new Intent(context, MyPointRecordActivity.class);
+                intent.putExtra("page", 0);
+                startActivity(intent);
+                break;}
+            case R.id.ll_point:{
+                Intent intent=  new Intent(context, MyPointRecordActivity.class);
+                intent.putExtra("page", 1);
+                startActivity(intent);
+                break;
+            }
         }
     }
 }

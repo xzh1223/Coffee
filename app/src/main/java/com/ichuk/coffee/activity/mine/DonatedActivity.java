@@ -1,6 +1,7 @@
 package com.ichuk.coffee.activity.mine;
 
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -8,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.ichuk.coffee.R;
 import com.ichuk.coffee.base.BaseActivity;
 import com.ichuk.coffee.bean.AllowanceBean;
@@ -35,8 +35,10 @@ public class DonatedActivity extends BaseActivity implements View.OnClickListene
     private int mPosition = 0;
     private LinearLayout llCoupon;
     private LinearLayout llAllowance;
+    private LinearLayout llGiftCard;
     private ImageView ivImage;
     private TextView tvHeader;
+    private AlertDialog mDialog;
 
     /**
      * Find the Views in the layout
@@ -47,6 +49,7 @@ public class DonatedActivity extends BaseActivity implements View.OnClickListene
         tvHeader = findViewById(R.id.tv_header);
         llCoupon = findViewById(R.id.ll_coupon);
         llAllowance = findViewById(R.id.ll_allowance);
+        llGiftCard = findViewById(R.id.ll_gift_card);
         etPhone = findViewById(R.id.et_phone);
         tvMoney = findViewById(R.id.tv_money);
         tvLimit = findViewById(R.id.tv_limit);
@@ -73,20 +76,27 @@ public class DonatedActivity extends BaseActivity implements View.OnClickListene
             tvHeader.setText(getResources().getString(R.string.coupon));
             llCoupon.setVisibility(View.VISIBLE);
             llAllowance.setVisibility(View.GONE);
+            llGiftCard.setVisibility(View.GONE);
             tvMoney.setText(mCouponBean.getMoney());
             tvLimit.setText(mCouponBean.getLimit());
             tvTitle.setText(mCouponBean.getTitle());
             tvTime.setText(mCouponBean.getTime());
-        } else {
+        } else if (mPosition == 1){
             tvHeaderTitle.setText(getResources().getString(R.string.refund_allowance));
             tvHeader.setText(getResources().getString(R.string.allowance));
+            llGiftCard.setVisibility(View.GONE);
             llCoupon.setVisibility(View.GONE);
             llAllowance.setVisibility(View.VISIBLE);
             tvMoney2.setText(mAllowanceBean.getMoney());
             tvLimit2.setText(mAllowanceBean.getLimit());
             tvTitle2.setText(mAllowanceBean.getTitle());
             tvTime2.setText(mAllowanceBean.getTime());
-            Glide.with(context).load(R.mipmap.ic_launcher).into(ivImage);
+        } else if (mPosition == 2) {
+            tvHeaderTitle.setText(getResources().getString(R.string.refund_gift_card));
+            tvHeader.setText(getResources().getString(R.string.gift_card));
+            llCoupon.setVisibility(View.GONE);
+            llAllowance.setVisibility(View.GONE);
+            llGiftCard.setVisibility(View.VISIBLE);
         }
         ivBack.setVisibility(View.VISIBLE);
         ivBack.setOnClickListener(this);
@@ -114,6 +124,8 @@ public class DonatedActivity extends BaseActivity implements View.OnClickListene
         } else if (page.equals("补贴")) {
             mPosition = 1;
             mAllowanceBean = (AllowanceBean) intent.getSerializableExtra("bean");
+        } else if (page.equals("储值卡")) {
+            mPosition = 2;
         }
 
     }
@@ -135,11 +147,52 @@ public class DonatedActivity extends BaseActivity implements View.OnClickListene
             case R.id.btn_ok:
                 String phoneNum = etPhone.getText().toString().trim();
                 if (phoneNum.length() == 11) {
-                    ToastUtil.toast(context, "确认转赠");
+                    showDialog();
                 } else {
                     ToastUtil.toast(context, "号码错误");
                 }
                 break;
         }
+    }
+
+    /**
+     * show dialog for donate
+     */
+    private void showDialog() {
+        View view = View.inflate(context, R.layout.item_dialog_confirm_phone, null);
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        mDialog = builder.create();
+        mDialog.setView(view);
+        mDialog.show();
+        ImageView ivEsc = view.findViewById(R.id.iv_esc);
+        TextView tvPhone = view.findViewById(R.id.tv_phone);
+        TextView tvCancel = view.findViewById(R.id.tv_cancel);
+        TextView tvOk = view.findViewById(R.id.tv_ok);
+        tvPhone.setText("要发送至的手机号码为" +
+                etPhone.getText().toString().trim() + "，请\n确认是否正确？");
+        tvCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mDialog != null) {
+                    mDialog.dismiss();
+                }
+            }
+        });
+        tvOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mDialog != null) {
+                    mDialog.dismiss();
+                }
+            }
+        });
+        ivEsc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mDialog != null) {
+                    mDialog.dismiss();
+                }
+            }
+        });
     }
 }

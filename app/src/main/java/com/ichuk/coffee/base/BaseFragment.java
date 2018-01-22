@@ -41,7 +41,6 @@ public abstract class BaseFragment extends Fragment {
         pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
         context = getActivity();
         initView();
-
     }
 
     /**

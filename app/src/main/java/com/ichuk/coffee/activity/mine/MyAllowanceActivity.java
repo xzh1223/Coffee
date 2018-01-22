@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
-import com.ichuk.coffee.adapter.MyAllowanceAdapter;
+import com.ichuk.coffee.adapter.mine.MyAllowanceAdapter;
 import com.ichuk.coffee.base.BaseActivity;
 import com.ichuk.coffee.bean.AllowanceBean;
 

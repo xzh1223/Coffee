@@ -13,9 +13,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
-import com.ichuk.coffee.adapter.CustomTasteAdapter;
+import com.ichuk.coffee.adapter.home.CustomTasteAdapter;
 import com.ichuk.coffee.base.BaseActivity;
 import com.ichuk.coffee.bean.PowderOrJamBean;
+import com.ichuk.coffee.utils.ToastUtil;
 import com.ichuk.coffee.widget.AddOrLessView;
 import com.jauker.widget.BadgeView;
 
@@ -66,6 +67,11 @@ public class CoffeeDetailActivity extends BaseActivity implements View.OnClickLi
     private TextView tvContent;
     private RecyclerView rvPowder;
     private RecyclerView rvJam;
+    private LinearLayout llBottom1;
+    private LinearLayout llBottom2;
+    private LinearLayout llShow1;
+    private LinearLayout llShow2;
+    private String mPage = "";
 
 
     /**
@@ -82,12 +88,33 @@ public class CoffeeDetailActivity extends BaseActivity implements View.OnClickLi
     @Override
     protected void initView() {
         findViews();
-        setHeader();
-        setBadgeView();
         showCoffeeInfoAll(isShowAll);
-        selectCaffeine(0);
-        selectTaste(2);
+        setHeader();
+        getDataFromIntent();
+        if ("MY_POINT_ACTIVITY".equals(mPage)) {
+            llShow2.setVisibility(View.VISIBLE);
+            llShow1.setVisibility(View.GONE);
+            llBottom2.setVisibility(View.VISIBLE);
+            llBottom1.setVisibility(View.GONE);
+            ivShoppingCart.setVisibility(View.GONE);
+        } else {
+            llShow1.setVisibility(View.VISIBLE);
+            llShow2.setVisibility(View.GONE);
+            llBottom1.setVisibility(View.VISIBLE);
+            llBottom2.setVisibility(View.GONE);
+            ivShoppingCart.setVisibility(View.VISIBLE);
+            setBadgeView();
+            selectCaffeine(0);
+            selectTaste(2);
+        }
         selectTemperature(4);
+    }
+
+    /**
+     * get data from intent
+     */
+    private void getDataFromIntent() {
+        mPage = getIntent().getStringExtra("page");
     }
 
     /**
@@ -119,6 +146,12 @@ public class CoffeeDetailActivity extends BaseActivity implements View.OnClickLi
         ivBtn = findViewById(R.id.iv_btn);
         tvHeaderTitle = findViewById(R.id.tv_header_title);
         ivShoppingCart = findViewById(R.id.iv_shopping_cart);
+
+        llBottom1 = findViewById(R.id.ll_bottom_1);
+        llBottom2 = findViewById(R.id.ll_bottom_2);
+        llShow1 = findViewById(R.id.ll_show_1);
+        llShow2 = findViewById(R.id.ll_show_2);
+
     }
 
     /**
@@ -142,7 +175,7 @@ public class CoffeeDetailActivity extends BaseActivity implements View.OnClickLi
         ivBack.setOnClickListener(this);
         rlShowAll.setOnClickListener(this);
         ivShoppingCart.setOnClickListener(this);
-
+        llBottom2.setOnClickListener(this);
     }
 
     /**
@@ -278,6 +311,9 @@ public class CoffeeDetailActivity extends BaseActivity implements View.OnClickLi
                     mNoMakeDialog.dismiss();
                 }
                 break;
+            case R.id.ll_bottom_2:
+                ToastUtil.toast(context, "立即兑换");
+                break;
         }
     }
 
@@ -297,7 +333,7 @@ public class CoffeeDetailActivity extends BaseActivity implements View.OnClickLi
     }
 
     /**
-     *  set custom recyclerView (powder and jam)
+     * set custom recyclerView (powder and jam)
      */
     private void setRecyclerView() {
         List<PowderOrJamBean> mPowderList = new ArrayList<>();

@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
-import com.ichuk.coffee.adapter.OrderItemAdapter;
+import com.ichuk.coffee.adapter.mine.OrderItemAdapter;
 import com.ichuk.coffee.adapter.mine.CodeOrderDetailsAdapter;
 import com.ichuk.coffee.base.BaseActivity;
 import com.ichuk.coffee.bean.OrderBean;

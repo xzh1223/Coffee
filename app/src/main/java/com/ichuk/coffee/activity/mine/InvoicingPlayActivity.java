@@ -10,7 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
-import com.ichuk.coffee.adapter.InvoicingAdapter;
+import com.ichuk.coffee.adapter.mine.InvoicingAdapter;
 import com.ichuk.coffee.base.BaseActivity;
 import com.ichuk.coffee.bean.MonthOrderBean;
 
@@ -46,8 +46,6 @@ public class InvoicingPlayActivity extends BaseActivity implements View.OnClickL
      */
     @Override
     protected void setEvent() {
-        tvHeaderTitle.setText(getResources().getString(R.string.play_invoice));
-        ivBack.setVisibility(View.VISIBLE);
         ivBack.setOnClickListener(this);
         checkboxAll.setOnClickListener(this);
         btnNext.setOnClickListener(this);
@@ -59,8 +57,17 @@ public class InvoicingPlayActivity extends BaseActivity implements View.OnClickL
     @Override
     protected void initView() {
         findViews();
+        setHeader();
         getData();
         setRecyclerView();
+    }
+
+    /**
+     *  set header
+     */
+    private void setHeader() {
+        ivBack.setVisibility(View.VISIBLE);
+        tvHeaderTitle.setText(getResources().getString(R.string.play_invoice_by_order));
     }
 
     /**

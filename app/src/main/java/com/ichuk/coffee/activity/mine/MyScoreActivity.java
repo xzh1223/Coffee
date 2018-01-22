@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.ichuk.coffee.R;
 import com.ichuk.coffee.activity.home.AgreementActivity;
-import com.ichuk.coffee.adapter.ScoreAdapter;
+import com.ichuk.coffee.adapter.mine.ScoreAdapter;
 import com.ichuk.coffee.base.BaseActivity;
 import com.ichuk.coffee.bean.ScoreBean;
 
@@ -31,9 +31,9 @@ public class MyScoreActivity extends BaseActivity implements View.OnClickListene
     private void findViews() {
         ivBack = findViewById(R.id.iv_back);
         tvHeaderTitle = findViewById(R.id.tv_header_title);
-        tvUseMethod = (TextView)findViewById( R.id.tv_use_method );
-        tvCurrentScore = (TextView)findViewById( R.id.tv_current_score );
-        rvScoreDetails = (RecyclerView)findViewById( R.id.rv_score_details );
+        tvUseMethod = findViewById(R.id.tv_use_method);
+        tvCurrentScore = findViewById(R.id.tv_current_score);
+        rvScoreDetails = findViewById(R.id.rv_score_details);
     }
 
 
@@ -60,7 +60,7 @@ public class MyScoreActivity extends BaseActivity implements View.OnClickListene
     }
 
     /**
-     *  get data from http request
+     * get data from http request
      */
     private void getData() {
         ScoreBean scoreBean = new ScoreBean();
@@ -78,7 +78,7 @@ public class MyScoreActivity extends BaseActivity implements View.OnClickListene
     }
 
     /**
-     *  set recyclerView
+     * set recyclerView
      */
     private void setRecyclerView() {
         rvScoreDetails.setLayoutManager(new LinearLayoutManager(context));

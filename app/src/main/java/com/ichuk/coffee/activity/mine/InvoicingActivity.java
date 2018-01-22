@@ -75,7 +75,7 @@ public class InvoicingActivity extends BaseActivity implements View.OnClickListe
                 toActivity(InvoicingPlayActivity.class);
                 break;
             case R.id.rl_play_invoicing_record:
-
+                toActivity(InvoicingRecordActivity.class);
                 break;
             case R.id.rl_play_invoicing_agreement:
 

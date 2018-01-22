@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -26,6 +27,8 @@ public class InvoicingSubmitActivity extends BaseActivity implements View.OnClic
     private String mType;
     private Button btnSubmit;
     private AlertDialog mDialog;
+    private boolean isPersonal = true;
+    private LinearLayout llTaxId;
 
     /**
      * Find the Views in the layout
@@ -37,6 +40,7 @@ public class InvoicingSubmitActivity extends BaseActivity implements View.OnClic
         rbEnterprise = findViewById(R.id.rb_enterprise);
         rbPersonal = findViewById(R.id.rb_personal);
         etInvoice = findViewById(R.id.et_invoice);
+        llTaxId = findViewById(R.id.ll_tax_id);
         etIdentifier = findViewById(R.id.et_identifier);
         tvMoney = findViewById(R.id.tv_money);
         etEmail = findViewById(R.id.et_email);
@@ -49,8 +53,6 @@ public class InvoicingSubmitActivity extends BaseActivity implements View.OnClic
      */
     @Override
     protected void setEvent() {
-        tvHeaderTitle.setText(getResources().getString(R.string.write_invoice));
-        ivBack.setVisibility(View.VISIBLE);
         ivBack.setOnClickListener(this);
         rgType.setOnCheckedChangeListener(this);
         btnSubmit.setOnClickListener(this);
@@ -62,6 +64,16 @@ public class InvoicingSubmitActivity extends BaseActivity implements View.OnClic
     @Override
     protected void initView() {
         findViews();
+        setHeader();
+        checkShowTax(isPersonal);
+    }
+
+    /**
+     * set header
+     */
+    private void setHeader() {
+        tvHeaderTitle.setText(getResources().getString(R.string.write_invoice));
+        ivBack.setVisibility(View.VISIBLE);
     }
 
     /**
@@ -96,9 +108,9 @@ public class InvoicingSubmitActivity extends BaseActivity implements View.OnClic
         TextView tvInvoice = view.findViewById(R.id.tv_invoice);
         TextView tvIdentifier = view.findViewById(R.id.tv_identifier);
         TextView tvEmail = view.findViewById(R.id.tv_email);
-        Button btnEsc = view.findViewById(R.id.btn_esc);
-        Button btnSubmit = view.findViewById(R.id.btn_submit);
-        btnEsc.setOnClickListener(new View.OnClickListener() {
+        TextView tvCancel = view.findViewById(R.id.tv_cancel);
+        TextView tvSubmit = view.findViewById(R.id.tv_submit);
+        tvCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (mDialog != null) {
@@ -106,7 +118,7 @@ public class InvoicingSubmitActivity extends BaseActivity implements View.OnClic
                 }
             }
         });
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
+        tvSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (mDialog != null) {
@@ -119,8 +131,23 @@ public class InvoicingSubmitActivity extends BaseActivity implements View.OnClic
 
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int id) {
-        int radioButtonId = radioGroup.getCheckedRadioButtonId();
-        RadioButton rb = findViewById(radioButtonId);
-        mType = rb.getText().toString();
+        if (id == R.id.rb_personal) {
+            isPersonal = true;
+            checkShowTax(isPersonal);
+        } else {
+            isPersonal = false;
+            checkShowTax(isPersonal);
+        }
+    }
+
+    /**
+     *  check personal orr enterprise
+     */
+    private void checkShowTax(boolean isPersonal) {
+        if (isPersonal) {
+            llTaxId.setVisibility(View.GONE);
+        } else {
+            llTaxId.setVisibility(View.VISIBLE);
+        }
     }
 }

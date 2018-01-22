@@ -10,7 +10,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
-import com.ichuk.coffee.adapter.FeedbackAdapter;
+import com.ichuk.coffee.adapter.mine.FeedbackAdapter;
 import com.ichuk.coffee.base.BaseActivity;
 import com.ichuk.coffee.bean.StringBean;
 import com.ichuk.coffee.utils.ToastUtil;

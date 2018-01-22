@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
-import com.ichuk.coffee.adapter.MyCouponAdapter;
+import com.ichuk.coffee.adapter.mine.MyCouponAdapter;
 import com.ichuk.coffee.base.BaseActivity;
 import com.ichuk.coffee.bean.CouponBean;
 
@@ -50,8 +50,6 @@ public class MyCouponActivity extends BaseActivity implements View.OnClickListen
      */
     @Override
     protected void setEvent() {
-        tvHeaderTitle.setText(getResources().getString(R.string.my_coupon));
-        ivBack.setVisibility(View.VISIBLE);
         ivBack.setOnClickListener(this);
         tvUnused.setOnClickListener(this);
         tvUsed.setOnClickListener(this);
@@ -64,8 +62,17 @@ public class MyCouponActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void initView() {
         findViews();
+        setHeader();
         setRecyclerView();
         checkShow(mPosition);
+    }
+
+    /**
+     *  set header
+     */
+    private void setHeader() {
+        tvHeaderTitle.setText(getResources().getString(R.string.my_coupon));
+        ivBack.setVisibility(View.VISIBLE);
     }
 
     /**

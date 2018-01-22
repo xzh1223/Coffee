@@ -123,12 +123,19 @@ public class InvoiceActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int i) {
-        RadioButton radioButton = radioGroup.findViewById(i);
-        if ("企业".equals(radioButton.getText().toString())) {
-            isPersonal = false;
-            checkShowTax(isPersonal);
-        } else if("个人".equals(radioButton.getText().toString())) {
+//        RadioButton radioButton = radioGroup.findViewById(i);
+//        if ("企业".equals(radioButton.getText().toString())) {
+//            isPersonal = false;
+//            checkShowTax(isPersonal);
+//        } else if("个人".equals(radioButton.getText().toString())) {
+//            isPersonal = true;
+//            checkShowTax(isPersonal);
+//        }
+        if (i == R.id.rb_personal) {
             isPersonal = true;
+            checkShowTax(isPersonal);
+        } else {
+            isPersonal = false;
             checkShowTax(isPersonal);
         }
     }
