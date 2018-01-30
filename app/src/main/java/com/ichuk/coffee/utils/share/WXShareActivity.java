@@ -16,6 +16,8 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 public class WXShareActivity extends BaseActivity {
 
     private IWXAPI msgApi;
+    private int mShared = 0;
+    private boolean isTimelineCb = false;
 
     /**
      * set event
@@ -52,7 +54,19 @@ public class WXShareActivity extends BaseActivity {
      */
     @Override
     protected void initView() {
+        mShared = getIntent().getIntExtra("shared",0);
+        sharedStyle();
+    }
 
+    /**
+     *  judge shared style
+     */
+    private void sharedStyle() {
+        if (mShared == 0) {
+            isTimelineCb = false;
+        } else {
+            isTimelineCb = true;
+        }
     }
 
     /**

@@ -4,6 +4,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
@@ -14,11 +15,18 @@ import com.ichuk.coffee.bean.ExpensesRecordBean;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MyExpensesRecordActivity extends BaseActivity implements View.OnClickListener {
     private ImageView ivBack;
     private TextView tvHeaderTitle;
     private RecyclerView rvExpenses;
     private List<ExpensesRecordBean> mList = new ArrayList<>();
+    private RelativeLayout rlTree;
+    private ImageView ivTree;
+    private CircleImageView civAccountPic;
+    private TextView tvShoppingNum;
+    private int mCondition = 1;
 
     /**
      * set event
@@ -37,11 +45,40 @@ public class MyExpensesRecordActivity extends BaseActivity implements View.OnCli
     protected void initView() {
         findViews();
         getData();
+        showPicture();
         setRecyclerView();
     }
 
     /**
-     *  get data from http
+     *  show tree by condition
+     */
+    private void showPicture() {
+        switch (mCondition) {
+            case 1:
+                rlTree.setBackgroundResource(R.mipmap.icon_bg_1_2);
+                ivTree.setImageResource(R.mipmap.icon_tree_1);
+                break;
+            case 2:
+                rlTree.setBackgroundResource(R.mipmap.icon_bg_1_2);
+                ivTree.setImageResource(R.mipmap.icon_tree_2);
+                break;
+            case 3:
+                rlTree.setBackgroundResource(R.mipmap.icon_bg_3_5);
+                ivTree.setImageResource(R.mipmap.icon_tree_3);
+                break;
+            case 4:
+                rlTree.setBackgroundResource(R.mipmap.icon_bg_3_5);
+                ivTree.setImageResource(R.mipmap.icon_tree_4);
+                break;
+            case 5:
+                rlTree.setBackgroundResource(R.mipmap.icon_bg_3_5);
+                ivTree.setImageResource(R.mipmap.icon_tree_5);
+                break;
+        }
+    }
+
+    /**
+     * get data from http
      */
     private void getData() {
         ExpensesRecordBean expensesRecordBean = new ExpensesRecordBean();
@@ -54,21 +91,24 @@ public class MyExpensesRecordActivity extends BaseActivity implements View.OnCli
     }
 
     /**
-     *  set recyclerView
+     * set recyclerView
      */
     private void setRecyclerView() {
-
         rvExpenses.setLayoutManager(new LinearLayoutManager(context));
         rvExpenses.setAdapter(new ExpensesAdapter(context, mList));
     }
 
     /**
-     *  findViewById
+     * findViewById
      */
     private void findViews() {
         ivBack = findViewById(R.id.iv_back);
         tvHeaderTitle = findViewById(R.id.tv_header_title);
         rvExpenses = findViewById(R.id.rv_expenses);
+        rlTree = findViewById(R.id.rl_tree);
+        ivTree = findViewById(R.id.iv_tree);
+        civAccountPic = findViewById(R.id.civ_account_pic);
+        tvShoppingNum = findViewById(R.id.tv_shopping_num);
     }
 
     /**

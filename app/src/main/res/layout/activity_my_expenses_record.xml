@@ -4,11 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context="com.ichuk.coffee.activity.mine.MyExpensesRecordActivity">
 
     <include layout="@layout/layout_activity_toolbar" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/md_grey_300" />
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -20,9 +25,58 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:id="@+id/rl_tree"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
-                android:background="@color/md_grey_500"></RelativeLayout>
+                android:layout_height="300dp"
+                android:background="@mipmap/icon_bg_1_2">
+
+                <ImageView
+                    android:id="@+id/iv_tree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10dp"
+                    android:src="@mipmap/icon_tree_5" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_above="@id/iv_tree"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/icon_bg_talk"
+                    android:gravity="center"
+                    android:paddingBottom="15dp"
+                    android:paddingLeft="3dp"
+                    android:paddingRight="3dp"
+                    android:text="感谢您的贡献，让我快快长大" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="-30dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/bg_shopping_record"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/civ_account_pic"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="3dp"
+                        android:src="@mipmap/ic_launcher_round" />
+
+                    <TextView
+                        android:id="@+id/tv_shopping_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="30dp"
+                        android:text=" 消费 30 次" />
+                </LinearLayout>
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -42,12 +96,12 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1px"
-                    android:background="@color/md_grey_500" />
+                    android:background="@color/md_grey_400" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_expenses"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+                    android:layout_height="match_parent" />
 
             </LinearLayout>
         </LinearLayout>

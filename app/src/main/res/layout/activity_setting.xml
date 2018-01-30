@@ -43,7 +43,7 @@
                         android:layout_height="26dp"
                         android:layout_alignParentRight="true"
                         android:layout_marginTop="12dp"
-                        android:src="@mipmap/ic_launcher_round" />
+                        android:src="@mipmap/icon_into" />
 
                 </RelativeLayout>
 
@@ -68,7 +68,7 @@
                         android:layout_height="26dp"
                         android:layout_alignParentRight="true"
                         android:layout_marginTop="12dp"
-                        android:src="@mipmap/ic_launcher_round" />
+                        android:src="@mipmap/icon_into" />
 
                 </RelativeLayout>
 
@@ -93,7 +93,7 @@
                         android:layout_height="26dp"
                         android:layout_alignParentRight="true"
                         android:layout_marginTop="12dp"
-                        android:src="@mipmap/ic_launcher_round" />
+                        android:src="@mipmap/icon_into" />
 
                 </RelativeLayout>
 
@@ -171,7 +171,7 @@
                         android:layout_height="26dp"
                         android:layout_alignParentRight="true"
                         android:layout_marginTop="12dp"
-                        android:src="@mipmap/ic_launcher_round" />
+                        android:src="@mipmap/icon_into" />
 
                 </RelativeLayout>
 
@@ -196,7 +196,7 @@
                         android:layout_height="26dp"
                         android:layout_alignParentRight="true"
                         android:layout_marginTop="12dp"
-                        android:src="@mipmap/ic_launcher_round" />
+                        android:src="@mipmap/icon_into" />
 
                 </RelativeLayout>
 

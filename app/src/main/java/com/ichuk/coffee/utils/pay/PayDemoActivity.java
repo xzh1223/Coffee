@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
+import com.ichuk.coffee.activity.home.PaySuccessActivity;
 import com.ichuk.coffee.base.BaseActivity;
 import com.ichuk.coffee.utils.Constants;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
@@ -37,6 +38,7 @@ public class PayDemoActivity extends BaseActivity {
                     // 判断resultStatus 为9000则代表支付成功
                     if (TextUtils.equals(resultStatus, "9000")) {
                         Toast.makeText(context, "支付成功", Toast.LENGTH_SHORT).show();
+                        toActivity(PaySuccessActivity.class);
                     } else {
                         Toast.makeText(context, payResult.toString(), Toast.LENGTH_SHORT).show();
                     }

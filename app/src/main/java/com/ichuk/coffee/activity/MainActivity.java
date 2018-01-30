@@ -169,6 +169,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 ivMainHome.setImageResource(R.mipmap.icon_home_selected);
                 updateStatus(1);
                 setStatusTextColor(1);
+
 //                getWindow().getDecorView().findViewById(android.R.id.content).setPadding(0, 0, 0, CommonUtils.navigationHeight);
                 break;
             case 1:
@@ -232,6 +233,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             tempFragment = toFragment;
             if (toFragment != null) {
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                //设置自定义过场动画
+//                transaction.setCustomAnimations(android.R.anim.fade_in,android.R.anim.fade_out);
                 if (!toFragment.isAdded()) {
                     if (fromFragment != null) {
                         transaction.hide(fromFragment);

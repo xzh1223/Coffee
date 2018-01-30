@@ -18,14 +18,18 @@ import com.tencent.tauth.UiError;
 
 public class QQShareActivity extends BaseActivity {
     private Tencent mTencent;
+    private int mStatus = 2;
 
     /**
      * set event
      */
     @Override
     protected void setEvent() {
-        toShareQQ();
-        shareToQzone();
+        if (mStatus == 2) {
+            toShareQQ();
+        } else {
+            shareToQzone();
+        }
     }
 
     /**
@@ -84,6 +88,7 @@ public class QQShareActivity extends BaseActivity {
     @Override
     protected void initView() {
         mTencent = Tencent.createInstance(Constants.QQ_APP_ID, this.getApplicationContext());
+        mStatus = getIntent().getIntExtra("shared", 2);
     }
 
     /**

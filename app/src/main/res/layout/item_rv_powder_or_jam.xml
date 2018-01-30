@@ -36,7 +36,7 @@
             android:layout_marginRight="10dp"
             android:layout_toLeftOf="@id/add_less"
             android:gravity="center"
-            android:text="10g"
+            android:text=""
             android:textColor="@color/red" />
 
     </RelativeLayout>

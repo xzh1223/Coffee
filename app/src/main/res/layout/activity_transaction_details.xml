@@ -4,18 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context="com.ichuk.coffee.activity.mine.TransactionDetailsActivity">
 
-    <include layout="@layout/layout_activity_toolbar"/>
+    <include layout="@layout/layout_activity_toolbar" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/md_grey_300"/>
+        android:background="@color/md_grey_300" />
 
-    <LinearLayout
+    <include layout="@layout/layout_menu_nav"/>
+
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="47dp"
         android:background="@color/md_white_1000"
@@ -99,5 +101,10 @@
 
         </LinearLayout>
     </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_transaction_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />-->
 
 </LinearLayout>

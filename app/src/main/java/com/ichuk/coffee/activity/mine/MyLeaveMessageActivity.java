@@ -1,32 +1,34 @@
 package com.ichuk.coffee.activity.mine;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
-import com.ichuk.coffee.adapter.mine.MyLeaveMessageAdapter;
-import com.ichuk.coffee.base.BaseActivity;
+import com.ichuk.coffee.base.ViewPagerActivity;
 import com.ichuk.coffee.bean.CommunityBean;
+import com.ichuk.coffee.fragment.mine.ArticleFragment;
+import com.ichuk.coffee.fragment.mine.LeaveMessageFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyLeaveMessageActivity extends BaseActivity implements View.OnClickListener {
+public class MyLeaveMessageActivity extends ViewPagerActivity implements View.OnClickListener {
     private ImageView ivBack;
     private TextView tvHeaderTitle;
-    private RecyclerView rvMyLeaveMessage;
+    private TextView tvArticle;
+    private TextView tvLeaveMessage;
+    private LinearLayout llIndicator;
     private List<CommunityBean> mList = new ArrayList<>();
+    private ViewPager vpMyLeaveMessage;
 
     /**
      * set event
      */
     @Override
     protected void setEvent() {
-        tvHeaderTitle.setText(getResources().getString(R.string.my_leave_message));
-        ivBack.setVisibility(View.VISIBLE);
         ivBack.setOnClickListener(this);
     }
 
@@ -36,8 +38,30 @@ public class MyLeaveMessageActivity extends BaseActivity implements View.OnClick
     @Override
     protected void initView() {
         findViews();
-        getData();
-        setRecyclerView();
+        setHeader();
+        setViewPager(vpMyLeaveMessage, new ArticleFragment(), new LeaveMessageFragment());
+        initIndicator(llIndicator);
+        setListener(vpMyLeaveMessage, tvArticle, tvLeaveMessage);
+        setDefault();
+    }
+
+    /**
+     *  set default selected
+     */
+    private void setDefault() {
+        tvArticle.setText(getResources().getString(R.string.article));
+        tvLeaveMessage.setText(getResources().getString(R.string.leave_message));
+        vpMyLeaveMessage.setCurrentItem(0);
+    }
+
+    /**
+     *  set header
+     */
+    private void setHeader() {
+        tvHeaderTitle.setText(getResources().getString(R.string.my_leave_message));
+        ivBack.setVisibility(View.VISIBLE);
+        tvArticle.setVisibility(View.VISIBLE);
+        tvLeaveMessage.setVisibility(View.VISIBLE);
     }
 
     /**
@@ -55,20 +79,23 @@ public class MyLeaveMessageActivity extends BaseActivity implements View.OnClick
     }
 
     /**
-     *  set recyclerView
+     * set recyclerView
      */
     private void setRecyclerView() {
-        rvMyLeaveMessage.setLayoutManager(new LinearLayoutManager(context));
-        rvMyLeaveMessage.setAdapter(new MyLeaveMessageAdapter(context, mList));
+//        rvMyLeaveMessage.setLayoutManager(new LinearLayoutManager(context));
+//        rvMyLeaveMessage.setAdapter(new MyLeaveMessageAdapter(context, mList));
     }
 
     /**
-     *  findViewById
+     * findViewById
      */
     private void findViews() {
         ivBack = findViewById(R.id.iv_back);
         tvHeaderTitle = findViewById(R.id.tv_header_title);
-        rvMyLeaveMessage = findViewById(R.id.rv_my_leave_message);
+        tvArticle = findViewById(R.id.tv_1);
+        tvLeaveMessage = findViewById(R.id.tv_2);
+        vpMyLeaveMessage = findViewById(R.id.viewpager);
+        llIndicator = findViewById(R.id.ll_indicator);
     }
 
     /**
@@ -84,6 +111,12 @@ public class MyLeaveMessageActivity extends BaseActivity implements View.OnClick
         switch (view.getId()) {
             case R.id.iv_back:
                 finish();
+                break;
+            case R.id.tv_1:
+                vpMyLeaveMessage.setCurrentItem(0);
+                break;
+            case R.id.tv_2:
+                vpMyLeaveMessage.setCurrentItem(1);
                 break;
         }
     }

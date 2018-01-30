@@ -25,7 +25,6 @@ public class CommunityFragment extends ViewPagerFragment implements /*ViewPager.
     private int pageCount = 2;
     private LinearLayout llIndicator;
 
-
     /**
      * initial view
      */

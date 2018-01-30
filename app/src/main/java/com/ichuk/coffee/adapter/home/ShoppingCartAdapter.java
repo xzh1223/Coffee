@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide;
 import com.ichuk.coffee.R;
 import com.ichuk.coffee.activity.home.ShoppingCartActivity;
 import com.ichuk.coffee.bean.CoffeeBean;
+import com.ichuk.coffee.utils.ToastUtil;
 import com.ichuk.coffee.widget.AddOrLessView;
 
 import java.util.List;
@@ -55,22 +56,20 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
         holder.tvCoffeeIngredient.setText("规格：" + coffeeBean.getIngredient());
         holder.tvCoffeePrice.setText("￥" + coffeeBean.getPrice());
         holder.addOrLessView.setText(coffeeBean.getNum() +"");
+        holder.addOrLessView.setFlag(0);
         holder.addOrLessView.setTextChangedListener(new AddOrLessView.TextChangedListener() {
             @Override
-            public void onTextChanged(int num) {
+            public void onTextChanged(int num, boolean isDelete) {
                 mList.get(position).setNum(num);
                 mAllMoney = ((ShoppingCartActivity) mContext).getAllMoney();
                 ((ShoppingCartActivity) mContext).setAllMoney(mAllMoney);
+                if (isDelete) {
+                    ToastUtil.toast(mContext, "删除" + position);
+                    mList.remove(position);
+                    notifyDataSetChanged();
+                }
             }
         });
-        holder.view.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                ((ShoppingCartActivity) mContext).showDeleteDialog();
-                return false;
-            }
-        });
-
     }
 
     /**

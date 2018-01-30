@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.ichuk.coffee.R;
 import com.ichuk.coffee.activity.home.LoginActivity;
+import com.ichuk.coffee.activity.mine.InvoicingActivity;
 import com.ichuk.coffee.activity.mine.MessageActivity;
 import com.ichuk.coffee.activity.mine.MyAllowanceActivity;
 import com.ichuk.coffee.activity.mine.MyCouponActivity;
@@ -21,7 +22,6 @@ import com.ichuk.coffee.activity.mine.MyExpensesRecordActivity;
 import com.ichuk.coffee.activity.mine.MyGiftCardActivity;
 import com.ichuk.coffee.activity.mine.MyLeaveMessageActivity;
 import com.ichuk.coffee.activity.mine.MyPointActivity;
-import com.ichuk.coffee.activity.mine.MyRedEnvelopeActivity;
 import com.ichuk.coffee.activity.mine.MyScoreActivity;
 import com.ichuk.coffee.activity.mine.OrderActivity;
 import com.ichuk.coffee.activity.mine.SettingActivity;
@@ -290,7 +290,7 @@ public class MineFragment extends BaseFragment implements View.OnClickListener, 
                 toActivity(MyLeaveMessageActivity.class);
                 break;
             case 7:
-                toActivity(MyRedEnvelopeActivity.class);
+                toActivity(InvoicingActivity.class);
                 break;
             case 8:
                 showDialog();

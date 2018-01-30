@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context="com.ichuk.coffee.activity.mine.MyLeaveMessageActivity">
 
-    <include layout="@layout/layout_activity_toolbar"/>
+    <include layout="@layout/layout_activity_toolbar" />
 
-    <android.support.v7.widget.RecyclerView
+    <View
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/rv_my_leave_message"></android.support.v7.widget.RecyclerView>
+        android:layout_height="1px"
+        android:background="@color/md_grey_300" />
+
+    <include layout="@layout/layout_menu_nav"/>
 
 </LinearLayout>

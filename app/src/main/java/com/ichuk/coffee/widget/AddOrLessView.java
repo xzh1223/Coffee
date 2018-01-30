@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -18,11 +19,14 @@ import com.ichuk.coffee.R;
 
 public class AddOrLessView extends LinearLayout implements View.OnClickListener {
 
+    private int mFlag = 0;
+    private boolean isDelete = false;
+
     public AddOrLessView(Context context, AttributeSet attrs) {
         super(context, attrs, 0);
         LayoutInflater.from(context).inflate(R.layout.view_add_or_less, this, true);
         findViews();
-        tvNum.setText("0");
+        tvNum.setText("1");
         tvLess.setOnClickListener(this);
         tvAdd.setOnClickListener(this);
     }
@@ -35,9 +39,9 @@ public class AddOrLessView extends LinearLayout implements View.OnClickListener 
         super(context, attrs, defStyle);
     }
 
-    private TextView tvLess;
+    private ImageView tvLess;
     private TextView tvNum;
-    private TextView tvAdd;
+    private ImageView tvAdd;
 
     /**
      * Find the Views in the layout
@@ -56,17 +60,41 @@ public class AddOrLessView extends LinearLayout implements View.OnClickListener 
                 num = num + 1;
                 tvNum.setText(String.valueOf(num));
                 if (textChangedListener != null) {
-                    textChangedListener.onTextChanged(num);
+                    textChangedListener.onTextChanged(num, isDelete);
                 }
+                tvLess.setImageResource(R.mipmap.icon_less);
             }
             break;
             case R.id.tv_less: {
                 int num = Integer.valueOf(tvNum.getText().toString());
-                if (num > 0) {
-                    num = num - 1;
-                    tvNum.setText(String.valueOf(num));
-                    if (textChangedListener != null) {
-                        textChangedListener.onTextChanged(num);
+                if (mFlag == 1) {
+                    // can not delete
+                    if (num > 0) {
+                        isDelete = false;
+                        num = num - 1;
+                        tvNum.setText(String.valueOf(num));
+                        if (textChangedListener != null) {
+                            textChangedListener.onTextChanged(num, isDelete);
+                        }
+                    }
+                } else if (mFlag == 0) {
+                    if (num > 1) {
+                        isDelete = false;
+                        if (num == 2) {
+                            tvLess.setImageResource(R.mipmap.icon_delete);
+                        } else {
+                            tvLess.setImageResource(R.mipmap.icon_less);
+                        }
+                        num = num - 1;
+                        tvNum.setText(String.valueOf(num));
+                        if (textChangedListener != null) {
+                            textChangedListener.onTextChanged(num, isDelete);
+                        }
+                    } else {
+                        isDelete = true;
+                        if (textChangedListener != null) {
+                            textChangedListener.onTextChanged(num, isDelete);
+                        }
                     }
                 }
             }
@@ -99,7 +127,7 @@ public class AddOrLessView extends LinearLayout implements View.OnClickListener 
     }
 
     public interface TextChangedListener {
-        void onTextChanged(int num);
+        void onTextChanged(int num, boolean isDelete);
     }
 
     private TextChangedListener textChangedListener;
@@ -108,5 +136,21 @@ public class AddOrLessView extends LinearLayout implements View.OnClickListener 
         textChangedListener = listener;
     }
 
+    /**
+     * set min
+     */
+    public void setFlag(int flag) {
+        mFlag = flag;
+        if (mFlag == 0) {
+            if (getNum() == 1) {
+                tvLess.setImageResource(R.mipmap.icon_delete);
+            } else {
+                tvLess.setImageResource(R.mipmap.icon_less);
+            }
+        } else {
+            tvLess.setImageResource(R.mipmap.icon_less);
+            tvNum.setText("0");
+        }
+    }
 
 }

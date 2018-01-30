@@ -9,7 +9,6 @@
     <include layout="@layout/layout_activity_toolbar"
         android:id="@+id/header"/>
 
-
     <View
         android:id="@+id/view"
         android:layout_below="@id/header"
@@ -82,11 +81,22 @@
 
                 <EditText
                     android:id="@+id/et_password"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
                     android:background="@null"
-                    android:hint="@string/password" />
+                    android:layout_marginLeft="10dp"
+                    android:hint="@string/password"
+                    android:inputType="textPassword" />
+
+                <ImageView
+                    android:id="@+id/iv_show"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp"
+                    android:padding="4dp"
+                    android:src="@mipmap/icon_hide_password" />
 
             </LinearLayout>
 

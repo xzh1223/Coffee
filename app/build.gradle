@@ -46,8 +46,14 @@ dependencies {
     implementation 'com.amap.api:location:latest.integration'
     // 微信
     compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+    // QQ
     implementation files('libs/mta-sdk-1.6.2.jar')
     implementation files('libs/open_sdk_r5788.jar')
+    // 微博
     compile 'com.sina.weibo.sdk:core:2.0.3:openDefaultRelease@aar'
+    // 支付宝
     implementation files('libs/alipaySdk-20170922.jar')
+    // retrofit网络请求框架
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
 }

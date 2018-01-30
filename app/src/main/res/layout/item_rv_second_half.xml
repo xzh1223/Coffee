@@ -81,15 +81,22 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <SeekBar
-                            android:id="@+id/sb_sold"
+                        <ProgressBar
+                            android:id="@+id/pb_sold"
                             android:layout_width="80dp"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="4dp"
+                            android:layout_gravity="center"
+                            android:progress="80"
+                            android:max="100"
+                            android:background="@drawable/bg_brown"
+                            android:progressDrawable="@drawable/progressbar"
+                            style="@android:style/Widget.ProgressBar.Horizontal"/>
 
                         <TextView
                             android:id="@+id/tv_sold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
                             android:text="已售10%"
                             android:textColor="@color/md_grey_500" />
 

@@ -123,8 +123,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         rlClearCache.setOnClickListener(this);
         rlFeedback.setOnClickListener(this);
         rlAboutUs.setOnClickListener(this);
-
-
+        ivBack.setOnClickListener(this);
     }
 
     /**

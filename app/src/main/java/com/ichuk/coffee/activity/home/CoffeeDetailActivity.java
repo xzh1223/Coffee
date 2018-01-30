@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.ichuk.coffee.R;
 import com.ichuk.coffee.adapter.home.CustomTasteAdapter;
-import com.ichuk.coffee.base.BaseActivity;
+import com.ichuk.coffee.base.ShareActivity;
 import com.ichuk.coffee.bean.PowderOrJamBean;
 import com.ichuk.coffee.utils.ToastUtil;
 import com.ichuk.coffee.widget.AddOrLessView;
@@ -27,7 +27,7 @@ import java.util.List;
  * Created by xzh on 2017/12/5.
  */
 
-public class CoffeeDetailActivity extends BaseActivity implements View.OnClickListener {
+public class CoffeeDetailActivity extends ShareActivity implements View.OnClickListener {
 
     private static final String TAG = "CoffeeDetailActivity";
     private ImageView ivCoffeeImage;
@@ -72,7 +72,8 @@ public class CoffeeDetailActivity extends BaseActivity implements View.OnClickLi
     private LinearLayout llShow1;
     private LinearLayout llShow2;
     private String mPage = "";
-
+    List<PowderOrJamBean> mPowderList = new ArrayList<>();
+    List<PowderOrJamBean> mJamList = new ArrayList<>();
 
     /**
      * load layout
@@ -103,7 +104,7 @@ public class CoffeeDetailActivity extends BaseActivity implements View.OnClickLi
             llBottom1.setVisibility(View.VISIBLE);
             llBottom2.setVisibility(View.GONE);
             ivShoppingCart.setVisibility(View.VISIBLE);
-            setBadgeView();
+            setBadgeView(1);
             selectCaffeine(0);
             selectTaste(2);
         }
@@ -159,13 +160,13 @@ public class CoffeeDetailActivity extends BaseActivity implements View.OnClickLi
      */
     @Override
     protected void setEvent() {
-
         addOrLess.setTextChangedListener(new AddOrLessView.TextChangedListener() {
             @Override
-            public void onTextChanged(int num) {
+            public void onTextChanged(int num, boolean isDelete) {
                 // sum all price
             }
         });
+        addOrLess.setFlag(1);
         tvCoffeeTasteStandard.setOnClickListener(this);
         tvCoffeeTasteCustom.setOnClickListener(this);
         tvCoffeeCaffeineLow.setOnClickListener(this);
@@ -176,6 +177,9 @@ public class CoffeeDetailActivity extends BaseActivity implements View.OnClickLi
         rlShowAll.setOnClickListener(this);
         ivShoppingCart.setOnClickListener(this);
         llBottom2.setOnClickListener(this);
+        llAddCart.setOnClickListener(this);
+        llPay.setOnClickListener(this);
+        ivBtn.setOnClickListener(this);
     }
 
     /**
@@ -191,11 +195,11 @@ public class CoffeeDetailActivity extends BaseActivity implements View.OnClickLi
     /**
      * set badgeView
      */
-    private void setBadgeView() {
+    private void setBadgeView(int num) {
         BadgeView badgeView = new BadgeView(context);
         badgeView.setTargetView(ivShoppingCart);
         badgeView.setHideOnNull(true);
-        badgeView.setBadgeCount(1);
+        badgeView.setBadgeCount(num);
     }
 
     /**
@@ -268,10 +272,11 @@ public class CoffeeDetailActivity extends BaseActivity implements View.OnClickLi
             case R.id.iv_back:
                 finish();
                 break;
-            case R.id.iv_shopping_cart:
+            case R.id.iv_shopping_cart: {
                 Intent intent = new Intent(context, ShoppingCartActivity.class);
                 startActivity(intent);
                 break;
+            }
             case R.id.iv_esc:
                 if (mCustomDialog != null) {
                     mCustomDialog.dismiss();
@@ -314,6 +319,19 @@ public class CoffeeDetailActivity extends BaseActivity implements View.OnClickLi
             case R.id.ll_bottom_2:
                 ToastUtil.toast(context, "立即兑换");
                 break;
+            case R.id.ll_add_cart:
+                // add into cart
+                setBadgeView(1 + 2);
+                break;
+            case R.id.ll_pay: {
+                Intent intent = new Intent(context, SubmitOrderActivity.class);
+                startActivity(intent);
+                break;
+            }
+            case R.id.iv_btn:
+                showShareTypeDialog(CoffeeDetailActivity.this);
+                break;
+
         }
     }
 
@@ -336,13 +354,38 @@ public class CoffeeDetailActivity extends BaseActivity implements View.OnClickLi
      * set custom recyclerView (powder and jam)
      */
     private void setRecyclerView() {
-        List<PowderOrJamBean> mPowderList = new ArrayList<>();
-        List<PowderOrJamBean> mJamList = new ArrayList<>();
+        mPowderList.clear();
+        mJamList.clear();
+        PowderOrJamBean powderOrJamBean = new PowderOrJamBean();
+        powderOrJamBean.setName("香草粉");
+        powderOrJamBean.setWeight(5);
+        PowderOrJamBean powderOrJamBean1 = new PowderOrJamBean();
+        powderOrJamBean1.setName("肉桂粉");
+        powderOrJamBean1.setWeight(5);
+        PowderOrJamBean powderOrJamBean2 = new PowderOrJamBean();
+        powderOrJamBean2.setName("巧克力粉");
+        powderOrJamBean2.setWeight(5);
+        mPowderList.add(powderOrJamBean);
+        mPowderList.add(powderOrJamBean1);
+        mPowderList.add(powderOrJamBean2);
+
+        PowderOrJamBean powderOrJamBean3 = new PowderOrJamBean();
+        powderOrJamBean3.setName("巧克力酱");
+        powderOrJamBean3.setWeight(5);
+        PowderOrJamBean powderOrJamBean4 = new PowderOrJamBean();
+        powderOrJamBean4.setName("焦糖糖浆");
+        powderOrJamBean4.setWeight(5);
+        PowderOrJamBean powderOrJamBean5 = new PowderOrJamBean();
+        powderOrJamBean5.setName("奶油");
+        powderOrJamBean5.setWeight(5);
+        mJamList.add(powderOrJamBean3);
+        mJamList.add(powderOrJamBean4);
+        mJamList.add(powderOrJamBean5);
         rvPowder.setLayoutManager(new LinearLayoutManager(context));
-        rvPowder.setAdapter(new CustomTasteAdapter(context, mPowderList));
+        rvPowder.setAdapter(new CustomTasteAdapter(context, mPowderList, 1));
 
         rvJam.setLayoutManager(new LinearLayoutManager(context));
-        rvJam.setAdapter(new CustomTasteAdapter(context, mJamList));
+        rvJam.setAdapter(new CustomTasteAdapter(context, mJamList, 2));
     }
 
     /**
@@ -383,6 +426,7 @@ public class CoffeeDetailActivity extends BaseActivity implements View.OnClickLi
      */
     private void setNoMakeOrLimitEvent(int flag) {
         tvKnow.setOnClickListener(this);
+        ivEsc.setOnClickListener(this);
 
         if (flag == 0) {
             // show can not make
@@ -399,6 +443,41 @@ public class CoffeeDetailActivity extends BaseActivity implements View.OnClickLi
     private void noMakeOrLimitFindViews(View view) {
         tvKnow = view.findViewById(R.id.tv_know);
         tvContent = view.findViewById(R.id.tv_content);
+        ivEsc = view.findViewById(R.id.iv_esc);
     }
 
+    /**
+     * reset selected num
+     */
+    public boolean resetNum(int flag, int position, int num) {
+        int maxNum = 0;
+        int maxPowder = 0;
+        int maxJam = 0;
+        if (flag == 1) {
+            for (int i = 0; i < mPowderList.size(); i++) {
+                if (position == i) {
+                    mPowderList.get(i).num = num;
+                }
+            }
+        } else if (flag == 2) {
+            for (int i = 0; i < mJamList.size(); i++) {
+                if (position == i) {
+                    mJamList.get(i).num = num;
+                }
+            }
+        }
+        for (int i = 0; i < mPowderList.size(); i++) {
+            maxPowder += mPowderList.get(i).num;
+        }
+        for (int i = 0; i < mJamList.size(); i++) {
+            maxJam += mJamList.get(i).num;
+        }
+        maxNum = maxPowder + maxJam;
+        if (maxNum > 5) {
+            showNoMakeOrLimitDialog(1);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

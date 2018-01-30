@@ -3,6 +3,7 @@ package com.ichuk.coffee.activity.home;
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -169,5 +170,25 @@ public class SelectCouponActivity extends BaseActivity implements View.OnClickLi
                 finish();
                 break;
         }
+    }
+
+    /**
+     *  back key
+     * @param keyCode
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+            Intent intent = getIntent();
+            intent.putExtra("money", "");
+            setResult(RESULT_OK, intent);
+            finish();
+            return false;
+        }else {
+            return super.onKeyDown(keyCode, event);
+        }
+
     }
 }

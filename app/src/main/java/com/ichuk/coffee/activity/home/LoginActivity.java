@@ -1,6 +1,8 @@
 package com.ichuk.coffee.activity.home;
 
 import android.content.Intent;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,6 +52,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private IWXAPI api;
     private Oauth2AccessToken mAccessToken;
     private BaseSsoHandler mSsoHandler;
+    private static final String TAG = "LoginActivity";
+    private ImageView ivShow;
+    private boolean isShow = false;
 
     /**
      * Find the Views in the layout
@@ -65,6 +70,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         tvForgetPassword = findViewById(R.id.tv_forget_password);
         tvRegisterAccount = findViewById(R.id.tv_register_account);
         btnLogin = findViewById(R.id.btn_login);
+        ivShow = findViewById(R.id.iv_show);
     }
 
     /**
@@ -72,7 +78,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
      */
     @Override
     protected void setEvent() {
-
         ivBack.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
         tvForgetPassword.setOnClickListener(this);
@@ -80,6 +85,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         llQQ.setOnClickListener(this);
         llWeiXin.setOnClickListener(this);
         llWeiBo.setOnClickListener(this);
+        ivShow.setOnClickListener(this);
     }
 
     /**
@@ -89,6 +95,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     protected void initView() {
         findViews();
         setHeader();
+        showPassword(isShow);
     }
 
     /**
@@ -97,6 +104,20 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private void setHeader() {
         tvHeaderTitle.setText(getResources().getString(R.string.to_login));
         ivBack.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     *  show or hide password
+     * @param isShow
+     */
+    private void showPassword(boolean isShow) {
+        if (isShow) {
+            ivShow.setImageResource(R.mipmap.icon_show_password);
+            etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+        } else {
+            ivShow.setImageResource(R.mipmap.icon_hide_password);
+            etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        }
     }
 
     /**
@@ -115,7 +136,24 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 finish();
                 break;
             case R.id.btn_login:
-                Toast.makeText(context, "to login", Toast.LENGTH_SHORT).show();
+                /*UserBean userBean = new UserBean();
+                userBean.setAccount("admin");
+                userBean.setPassword("admin");
+                DBManager.login(userBean, new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        try {
+                            Log.e(TAG, "onResponse: " + response.body().string() );
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        Log.e(TAG, "onFailure: " +  t.toString() );
+                    }
+                });*/
                 break;
             case R.id.tv_register_account:
                 intent.putExtra("FLAG", 1);
@@ -137,6 +175,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 initWebSDK();
                 mSsoHandler = new SsoHandler(LoginActivity.this);
                 mSsoHandler.authorize(new SelfWbAuthListener());
+                break;
+            case R.id.iv_show:
+                isShow = !isShow;
+                showPassword(isShow);
                 break;
         }
     }

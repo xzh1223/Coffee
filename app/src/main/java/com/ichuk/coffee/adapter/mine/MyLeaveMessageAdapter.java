@@ -50,8 +50,8 @@ public class MyLeaveMessageAdapter extends RecyclerView.Adapter<MyLeaveMessageAd
             Glide.with(mContext).load(R.mipmap.ic_launcher_round).into(holder.civCommunityAvatar);
             holder.tvCommunityNickname.setText(communityBean.getName());
             holder.tvCommunityContent.setText(communityBean.getContent());
-            holder.tvCommunityLikeNum.setText(communityBean.getLikeNum() + "");
-            holder.tvCommunityCommentNum.setText(communityBean.getCommentNum() + "");
+//            holder.tvCommunityLikeNum.setText(communityBean.getLikeNum() + "");
+//            holder.tvCommunityCommentNum.setText(communityBean.getCommentNum() + "");
             holder.tvCommunityTime.setText(communityBean.getTime());
         }
     }
@@ -72,8 +72,8 @@ public class MyLeaveMessageAdapter extends RecyclerView.Adapter<MyLeaveMessageAd
         private TextView tvCommunityNickname;
         private TextView tvCommunityTime;
         private TextView tvCommunityContent;
-        private TextView tvCommunityLikeNum;
-        private TextView tvCommunityCommentNum;
+//        private TextView tvCommunityLikeNum;
+//        private TextView tvCommunityCommentNum;
         View view;
 
         public ViewHolder(View itemView) {
@@ -83,8 +83,8 @@ public class MyLeaveMessageAdapter extends RecyclerView.Adapter<MyLeaveMessageAd
             tvCommunityNickname = itemView.findViewById(R.id.tv_community_nickname);
             tvCommunityTime = itemView.findViewById(R.id.tv_community_time);
             tvCommunityContent = itemView.findViewById(R.id.tv_community_content);
-            tvCommunityLikeNum = itemView.findViewById(R.id.tv_community_like_num);
-            tvCommunityCommentNum = itemView.findViewById(R.id.tv_community_comment_num);
+//            tvCommunityLikeNum = itemView.findViewById(R.id.tv_community_like_num);
+//            tvCommunityCommentNum = itemView.findViewById(R.id.tv_community_comment_num);
         }
     }
 

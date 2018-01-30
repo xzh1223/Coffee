@@ -43,9 +43,12 @@
         android:text=""/>
 
     <ImageView
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:src="@mipmap/ic_launcher_round"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:paddingTop="5dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="5dp"
+        android:src="@mipmap/icon_back"
         android:id="@+id/iv_back"
         android:visibility="gone"/>
 

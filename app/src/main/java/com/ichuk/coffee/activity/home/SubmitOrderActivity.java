@@ -15,6 +15,7 @@ import com.ichuk.coffee.base.BaseActivity;
 public class SubmitOrderActivity extends BaseActivity implements View.OnClickListener {
     private static final int COUPON = 1;
     private static final int ALLOWANCE = 2;
+    private static final int INVOICE = 3;
     private ImageView ivBack;
     private TextView tvHeaderTitle;
     private LinearLayout llBottom;
@@ -86,12 +87,12 @@ public class SubmitOrderActivity extends BaseActivity implements View.OnClickLis
      */
     @Override
     protected void setEvent() {
-        tvHeaderTitle.setText(getResources().getString(R.string.submit_order));
-        ivBack.setVisibility(View.VISIBLE);
+
         ivBack.setOnClickListener(this);
         rlCoupon.setOnClickListener(this);
         rlAllowance.setOnClickListener(this);
         rlInvoice.setOnClickListener(this);
+        llSubmit.setOnClickListener(this);
     }
 
     /**
@@ -100,7 +101,16 @@ public class SubmitOrderActivity extends BaseActivity implements View.OnClickLis
     @Override
     protected void initView() {
         findViews();
+        setHeader();
         getData();
+    }
+
+    /**
+     *  set header
+     */
+    private void setHeader() {
+        tvHeaderTitle.setText(getResources().getString(R.string.submit_order));
+        ivBack.setVisibility(View.VISIBLE);
     }
 
     /**
@@ -133,11 +143,16 @@ public class SubmitOrderActivity extends BaseActivity implements View.OnClickLis
                 startActivityForResult(intent, ALLOWANCE);
                 break;
             }
-            case R.id.rl_invoice:
-                toActivity(InvoiceActivity.class);
+            case R.id.rl_invoice: {
+                Intent intent = new Intent(context, InvoiceActivity.class);
+                startActivityForResult(intent, INVOICE);
                 break;
+            }
             case R.id.iv_back:
                 finish();
+                break;
+            case R.id.ll_submit:
+                toActivity(PaySuccessActivity.class);
                 break;
         }
     }
@@ -155,6 +170,10 @@ public class SubmitOrderActivity extends BaseActivity implements View.OnClickLis
                 String money = "减￥"+data.getStringExtra("money");
                 tvUsableAllowance.setText(money);
                 break;
+            }
+            case INVOICE:{
+                String str = data.getStringExtra("invoice");
+                tvInvoice.setText(str);
             }
         }
     }

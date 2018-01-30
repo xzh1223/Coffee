@@ -1,5 +1,7 @@
 package com.ichuk.coffee.activity.home;
 
+import android.content.Intent;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -89,7 +91,7 @@ public class InvoiceActivity extends BaseActivity implements View.OnClickListene
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
-                finish();
+                back();
                 break;
             case R.id.rl_unused:
                 mPosition = 0;
@@ -100,6 +102,20 @@ public class InvoiceActivity extends BaseActivity implements View.OnClickListene
                 selected(mPosition);
                 break;
         }
+    }
+
+    /**
+     *  back to last activity
+     */
+    private void back() {
+        Intent intent = getIntent();
+        if (mPosition == 0) {
+            intent.putExtra("invoice", "不需要发票");
+        } else {
+            intent.putExtra("invoice", "苏州爱察信息技术有限公司");
+        }
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     /**
@@ -123,14 +139,6 @@ public class InvoiceActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int i) {
-//        RadioButton radioButton = radioGroup.findViewById(i);
-//        if ("企业".equals(radioButton.getText().toString())) {
-//            isPersonal = false;
-//            checkShowTax(isPersonal);
-//        } else if("个人".equals(radioButton.getText().toString())) {
-//            isPersonal = true;
-//            checkShowTax(isPersonal);
-//        }
         if (i == R.id.rb_personal) {
             isPersonal = true;
             checkShowTax(isPersonal);
@@ -150,4 +158,22 @@ public class InvoiceActivity extends BaseActivity implements View.OnClickListene
             llTaxId.setVisibility(View.VISIBLE);
         }
     }
+
+    /**
+     *  back key
+     * @param keyCode
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+            back();
+            return false;
+        }else {
+            return super.onKeyDown(keyCode, event);
+        }
+
+    }
+
 }

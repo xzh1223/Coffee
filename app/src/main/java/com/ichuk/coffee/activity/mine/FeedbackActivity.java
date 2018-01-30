@@ -1,24 +1,26 @@
 package com.ichuk.coffee.activity.mine;
 
+import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
 import com.ichuk.coffee.adapter.mine.FeedbackAdapter;
-import com.ichuk.coffee.base.BaseActivity;
+import com.ichuk.coffee.base.SelectPhotoActivity;
 import com.ichuk.coffee.bean.StringBean;
 import com.ichuk.coffee.utils.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FeedbackActivity extends BaseActivity implements View.OnClickListener, RatingBar.OnRatingBarChangeListener {
+public class FeedbackActivity extends SelectPhotoActivity implements View.OnClickListener, RatingBar.OnRatingBarChangeListener {
 
     private ImageView ivBack;
     private TextView tvHeaderTitle;
@@ -26,10 +28,11 @@ public class FeedbackActivity extends BaseActivity implements View.OnClickListen
     private RatingBar rbEvaluation;
     private GridView gvType;
     private EditText etSuggest;
-    private ImageView ivUploadPicture;
     private TextView tvSave;
     private List<StringBean> mList = new ArrayList<>();
     private FeedbackAdapter mAdapter;
+    private LinearLayout llPhoto;
+    private ImageView ivPhoto;
 
     /**
      * Find the Views in the layout
@@ -41,7 +44,8 @@ public class FeedbackActivity extends BaseActivity implements View.OnClickListen
         rbEvaluation = findViewById(R.id.rb_evaluation);
         gvType = findViewById(R.id.gv_type);
         etSuggest = findViewById(R.id.et_suggest);
-        ivUploadPicture = findViewById(R.id.iv_upload_picture);
+        llPhoto = findViewById(R.id.ll_photo);
+        ivPhoto = findViewById(R.id.iv_photo);
     }
 
 
@@ -50,14 +54,11 @@ public class FeedbackActivity extends BaseActivity implements View.OnClickListen
      */
     @Override
     protected void setEvent() {
-        ivBack.setVisibility(View.VISIBLE);
-        tvSave.setVisibility(View.VISIBLE);
-        tvSave.setText(getResources().getString(R.string.submit));
-        tvHeaderTitle.setText(getResources().getString(R.string.feedback));
         ivBack.setOnClickListener(this);
         tvSave.setOnClickListener(this);
+        llPhoto.setOnClickListener(this);
+        ivPhoto.setOnClickListener(this);
         rbEvaluation.setOnRatingBarChangeListener(this);
-        ivUploadPicture.setOnClickListener(this);
     }
 
     /**
@@ -66,8 +67,19 @@ public class FeedbackActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void initView() {
         findViews();
+        setHeader();
         getData();
         setGridView();
+    }
+
+    /**
+     *  set header
+     */
+    private void setHeader() {
+        ivBack.setVisibility(View.VISIBLE);
+        tvSave.setVisibility(View.VISIBLE);
+        tvSave.setText(getResources().getString(R.string.submit));
+        tvHeaderTitle.setText(getResources().getString(R.string.feedback));
     }
 
     private void getData() {
@@ -117,8 +129,11 @@ public class FeedbackActivity extends BaseActivity implements View.OnClickListen
             case R.id.iv_back:
                 finish();
                 break;
-            case R.id.iv_upload_picture:
-                ToastUtil.toast(context, "go to select picture");
+            case R.id.ll_photo:
+                selectPhoto();
+                break;
+            case R.id.iv_photo:
+                selectPhoto();
                 break;
         }
     }
@@ -126,5 +141,21 @@ public class FeedbackActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
         ToastUtil.toast(context, String.valueOf(rating));
+    }
+
+    /**
+     * send image to server and get image's url
+     *
+     * @param smallBitmap
+     */
+    @Override
+    protected void sendImageToServer(Bitmap smallBitmap) {
+        if (smallBitmap != null) {
+            llPhoto.setVisibility(View.GONE);
+            ivPhoto.setVisibility(View.VISIBLE);
+            ivPhoto.setImageBitmap(smallBitmap);
+        }
+        ToastUtil.toast(context, "发送图片");
+
     }
 }

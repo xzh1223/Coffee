@@ -5,30 +5,35 @@
     android:background="@color/md_white_1000"
     android:orientation="horizontal">
 
-    <TextView
+    <ImageView
         android:id="@+id/tv_less"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:background="@color/md_grey_500"
+        android:padding="5dp"
+        android:background="@color/md_grey_200"
         android:gravity="center"
-        android:text="-"
+        android:src="@mipmap/icon_less"
         android:textSize="20sp" />
 
     <TextView
         android:id="@+id/tv_num"
         android:layout_width="25dp"
         android:layout_height="25dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
         android:gravity="center"
+        android:background="@color/md_grey_100"
         android:text="1"
         android:textSize="20sp" />
 
-    <TextView
+    <ImageView
         android:id="@+id/tv_add"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:background="@color/md_grey_500"
+        android:padding="5dp"
+        android:background="@color/md_grey_200"
         android:gravity="center"
-        android:text="+"
+        android:src="@mipmap/icon_add"
         android:textSize="20sp" />
 
 </LinearLayout>

@@ -172,7 +172,7 @@ public class ShoppingCartActivity extends BaseActivity implements View.OnClickLi
                 toActivity(SubmitOrderActivity.class);
                 break;
             case R.id.ll_continue_shopping:
-                Toast.makeText(context, "continue to shopping", Toast.LENGTH_SHORT).show();
+                finish();
                 break;
             case R.id.tv_delete_no:
                 if (mDeleteDialog != null) {

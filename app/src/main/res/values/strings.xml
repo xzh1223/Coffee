@@ -133,4 +133,10 @@
     <string name="gift_card_ok">确认</string>
     <string name="gift_card_ok_add">确认添加</string>
     <string name="transaction_details">交易明细</string>
+    <string name="git_card_added">已添加</string>
+    <string name="git_card_no_added">未添加</string>
+    <string name="buy_card_details">购买明细</string>
+    <string name="donated_details">转赠明细</string>
+    <string name="article">文章</string>
+    <string name="pay_success">支付成功</string>
 </resources>

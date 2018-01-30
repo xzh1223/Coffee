@@ -64,13 +64,11 @@ public class GiftCardBuyActivity extends BaseActivity implements View.OnClickLis
      */
     @Override
     protected void setEvent() {
-        tvHeaderTitle.setText(getResources().getString(R.string.ok_buy));
+        addOrLess.setFlag(1);
         addOrLess.setText("1");
         String moneyStr = "￥" + price;
         tvMoney.setText(moneyStr);
         addOrLess.setTextChangedListener(this);
-
-        ivBack.setVisibility(View.VISIBLE);
         ivBack.setOnClickListener(this);
         ivCheckWx.setOnClickListener(this);
         ivCheckZfb.setOnClickListener(this);
@@ -86,9 +84,18 @@ public class GiftCardBuyActivity extends BaseActivity implements View.OnClickLis
     @Override
     protected void initView() {
         findViews();
+        setHeader();
         getData();
         checkMethod(1);
         setMoney();
+    }
+
+    /**
+     *  set header
+     */
+    private void setHeader() {
+        tvHeaderTitle.setText(getResources().getString(R.string.ok_buy));
+        ivBack.setVisibility(View.VISIBLE);
     }
 
     private void setMoney() {
@@ -168,7 +175,7 @@ public class GiftCardBuyActivity extends BaseActivity implements View.OnClickLis
     }
 
     @Override
-    public void onTextChanged(int num) {
+    public void onTextChanged(int num, boolean isDelete) {
         mNum = num;
         setMoney();
     }
@@ -177,12 +184,12 @@ public class GiftCardBuyActivity extends BaseActivity implements View.OnClickLis
      * pay method to check and show
      */
     private void checkMethod(int i) {
-        if (i == 1) {
-            ivCheckWx.setImageResource(R.mipmap.ic_launcher_round);
-            ivCheckZfb.setImageResource(R.mipmap.ic_launcher);
-        } else if (i == 2) {
-            ivCheckWx.setImageResource(R.mipmap.ic_launcher);
-            ivCheckZfb.setImageResource(R.mipmap.ic_launcher_round);
+        if (i == 2) {
+            ivCheckWx.setImageResource(R.mipmap.icon_unselected);
+            ivCheckZfb.setImageResource(R.mipmap.icon_selected);
+        } else if (i == 1) {
+            ivCheckWx.setImageResource(R.mipmap.icon_selected);
+            ivCheckZfb.setImageResource(R.mipmap.icon_unselected);
         }
     }
 }

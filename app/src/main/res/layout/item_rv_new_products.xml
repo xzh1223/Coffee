@@ -84,7 +84,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:padding="8dp"
-                    android:src="@mipmap/ic_launcher"
+                    android:src="@mipmap/icon_into"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true" />
 

@@ -2,10 +2,11 @@ package com.ichuk.coffee.adapter.discount;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.SeekBar;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -34,7 +35,7 @@ public class SecondHalfAdapter extends RecyclerView.Adapter<SecondHalfAdapter.Vi
      */
     @Override
     public SecondHalfAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = View.inflate(mContext, R.layout.item_rv_second_half, null);
+        View itemView = LayoutInflater.from(mContext).inflate(R.layout.item_rv_second_half, parent, false);
         return new ViewHolder(itemView);
     }
 
@@ -50,9 +51,8 @@ public class SecondHalfAdapter extends RecyclerView.Adapter<SecondHalfAdapter.Vi
         holder.tvCoffeeName.setText(secondHalfBean.getName());
         holder.tvCoffeeIngredient.setText("成分：" + secondHalfBean.getIngredient());
         holder.tvCoffeePrice.setText("￥" + secondHalfBean.getPrice());
-        holder.sbSold.setEnabled(false);
-        holder.sbSold.setMax(secondHalfBean.getSum());
-        holder.sbSold.setProgress(secondHalfBean.getNum());
+        holder.pbSold.setMax(secondHalfBean.getSum());
+        holder.pbSold.setProgress(secondHalfBean.getNum());
         holder.tvSold.setText("已售50%");
 
     }
@@ -73,7 +73,7 @@ public class SecondHalfAdapter extends RecyclerView.Adapter<SecondHalfAdapter.Vi
         private TextView tvCoffeeName;
         private TextView tvCoffeeIngredient;
         private TextView tvCoffeePrice;
-        private SeekBar sbSold;
+        private ProgressBar pbSold;
         private TextView tvSold;
         private TextView tvToBuy;
         View view;
@@ -85,7 +85,7 @@ public class SecondHalfAdapter extends RecyclerView.Adapter<SecondHalfAdapter.Vi
             tvCoffeeName = itemView.findViewById(R.id.tv_coffee_name);
             tvCoffeeIngredient = itemView.findViewById(R.id.tv_coffee_ingredient);
             tvCoffeePrice = itemView.findViewById(R.id.tv_coffee_price);
-            sbSold = itemView.findViewById(R.id.sb_sold);
+            pbSold = itemView.findViewById(R.id.pb_sold);
             tvSold = itemView.findViewById(R.id.tv_sold);
             tvToBuy = itemView.findViewById(R.id.tv_to_buy);
         }

@@ -80,6 +80,9 @@ public class InvoicingActivity extends BaseActivity implements View.OnClickListe
             case R.id.rl_play_invoicing_agreement:
 
                 break;
+            case R.id.iv_back:
+                finish();
+                break;
         }
     }
 }
