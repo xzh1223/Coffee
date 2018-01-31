@@ -16,6 +16,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+            jni.srcDirs = []
+        }
+    }
 }
 
 dependencies {
@@ -43,7 +49,7 @@ dependencies {
     // 支付密码框
     compile 'com.jungly:gridPasswordView:0.3'
     // 高德定位
-    implementation 'com.amap.api:location:latest.integration'
+    //    implementation 'com.amap.api:location:latest.integration'
     // 微信
     compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
     // QQ
@@ -56,4 +62,5 @@ dependencies {
     // retrofit网络请求框架
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation files('libs/BaiduLBS_Android.jar')
 }

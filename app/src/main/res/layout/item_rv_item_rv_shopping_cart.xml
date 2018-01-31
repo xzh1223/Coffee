@@ -4,20 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_coffee_story"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="@color/md_white_1000"
-        android:gravity="center"
-        android:text="-----------------  莱弗广场店  -----------------" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_coffee"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <!--<LinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/md_white_1000"
@@ -104,7 +91,7 @@
 
         </LinearLayout>
 
-    </LinearLayout>-->
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"

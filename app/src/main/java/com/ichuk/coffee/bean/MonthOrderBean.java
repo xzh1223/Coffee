@@ -63,7 +63,7 @@ public class MonthOrderBean {
         private String ingredient;
         private String price;
         private int num;
-        private boolean isSelected = false;
+        public boolean isSelected;
 
         public int getId() {
             return id;

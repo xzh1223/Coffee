@@ -8,6 +8,13 @@
         android:id="@+id/header"
         layout="@layout/layout_activity_toolbar" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/header"
+        android:background="@color/md_grey_300"
+        android:id="@+id/view"/>
+
     <LinearLayout
         android:id="@+id/ll_undo_delete"
         android:layout_width="match_parent"
@@ -16,7 +23,7 @@
         android:orientation="horizontal"
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="10dp"
-        android:layout_below="@id/header"
+        android:layout_below="@id/view"
         android:background="@color/md_white_1000"
         android:visibility="gone">
 

@@ -1,3 +1,4 @@
+/*
 package com.ichuk.coffee.application;
 
 import android.app.Application;
@@ -8,10 +9,12 @@ import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 
+*/
 /**
  * Created by xzh on 2017/12/19.
  *
- */
+ *//*
+
 
 public class LocationApplication extends Application {
     public AMapLocationClientOption mLocationOption = null;
@@ -65,3 +68,4 @@ public class LocationApplication extends Application {
     }
 
 }
+*/

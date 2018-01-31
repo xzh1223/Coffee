@@ -13,6 +13,7 @@ import com.ichuk.coffee.R;
 import com.ichuk.coffee.adapter.community.CommentAdapter;
 import com.ichuk.coffee.base.BaseActivity;
 import com.ichuk.coffee.bean.CommentBean;
+import com.ichuk.coffee.utils.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,9 @@ public class CommentActivity extends BaseActivity implements View.OnClickListene
     private TextView tvCommunityContent;
     private TextView tvCommentNum;
     private TextView tvLikeNum;
+    private ImageView ivLike;
     private RecyclerView rvComment;
+    private boolean isLiked = false;
 
     /**
      * Find the Views in the layout
@@ -51,6 +54,7 @@ public class CommentActivity extends BaseActivity implements View.OnClickListene
         rvComment = findViewById(R.id.rv_comment);
         tvHeaderTitle = findViewById(R.id.tv_header_title);
         ivBack = findViewById(R.id.iv_back);
+        ivLike = findViewById(R.id.iv_like);
     }
 
 
@@ -60,6 +64,7 @@ public class CommentActivity extends BaseActivity implements View.OnClickListene
     @Override
     protected void setEvent() {
         ivBack.setOnClickListener(this);
+        ivLike.setOnClickListener(this);
     }
 
     /**
@@ -131,6 +136,26 @@ public class CommentActivity extends BaseActivity implements View.OnClickListene
             case R.id.iv_back:
                 finish();
                 break;
+            case R.id.iv_like:
+                like();
+                isLiked = !isLiked;
+                break;
+        }
+    }
+
+    /**
+     *  like
+     */
+    private void like() {
+        int n = Integer.valueOf(tvLikeNum.getText().toString());
+        if (isLiked) {
+            // cancel like and num - 1
+            ToastUtil.toast(context, "取消点赞");
+            tvLikeNum.setText((n-1) + "");
+        } else {
+            // like and num + 1
+            ToastUtil.toast(context, "点赞 +1");
+            tvLikeNum.setText((n+1) + "");
         }
     }
 }

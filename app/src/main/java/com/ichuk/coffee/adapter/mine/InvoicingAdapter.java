@@ -3,6 +3,7 @@ package com.ichuk.coffee.adapter.mine;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -14,7 +15,6 @@ import java.util.List;
 
 /**
  * Created by xzh on 2017/12/5.
- *
  */
 
 public class InvoicingAdapter extends RecyclerView.Adapter<InvoicingAdapter.ViewHolder> {
@@ -35,7 +35,8 @@ public class InvoicingAdapter extends RecyclerView.Adapter<InvoicingAdapter.View
      */
     @Override
     public InvoicingAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = View.inflate(mContext, R.layout.item_rv_invoicing, null);
+        View itemView = LayoutInflater.from(mContext).inflate(
+                R.layout.item_rv_invoicing, parent, false);
         return new ViewHolder(itemView);
     }
 
@@ -54,7 +55,7 @@ public class InvoicingAdapter extends RecyclerView.Adapter<InvoicingAdapter.View
             } else {
                 holder.tvInfo.setVisibility(View.GONE);
             }
-            holder.setRecyclerView(monthOrderBean.getCoffeeBeanList());
+            holder.setRecyclerView(mList.get(position).getCoffeeBeanList(), position);
         }
     }
 
@@ -86,9 +87,9 @@ public class InvoicingAdapter extends RecyclerView.Adapter<InvoicingAdapter.View
         /**
          * set recyclerView
          */
-        public void setRecyclerView(List<MonthOrderBean.CoffeeBean> coffeeBeanList) {
+        public void setRecyclerView(List<MonthOrderBean.CoffeeBean> coffeeBeanList, int index) {
             rvCoffee.setLayoutManager(new LinearLayoutManager(mContext));
-            rvCoffee.setAdapter(new InvoicingItemAdapter(mContext, coffeeBeanList, isCheckedAll));
+            rvCoffee.setAdapter(new InvoicingItemAdapter(mContext, coffeeBeanList, isCheckedAll, index));
         }
     }
 

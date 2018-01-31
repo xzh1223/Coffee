@@ -1,6 +1,7 @@
 package com.ichuk.coffee.adapter.community;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.ichuk.coffee.R;
+import com.ichuk.coffee.activity.WebActivity;
 import com.ichuk.coffee.bean.ArticleBean;
 
 import java.util.List;
@@ -45,7 +47,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
      */
     @Override
     public void onBindViewHolder(ArticleAdapter.ViewHolder holder, final int position) {
-        ArticleBean articleBean = mList.get(position);
+        final ArticleBean articleBean = mList.get(position);
         if (articleBean != null) {
             holder.tvTime.setText(articleBean.getTime());
             holder.tvTitle.setText(articleBean.getTitle());
@@ -54,7 +56,10 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
             holder.rlReadAll.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(mContext, WebActivity.class);
+                    intent.putExtra("title", articleBean.getTitle());
+                    intent.putExtra("url", "http://www.baidu.com");
+                    mContext.startActivity(intent);
                 }
             });
         }

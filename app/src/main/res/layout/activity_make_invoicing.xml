@@ -32,7 +32,7 @@
             android:layout_height="20dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/icon_into" />
 
         <View
             android:layout_width="match_parent"
@@ -61,7 +61,7 @@
             android:layout_height="20dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/icon_into" />
 
         <View
             android:layout_width="match_parent"
@@ -91,7 +91,7 @@
             android:layout_height="20dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/icon_into" />
 
         <View
             android:layout_width="match_parent"

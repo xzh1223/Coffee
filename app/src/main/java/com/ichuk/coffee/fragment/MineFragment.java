@@ -1,7 +1,11 @@
 package com.ichuk.coffee.fragment;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -43,6 +47,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MineFragment extends BaseFragment implements View.OnClickListener, OnItemClickListener {
 
+    private static final int CALL_PHONE_REQUEST_CODE = 1;
     private ImageView ivMineSetting;
     private ImageView ivMineMessage;
     private TextView tvFindAll;
@@ -247,7 +252,7 @@ public class MineFragment extends BaseFragment implements View.OnClickListener, 
                 break;
             }
             case R.id.tv_play_phone:
-                ToastUtil.toast(context, "打电话");
+               checkPermission();
                 break;
             case R.id.tv_leave_message:
                 ToastUtil.toast(context, "留言");
@@ -257,6 +262,21 @@ public class MineFragment extends BaseFragment implements View.OnClickListener, 
                     dialog.dismiss();
                 }
                 break;
+        }
+    }
+
+    /**
+     *  check permission
+     */
+    private void checkPermission() {
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            MineFragment fragment = new MineFragment();
+            fragment.requestPermissions(new String[]{Manifest.permission.CALL_PHONE},
+                    CALL_PHONE_REQUEST_CODE);
+        } else {
+            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:02188888888"));
+            startActivity(intent);
         }
     }
 
@@ -295,6 +315,20 @@ public class MineFragment extends BaseFragment implements View.OnClickListener, 
             case 8:
                 showDialog();
                 break;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == CALL_PHONE_REQUEST_CODE) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:02188888888"));
+                startActivity(intent);
+            } else {
+                // Permission Denied
+                ToastUtil.toast(context, "您拒绝了拨号权限");
+            }
         }
     }
 }

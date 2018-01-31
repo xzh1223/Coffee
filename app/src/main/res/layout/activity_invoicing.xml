@@ -4,13 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context="com.ichuk.coffee.activity.mine.InvoicingPlayActivity">
 
     <include
         android:id="@+id/header"
         layout="@layout/layout_activity_toolbar" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/header"
+        android:background="@color/md_grey_300" />
 
     <RelativeLayout
         android:id="@+id/rl_bottom"
@@ -69,7 +76,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/rl_bottom"
-        android:layout_below="@id/header"></android.support.v7.widget.RecyclerView>
+        android:layout_below="@id/view" />
 
 
 </RelativeLayout>

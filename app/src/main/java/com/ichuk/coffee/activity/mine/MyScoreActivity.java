@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
-import com.ichuk.coffee.activity.home.AgreementActivity;
+import com.ichuk.coffee.activity.WebActivity;
 import com.ichuk.coffee.adapter.mine.ScoreAdapter;
 import com.ichuk.coffee.base.BaseActivity;
 import com.ichuk.coffee.bean.ScoreBean;
@@ -101,7 +101,7 @@ public class MyScoreActivity extends BaseActivity implements View.OnClickListene
                 finish();
                 break;
             case R.id.tv_use_method:
-                toActivity(AgreementActivity.class);
+                toActivity(WebActivity.class);
                 break;
         }
     }

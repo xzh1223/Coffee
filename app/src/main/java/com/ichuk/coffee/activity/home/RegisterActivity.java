@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ichuk.coffee.R;
+import com.ichuk.coffee.activity.WebActivity;
 import com.ichuk.coffee.base.BaseActivity;
 
 public class RegisterActivity extends BaseActivity implements View.OnClickListener {
@@ -61,7 +62,9 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 Toast.makeText(context, "get verification code", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.tv_agreement:
-                Intent intent = new Intent(context, AgreementActivity.class);
+                Intent intent = new Intent(context, WebActivity.class);
+                intent.putExtra("title", getResources().getString(R.string.agreement_title));
+                intent.putExtra("url", "http://www.baidu.com");
                 startActivity(intent);
                 break;
             case R.id.iv_show:

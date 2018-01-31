@@ -27,6 +27,8 @@ public class InvoicingPlayActivity extends BaseActivity implements View.OnClickL
     private boolean isChecked = false;
     private ImageView ivBack;
     private TextView tvHeaderTitle;
+    private int mNum = 0;
+    private double mAllMoney = 0;
 
     /**
      * Find the Views in the layout
@@ -63,7 +65,7 @@ public class InvoicingPlayActivity extends BaseActivity implements View.OnClickL
     }
 
     /**
-     *  set header
+     * set header
      */
     private void setHeader() {
         ivBack.setVisibility(View.VISIBLE);
@@ -84,7 +86,18 @@ public class InvoicingPlayActivity extends BaseActivity implements View.OnClickL
         monthOrderBean.getCoffeeBeanList().add(coffeeBean);
         monthOrderBean.getCoffeeBeanList().add(coffeeBean);
 
+        MonthOrderBean.CoffeeBean coffeeBean1 = new MonthOrderBean.CoffeeBean();
+        coffeeBean1.setName("xxxxxxx");
+        coffeeBean1.setIngredient("xxxxxxxxxxxx");
+        coffeeBean1.setPrice("50.0");
+        MonthOrderBean monthOrderBean1 = new MonthOrderBean();
+        monthOrderBean1.setYear("2017");
+        monthOrderBean1.setMonth("11月");
+        monthOrderBean1.getCoffeeBeanList().add(coffeeBean1);
+        monthOrderBean1.getCoffeeBeanList().add(coffeeBean1);
+
         mList.add(monthOrderBean);
+        mList.add(monthOrderBean1);
     }
 
     /**
@@ -121,11 +134,70 @@ public class InvoicingPlayActivity extends BaseActivity implements View.OnClickL
     }
 
     /**
-     * set all checked
+     * set all checked or unchecked
+     *
+     * @param isCheck
      */
     private void setCheckedAll(boolean isCheck) {
-        isChecked = isCheck;
+        if (isCheck) {
+            for (int i = 0; i < mList.size(); i++) {
+                for (int j = 0; j < mList.get(i).getCoffeeBeanList().size(); j++) {
+                    mList.get(i).getCoffeeBeanList().get(j).isSelected = true;
+                }
+            }
+        } else {
+            for (int i = 0; i < mList.size(); i++) {
+                for (int j = 0; j < mList.get(i).getCoffeeBeanList().size(); j++) {
+                    mList.get(i).getCoffeeBeanList().get(j).isSelected = false;
+                }
+            }
+        }
+        countMoney();
         setRecyclerView();
+    }
+
+    /**
+     * set selected
+     */
+    public void setSelected(int firstIndex, int secondIndex, boolean isSelected, MonthOrderBean.CoffeeBean coffee) {
+
+        MonthOrderBean.CoffeeBean coffeeBean = new MonthOrderBean.CoffeeBean();
+        coffeeBean.setNum(coffee.getNum());
+        coffeeBean.setId(coffee.getId());
+        coffeeBean.setImg(coffee.getImg());
+        coffeeBean.setName(coffee.getName());
+        coffeeBean.setPrice(coffee.getPrice());
+        coffeeBean.setIngredient(coffee.getIngredient());
+        coffeeBean.isSelected = isSelected;
+        mList.get(firstIndex).getCoffeeBeanList().set(secondIndex, coffeeBean);
+
+        countMoney();
+        CheckedAll(isChecked);
+        setRecyclerView();
+    }
+
+    /**
+     *  count all price and show money
+     */
+    private void countMoney() {
+        mNum = 0;
+        mAllMoney = 0;
+        int allNum = 0;
+        for (int i = 0; i < mList.size(); i++) {
+            for (int j = 0; j < mList.get(i).getCoffeeBeanList().size(); j++) {
+                if (mList.get(i).getCoffeeBeanList().get(j).isSelected){
+                    mNum++;
+                    mAllMoney+= Double.valueOf(mList.get(i).getCoffeeBeanList().get(j).getPrice());
+                }
+                allNum++;
+            }
+        }
+        if (mNum == allNum) {
+            isChecked = true;
+        } else {
+            isChecked = false;
+        }
+        tvMoney.setText(mNum+"个订单 共" + mAllMoney + "元");
     }
 
     /**
@@ -134,6 +206,5 @@ public class InvoicingPlayActivity extends BaseActivity implements View.OnClickL
     public void CheckedAll(boolean isChecked) {
         checkboxAll.setChecked(isChecked);
     }
-
 
 }

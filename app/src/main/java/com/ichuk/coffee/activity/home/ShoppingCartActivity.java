@@ -14,6 +14,7 @@ import com.ichuk.coffee.R;
 import com.ichuk.coffee.adapter.home.ShoppingCartAdapter;
 import com.ichuk.coffee.base.BaseActivity;
 import com.ichuk.coffee.bean.CoffeeBean;
+import com.ichuk.coffee.bean.ShoppingCardBean;
 import com.ichuk.coffee.utils.ToastUtil;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class ShoppingCartActivity extends BaseActivity implements View.OnClickLi
     private TextView tvPayMoney;
     private LinearLayout llToPay;
     private RecyclerView rvShoppingCart;
-    private List<CoffeeBean> mList = new ArrayList<>();
+    private List<ShoppingCardBean> mList = new ArrayList<>();
     private ShoppingCartAdapter mAdapter;
     private LinearLayout llUndoDelete;
     private TextView tvUndoDelete;
@@ -95,6 +96,7 @@ public class ShoppingCartActivity extends BaseActivity implements View.OnClickLi
      * get data from http
      */
     private void getData() {
+
         CoffeeBean coffeeBean = new CoffeeBean();
         coffeeBean.setId(1);
         coffeeBean.setName("Coffee");
@@ -111,34 +113,15 @@ public class ShoppingCartActivity extends BaseActivity implements View.OnClickLi
         coffeeBean2.setPrice("9.9");
         coffeeBean2.setNum(3);
 
-        CoffeeBean coffeeBean3 = new CoffeeBean();
-        coffeeBean3.setId(3);
-        coffeeBean3.setName("Coffee");
-        coffeeBean3.setImg(R.mipmap.ic_launcher);
-        coffeeBean3.setIngredient("浓缩咖啡、水");
-        coffeeBean3.setPrice("8.9");
-        coffeeBean3.setNum(2);
-
-        CoffeeBean coffeeBean4 = new CoffeeBean();
-        coffeeBean4.setId(4);
-        coffeeBean4.setName("Coffee");
-        coffeeBean4.setImg(R.mipmap.ic_launcher);
-        coffeeBean4.setIngredient("浓缩咖啡、水");
-        coffeeBean4.setPrice("8.9");
-        coffeeBean4.setNum(2);
-
-        CoffeeBean coffeeBean5 = new CoffeeBean();
-        coffeeBean5.setId(5);
-        coffeeBean5.setName("Coffee");
-        coffeeBean5.setImg(R.mipmap.ic_launcher);
-        coffeeBean5.setIngredient("浓缩咖啡、水");
-        coffeeBean5.setPrice("8.9");
-        coffeeBean5.setNum(4);
-        mList.add(coffeeBean);
-        mList.add(coffeeBean2);
-        mList.add(coffeeBean3);
-        mList.add(coffeeBean4);
-        mList.add(coffeeBean5);
+        ShoppingCardBean shoppingCardBean = new ShoppingCardBean();
+        shoppingCardBean.setId(1);
+        shoppingCardBean.getCoffeeBeanList().add(coffeeBean);
+        shoppingCardBean.getCoffeeBeanList().add(coffeeBean2);
+        shoppingCardBean.setShopName("莱弗广场店");
+        mList.add(shoppingCardBean);
+        mList.add(shoppingCardBean);
+        /*mList.add(coffeeBean);
+        mList.add(coffeeBean2);*/
     }
 
     /**
@@ -195,19 +178,26 @@ public class ShoppingCartActivity extends BaseActivity implements View.OnClickLi
         String num = String.format("%.1f", money);
         tvPayMoney.setText(num);
     }
+
     /**
-     *  get money all
+     * get money all
      */
     public double getAllMoney() {
         double sum = 0;
+//        for (int i = 0; i < mList.size(); i++) {
+//            sum += Double.valueOf(mList.get(i).getPrice()) * (mList.get(i).getNum());
+//        }
         for (int i = 0; i < mList.size(); i++) {
-            sum += Double.valueOf(mList.get(i).getPrice()) * (mList.get(i).getNum());
+            for (int j = 0; j < mList.get(i).getCoffeeBeanList().size(); j++) {
+                sum += Double.valueOf(mList.get(i).getCoffeeBeanList().get(j).getPrice()) *
+                        Double.valueOf(mList.get(i).getCoffeeBeanList().get(j).getNum());
+            }
         }
         return sum;
     }
 
     /**
-     *  show delete dialog
+     * show delete dialog
      */
     public void showDeleteDialog() {
         View view = LayoutInflater.from(context).inflate(R.layout.item_dialog_delete, null);
@@ -221,7 +211,7 @@ public class ShoppingCartActivity extends BaseActivity implements View.OnClickLi
     }
 
     /**
-     *  set event
+     * set event
      */
     private void setDeleteEvent() {
         tvDeleteNo.setOnClickListener(this);
@@ -229,10 +219,41 @@ public class ShoppingCartActivity extends BaseActivity implements View.OnClickLi
     }
 
     /**
-     *  findViewById (delete dialog)
+     * findViewById (delete dialog)
      */
     private void deleteFindViews(View view) {
         tvDeleteNo = view.findViewById(R.id.tv_delete_no);
         tvDeleteYes = view.findViewById(R.id.tv_delete_yes);
+    }
+
+    /**
+     * delete data from list
+     *
+     * @param index
+     * @param position
+     */
+    public void deleteData(int index, int position, CoffeeBean coffeeBean) {
+
+    }
+
+    /**
+     * set num
+     *
+     * @param firstIndex
+     * @param secondIndex
+     * @param num
+     */
+    public void setNum(int firstIndex, int secondIndex, int num, boolean isDelete, CoffeeBean coffeeBean) {
+
+        CoffeeBean coffeeBean1 = new CoffeeBean();
+        coffeeBean1.setName(coffeeBean.getName());
+        coffeeBean1.setId(coffeeBean.getId());
+        coffeeBean1.setImg(coffeeBean.getImg());
+        coffeeBean1.setIngredient(coffeeBean.getIngredient());
+        coffeeBean1.setPrice(coffeeBean.getPrice());
+        coffeeBean1.setNum(num);
+
+        mList.get(firstIndex).getCoffeeBeanList().set(secondIndex, coffeeBean1);
+
     }
 }

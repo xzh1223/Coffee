@@ -1,11 +1,10 @@
 package com.ichuk.coffee.activity.mine;
 
 import android.graphics.Bitmap;
-import android.util.Log;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
@@ -26,7 +25,7 @@ public class FeedbackActivity extends SelectPhotoActivity implements View.OnClic
     private TextView tvHeaderTitle;
 
     private RatingBar rbEvaluation;
-    private GridView gvType;
+    private RecyclerView rvType;
     private EditText etSuggest;
     private TextView tvSave;
     private List<StringBean> mList = new ArrayList<>();
@@ -42,7 +41,7 @@ public class FeedbackActivity extends SelectPhotoActivity implements View.OnClic
         tvSave = findViewById(R.id.tv_save);
         tvHeaderTitle = findViewById(R.id.tv_header_title);
         rbEvaluation = findViewById(R.id.rb_evaluation);
-        gvType = findViewById(R.id.gv_type);
+        rvType = findViewById(R.id.rv_type);
         etSuggest = findViewById(R.id.et_suggest);
         llPhoto = findViewById(R.id.ll_photo);
         ivPhoto = findViewById(R.id.iv_photo);
@@ -69,11 +68,21 @@ public class FeedbackActivity extends SelectPhotoActivity implements View.OnClic
         findViews();
         setHeader();
         getData();
-        setGridView();
+        setRecyclerView();
     }
 
     /**
-     *  set header
+     * set recyclerView
+     */
+    private void setRecyclerView() {
+        GridLayoutManager manager = new GridLayoutManager(context, 5);
+        rvType.setLayoutManager(manager);
+        mAdapter = new FeedbackAdapter(context, mList);
+        rvType.setAdapter(mAdapter);
+    }
+
+    /**
+     * set header
      */
     private void setHeader() {
         ivBack.setVisibility(View.VISIBLE);
@@ -91,25 +100,6 @@ public class FeedbackActivity extends SelectPhotoActivity implements View.OnClic
         mList.add(new StringBean("美观", false));
         mList.add(new StringBean("设计", false));
         mList.add(new StringBean("消费体验", false));
-    }
-
-    private void setGridView() {
-        mAdapter = new FeedbackAdapter(context, mList);
-        gvType.setAdapter(mAdapter);
-        gvType.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Log.e("TAG", "onItemClick: " + position);
-                for (int i = 0; i < mList.size(); i++) {
-                    if (position == i) {//当前选中的Item改变背景颜色
-                        mList.get(i).setSelected(true);
-                    } else {
-                        mList.get(i).setSelected(false);
-                    }
-                }
-                mAdapter.notifyDataSetChanged();
-            }
-        });
     }
 
     /**
@@ -157,5 +147,20 @@ public class FeedbackActivity extends SelectPhotoActivity implements View.OnClic
         }
         ToastUtil.toast(context, "发送图片");
 
+    }
+
+    /**
+     * set selected
+     * @param position
+     */
+    public void setSelected(int position) {
+        for (int i = 0; i < mList.size(); i++) {
+            if (position == i) {//当前选中的Item改变背景颜色
+                mList.get(i).setSelected(true);
+            } else {
+                mList.get(i).setSelected(false);
+            }
+        }
+        mAdapter.notifyDataSetChanged();
     }
 }

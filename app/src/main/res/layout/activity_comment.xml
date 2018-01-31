@@ -36,7 +36,8 @@
             android:layout_height="40dp"
             android:layout_weight="4"
             android:background="@drawable/bg_comment_et"
-            android:hint="评论内容"
+            android:hint="我要评论"
+            android:focusable="false"
             android:paddingLeft="10dp" />
 
         <TextView
@@ -141,6 +142,7 @@
                     android:layout_weight="1">
 
                     <ImageView
+                        android:id="@+id/iv_like"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@mipmap/icon_primise_red"

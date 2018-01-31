@@ -30,6 +30,8 @@ public class MyLeaveMessageActivity extends ViewPagerActivity implements View.On
     @Override
     protected void setEvent() {
         ivBack.setOnClickListener(this);
+        tvArticle.setOnClickListener(this);
+        tvLeaveMessage.setOnClickListener(this);
     }
 
     /**

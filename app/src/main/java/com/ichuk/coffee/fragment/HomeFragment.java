@@ -14,8 +14,7 @@ import com.ichuk.coffee.R;
 import com.ichuk.coffee.activity.home.LoginActivity;
 import com.ichuk.coffee.activity.home.ShoppingCartActivity;
 import com.ichuk.coffee.adapter.home.HomeAdapter;
-import com.ichuk.coffee.application.LocationApplication;
-import com.ichuk.coffee.base.BaseFragment;
+import com.ichuk.coffee.base.LocationFragment;
 import com.ichuk.coffee.bean.CoffeeBean;
 import com.jauker.widget.BadgeView;
 import com.youth.banner.Banner;
@@ -29,7 +28,7 @@ import java.util.List;
  * Created by xzh on 2017/12/4.
  */
 
-public class HomeFragment extends BaseFragment implements View.OnClickListener {
+public class HomeFragment extends LocationFragment implements View.OnClickListener {
 
     private Banner banner;
     private RecyclerView rvHomeCoffee;
@@ -78,10 +77,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
      * get Location
      */
     private void setLocation() {
-        final LocationApplication app = (LocationApplication) getActivity().getApplication();
+//        final LocationApplication app = (LocationApplication) getActivity().getApplication();
         new Handler().postDelayed(new Runnable() {
             public void run() {
-                tvLocation.setText(app.getLocationStr());
+                tvLocation.setText(mCity);
             }
         }, 1000);
     }
@@ -93,7 +92,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         BadgeView badgeView = new BadgeView(context);
         badgeView.setTargetView(ivShoppingCart);
         badgeView.setHideOnNull(true);
-        badgeView.setBadgeCount(12);
+        badgeView.setBadgeCount(1);
     }
 
     /**

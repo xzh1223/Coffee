@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
-import com.ichuk.coffee.activity.home.AgreementActivity;
+import com.ichuk.coffee.activity.WebActivity;
 import com.ichuk.coffee.base.BaseActivity;
 import com.ichuk.coffee.bean.GiftCardBean;
 import com.ichuk.coffee.utils.ToastUtil;
@@ -157,7 +157,10 @@ public class GiftCardBuyActivity extends BaseActivity implements View.OnClickLis
                 }
                 break;
             case R.id.tv_agreement:
-                toActivity(AgreementActivity.class);
+               Intent intent = new Intent(context, WebActivity.class);
+               intent.putExtra("title", "无人咖啡机充值卡使用规则");
+               intent.putExtra("url", "http://www.baidu.com");
+               startActivity(intent);
                 break;
         }
     }
