@@ -46,7 +46,7 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.View
     public void onBindViewHolder(OrderItemAdapter.ViewHolder holder, final int position) {
         CoffeeBean coffeeBean = mList.get(position);
         if (coffeeBean != null) {
-            Glide.with(mContext).load(R.mipmap.ic_launcher).into(holder.ivCoffeeImage);
+            Glide.with(mContext).load(R.mipmap.icon_bg_1_2).into(holder.ivCoffeeImage);
             holder.tvCoffeeName.setText(coffeeBean.getName());
             holder.tvCoffeeIngredient.setText(coffeeBean.getIngredient());
             holder.tvCoffeePrice.setText("￥" + coffeeBean.getPrice());

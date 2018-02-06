@@ -28,7 +28,9 @@
         android:layout_marginRight="10dp"
         android:background="@color/md_white_1000"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
         <EditText
             android:id="@+id/et_comment_content"
@@ -37,7 +39,6 @@
             android:layout_weight="4"
             android:background="@drawable/bg_comment_et"
             android:hint="我要评论"
-            android:focusable="false"
             android:paddingLeft="10dp" />
 
         <TextView
@@ -81,8 +82,7 @@
                         android:id="@+id/civ_community_avatar"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:layout_gravity="center"
-                        android:src="@mipmap/ic_launcher_round" />
+                        android:layout_gravity="center" />
 
                     <LinearLayout
                         android:layout_width="match_parent"

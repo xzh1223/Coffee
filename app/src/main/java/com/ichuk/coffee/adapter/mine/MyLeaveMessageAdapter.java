@@ -47,7 +47,7 @@ public class MyLeaveMessageAdapter extends RecyclerView.Adapter<MyLeaveMessageAd
     public void onBindViewHolder(MyLeaveMessageAdapter.ViewHolder holder, int position) {
         CommunityBean communityBean = mList.get(position);
         if (communityBean != null) {
-            Glide.with(mContext).load(R.mipmap.ic_launcher_round).into(holder.civCommunityAvatar);
+            Glide.with(mContext).load(R.mipmap.icon_bg_1_2).into(holder.civCommunityAvatar);
             holder.tvCommunityNickname.setText(communityBean.getName());
             holder.tvCommunityContent.setText(communityBean.getContent());
 //            holder.tvCommunityLikeNum.setText(communityBean.getLikeNum() + "");

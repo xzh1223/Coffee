@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.ichuk.coffee.R;
 import com.ichuk.coffee.adapter.community.CommentAdapter;
 import com.ichuk.coffee.base.BaseActivity;
@@ -74,8 +75,13 @@ public class CommentActivity extends BaseActivity implements View.OnClickListene
     protected void initView() {
         findViews();
         setHeader();
+        clearFocus();
         getData();
         setRecyclerView();
+    }
+
+    private void clearFocus() {
+        etCommentContent.clearFocus();
     }
 
     /**
@@ -87,6 +93,7 @@ public class CommentActivity extends BaseActivity implements View.OnClickListene
     }
 
     private void setRecyclerView() {
+
         LinearLayoutManager manager = new LinearLayoutManager(context);
         rvComment.setLayoutManager(manager);
         CommentAdapter mAdapter = new CommentAdapter(context, mList);
@@ -110,6 +117,8 @@ public class CommentActivity extends BaseActivity implements View.OnClickListene
         tvCommunityContent.setText(content);
         tvLikeNum.setText(likeNum + "");
         tvCommentNum.setText("评论  " + commentNum);
+
+        Glide.with(context).load(R.mipmap.icon_bg_1_2).into(civCommunityAvatar);
 
         CommentBean commentBean = new CommentBean();
         commentBean.setName("xzh");

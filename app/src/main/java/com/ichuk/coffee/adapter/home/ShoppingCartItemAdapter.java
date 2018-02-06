@@ -64,9 +64,8 @@ public class ShoppingCartItemAdapter extends RecyclerView.Adapter<ShoppingCartIt
             @Override
             public void onTextChanged(int num, boolean isDelete) {
                 Log.e("position", "onTextChanged: " + index + "----" +position );
-                ((ShoppingCartActivity) mContext).setNum(index, position, num, isDelete, coffeeBean);
-                mAllMoney = ((ShoppingCartActivity) mContext).getAllMoney();
-                ((ShoppingCartActivity) mContext).setAllMoney(mAllMoney);
+                ((ShoppingCartActivity) mContext).setNum(index, position, num, isDelete);
+                ((ShoppingCartActivity) mContext).setAllMoney();
             }
         });
     }

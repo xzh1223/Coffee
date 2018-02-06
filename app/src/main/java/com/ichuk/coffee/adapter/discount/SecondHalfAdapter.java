@@ -47,7 +47,7 @@ public class SecondHalfAdapter extends RecyclerView.Adapter<SecondHalfAdapter.Vi
     @Override
     public void onBindViewHolder(SecondHalfAdapter.ViewHolder holder, int position) {
         SecondHalfBean secondHalfBean = mList.get(position);
-        Glide.with(mContext).load(R.mipmap.ic_launcher).into(holder.ivCoffeeImage);
+        Glide.with(mContext).load(R.mipmap.icon_bg_1_2).into(holder.ivCoffeeImage);
         holder.tvCoffeeName.setText(secondHalfBean.getName());
         holder.tvCoffeeIngredient.setText("成分：" + secondHalfBean.getIngredient());
         holder.tvCoffeePrice.setText("￥" + secondHalfBean.getPrice());

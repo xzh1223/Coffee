@@ -11,9 +11,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
-import com.ichuk.coffee.adapter.mine.OrderItemAdapter;
 import com.ichuk.coffee.adapter.mine.CodeOrderDetailsAdapter;
+import com.ichuk.coffee.adapter.mine.OrderItemAdapter;
 import com.ichuk.coffee.base.BaseActivity;
+import com.ichuk.coffee.bean.CodeBean;
 import com.ichuk.coffee.bean.OrderBean;
 
 import java.util.ArrayList;
@@ -218,9 +219,13 @@ public class OrderDetailsActivity extends BaseActivity implements View.OnClickLi
         OrderItemAdapter orderItemAdapter = new OrderItemAdapter(context, mOrderBean.getCoffeeBeanList());
         rvCoffee.setAdapter(orderItemAdapter);
 
-        List<String> codeList = new ArrayList<>();
-        codeList.add("取杯码1:1114");
-        codeList.add("取杯码2:1114");
+        List<CodeBean> codeList = new ArrayList<>();
+        CodeBean codeBean = new CodeBean();
+        codeBean.setCode("取杯码1：1114");
+        CodeBean codeBean1 = new CodeBean();
+        codeBean1.setCode("取杯码2：1114");
+        codeList.add(codeBean);
+        codeList.add(codeBean1);
         rvCode.setLayoutManager(new LinearLayoutManager(context));
         int flag = 0;
         CodeOrderDetailsAdapter codeAdapter = new CodeOrderDetailsAdapter(context, codeList, flag);

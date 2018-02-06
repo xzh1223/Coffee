@@ -11,6 +11,11 @@
 
     <include layout="@layout/layout_activity_toolbar"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/md_grey_300"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,7 +32,7 @@
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/icon_success" />
 
             <TextView
                 android:layout_width="wrap_content"

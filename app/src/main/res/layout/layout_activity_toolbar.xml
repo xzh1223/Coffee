@@ -17,7 +17,6 @@
         android:layout_gravity="right|center_vertical"
         android:layout_marginRight="10dp"
         android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher_round"
         android:visibility="gone"/>
 
     <TextView

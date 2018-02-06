@@ -1,11 +1,13 @@
 package com.ichuk.coffee.activity.mine;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
+import com.ichuk.coffee.activity.WebActivity;
 import com.ichuk.coffee.base.BaseActivity;
 
 /**
@@ -78,7 +80,10 @@ public class InvoicingActivity extends BaseActivity implements View.OnClickListe
                 toActivity(InvoicingRecordActivity.class);
                 break;
             case R.id.rl_play_invoicing_agreement:
-
+                Intent intent = new Intent(context, WebActivity.class);
+                intent.putExtra("title", "开票规则");
+                intent.putExtra("url", "http://www.baidu.com");
+                startActivity(intent);
                 break;
             case R.id.iv_back:
                 finish();

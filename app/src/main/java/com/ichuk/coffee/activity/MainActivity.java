@@ -3,7 +3,6 @@ package com.ichuk.coffee.activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -40,7 +39,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private LinearLayout llMine;
     private ImageView ivMainMine;
     private TextView tvMainMine;
-    private FrameLayout flFragment;
     private ArrayList<BaseFragment> fragments;
     private int position = 0;
     private Fragment tempFragment;
@@ -65,7 +63,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         llMine = findViewById(R.id.ll_mine);
         ivMainMine = findViewById(R.id.iv_main_mine);
         tvMainMine = findViewById(R.id.tv_main_mine);
-        flFragment = findViewById(R.id.fl_fragment);
+//        FrameLayout flFragment = findViewById(R.id.fl_fragment);
     }
 
 

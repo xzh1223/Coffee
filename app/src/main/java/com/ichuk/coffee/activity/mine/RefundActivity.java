@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.ichuk.coffee.R;
 import com.ichuk.coffee.adapter.mine.CodeOrderDetailsAdapter;
 import com.ichuk.coffee.base.BaseActivity;
+import com.ichuk.coffee.bean.CodeBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,17 +21,8 @@ public class RefundActivity extends BaseActivity implements View.OnClickListener
     private ImageView ivBack;
     private TextView tvHeaderTitle;
     private Button btnPlayRefund;
-//    private TextView tvCodeKey;
-//    private TextView tvCodeValue;
-//    private ImageView ivCheckCode;
     private TextView tvContentKey;
     private TextView tvContentValue;
-//    private TextView tvWxKey;
-//    private EditText etWxValue;
-//    private ImageView ivCheckWx;
-//    private TextView tvZfbKey;
-//    private EditText etZfbValue;
-//    private ImageView ivCheckZfb;
     private TextView tvNoFind;
     private ImageView ivCheckReasonFind;
     private TextView tvDoFailed;
@@ -42,6 +34,8 @@ public class RefundActivity extends BaseActivity implements View.OnClickListener
     private boolean mReasonTwo = false;
     private boolean mReasonThree = false;
     private RecyclerView rvCode;
+    List<CodeBean> codeList = new ArrayList<>();
+    private CodeOrderDetailsAdapter mAdapter;
 
     /**
      * Find the Views in the layout
@@ -50,13 +44,7 @@ public class RefundActivity extends BaseActivity implements View.OnClickListener
         ivBack = findViewById(R.id.iv_back);
         tvHeaderTitle = findViewById(R.id.tv_header_title);
         btnPlayRefund = findViewById(R.id.btn_play_refund);
-//        tvCodeValue = findViewById(R.id.tv_code_value);
-//        ivCheckCode = findViewById(R.id.iv_check_code);
         tvContentValue = findViewById(R.id.tv_content_value);
-//        etWxValue = findViewById(R.id.et_wx_value);
-//        ivCheckWx = findViewById(R.id.iv_check_wx);
-//        etZfbValue = findViewById(R.id.et_zfb_value);
-//        ivCheckZfb = findViewById(R.id.iv_check_zfb);
         tvNoFind = findViewById(R.id.tv_no_find);
         ivCheckReasonFind = findViewById(R.id.iv_check_reason_find);
         tvDoFailed = findViewById(R.id.tv_do_failed);
@@ -71,14 +59,6 @@ public class RefundActivity extends BaseActivity implements View.OnClickListener
      */
     @Override
     protected void setEvent() {
-//        ivCheckCode.setImageResource(R.mipmap.icon_checked);
-//        ivCheckWx.setImageResource(R.mipmap.ic_launcher);
-//        ivCheckZfb.setImageResource(R.mipmap.ic_launcher);
-//        ivCheckReasonFind.setImageResource(R.mipmap.icon_check);
-//        ivCheckReasonDoFailed.setImageResource(R.mipmap.icon_check);
-//        ivCheckReasonOther.setImageResource(R.mipmap.icon_check);
-//        ivCheckWx.setOnClickListener(this);
-//        ivCheckZfb.setOnClickListener(this);
         ivCheckReasonFind.setOnClickListener(this);
         ivCheckReasonDoFailed.setOnClickListener(this);
         ivCheckReasonOther.setOnClickListener(this);
@@ -101,12 +81,17 @@ public class RefundActivity extends BaseActivity implements View.OnClickListener
      * set recyclerView
      */
     private void setRecyclerView() {
-        List<String> codeList = new ArrayList<>();
-        codeList.add("取杯码1：1114");
-        codeList.add("取杯码2：1114");
+
+        CodeBean codeBean = new CodeBean();
+        codeBean.setCode("取杯码1：1114");
+        CodeBean codeBean1 = new CodeBean();
+        codeBean1.setCode("取杯码2：1114");
+        codeList.add(codeBean);
+        codeList.add(codeBean1);
         rvCode.setLayoutManager(new LinearLayoutManager(context));
         int flag = 1;
-        rvCode.setAdapter(new CodeOrderDetailsAdapter(context, codeList, flag));
+        mAdapter = new CodeOrderDetailsAdapter(context, codeList, flag);
+        rvCode.setAdapter(mAdapter);
     }
 
     /**
@@ -145,20 +130,6 @@ public class RefundActivity extends BaseActivity implements View.OnClickListener
                 intent.putExtra("account", "1234556");
                 startActivity(intent);
                 break;
-//            case R.id.iv_check_wx:
-//                if (mMethod) {
-//                    checkMethod(1);
-//                } else {
-//                    checkMethod(2);
-//                }
-//                break;
-//            case R.id.iv_check_zfb:
-//                if (!mMethod) {
-//                    checkMethod(1);
-//                } else {
-//                    checkMethod(2);
-//                }
-//                break;
             case R.id.iv_check_reason_find:
                 mReasonOne = !mReasonOne;
                 checkReason(1, mReasonOne);
@@ -173,23 +144,6 @@ public class RefundActivity extends BaseActivity implements View.OnClickListener
                 break;
         }
     }
-
-    /**
-     * refund method to check and show
-     */
-//    private void checkMethod(int i) {
-//        if (i == 1) {
-//            ivCheckWx.setImageResource(R.mipmap.ic_launcher_round);
-//            ivCheckZfb.setImageResource(R.mipmap.ic_launcher);
-//            etWxValue.setVisibility(View.VISIBLE);
-//            etZfbValue.setVisibility(View.GONE);
-//        } else if (i == 2) {
-//            ivCheckWx.setImageResource(R.mipmap.ic_launcher);
-//            ivCheckZfb.setImageResource(R.mipmap.ic_launcher_round);
-//            etWxValue.setVisibility(View.GONE);
-//            etZfbValue.setVisibility(View.VISIBLE);
-//        }
-//    }
 
     /**
      * refund reason to check and show
@@ -214,5 +168,19 @@ public class RefundActivity extends BaseActivity implements View.OnClickListener
                 ivCheckReasonOther.setImageResource(R.mipmap.icon_check);
             }
         }
+    }
+
+    /**
+     *  set selected
+     * @param position
+     * @param b
+     */
+    public void setSelected(int position, boolean b) {
+        for (int i = 0; i < codeList.size(); i++) {
+            if (position == i) {
+                codeList.get(i).isChecked = b;
+            }
+        }
+        mAdapter.notifyDataSetChanged();
     }
 }

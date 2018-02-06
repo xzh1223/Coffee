@@ -1,5 +1,6 @@
 package com.ichuk.coffee.activity.home;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AppCompatSpinner;
@@ -7,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -14,8 +16,10 @@ import android.widget.TextView;
 
 import com.ichuk.coffee.R;
 import com.ichuk.coffee.adapter.home.CustomTasteAdapter;
+import com.ichuk.coffee.adapter.home.StoreSpinnerAdapter;
 import com.ichuk.coffee.base.ShareActivity;
 import com.ichuk.coffee.bean.PowderOrJamBean;
+import com.ichuk.coffee.bean.StoreShopBean;
 import com.ichuk.coffee.utils.ToastUtil;
 import com.ichuk.coffee.widget.AddOrLessView;
 import com.jauker.widget.BadgeView;
@@ -27,7 +31,7 @@ import java.util.List;
  * Created by xzh on 2017/12/5.
  */
 
-public class CoffeeDetailActivity extends ShareActivity implements View.OnClickListener {
+public class CoffeeDetailActivity extends ShareActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     private static final String TAG = "CoffeeDetailActivity";
     private ImageView ivCoffeeImage;
@@ -92,6 +96,15 @@ public class CoffeeDetailActivity extends ShareActivity implements View.OnClickL
         showCoffeeInfoAll(isShowAll);
         setHeader();
         getDataFromIntent();
+        setSpinner();
+        showContent();
+        selectTemperature(4);
+    }
+
+    /**
+     *  show content by different page
+     */
+    private void showContent() {
         if ("MY_POINT_ACTIVITY".equals(mPage)) {
             llShow2.setVisibility(View.VISIBLE);
             llShow1.setVisibility(View.GONE);
@@ -108,7 +121,19 @@ public class CoffeeDetailActivity extends ShareActivity implements View.OnClickL
             selectCaffeine(0);
             selectTaste(2);
         }
-        selectTemperature(4);
+    }
+
+    private void setSpinner() {
+        List<StoreShopBean> storeList = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            StoreShopBean storeShopBean = new StoreShopBean();
+            storeShopBean.setShopName("腾飞创新园" + i);
+            storeShopBean.setShopLocation("苏州工业园区新平街208号" + i);
+            storeShopBean.setShopDistance("1.2公里");
+            storeList.add(storeShopBean);
+        }
+
+        spinnerStore.setAdapter(new StoreSpinnerAdapter(context, storeList));
     }
 
     /**
@@ -180,6 +205,7 @@ public class CoffeeDetailActivity extends ShareActivity implements View.OnClickL
         llAddCart.setOnClickListener(this);
         llPay.setOnClickListener(this);
         ivBtn.setOnClickListener(this);
+        spinnerStore.setOnItemSelectedListener(this);
     }
 
     /**
@@ -339,7 +365,7 @@ public class CoffeeDetailActivity extends ShareActivity implements View.OnClickL
      * show custom dialog
      */
     private void showCustomDialog() {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_dialog_teste_custom, null);
+        @SuppressLint("InflateParams") View view = LayoutInflater.from(context).inflate(R.layout.item_dialog_teste_custom, null);
         AlertDialog.Builder customDialog = new AlertDialog.Builder(context);
         customDialog.setView(view);
         mCustomDialog = customDialog.create();
@@ -411,7 +437,7 @@ public class CoffeeDetailActivity extends ShareActivity implements View.OnClickL
      * show dialog  ( can not make or reach limit )
      */
     public void showNoMakeOrLimitDialog(int flag) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_dialog_no_make, null);
+        @SuppressLint("InflateParams") View view = LayoutInflater.from(context).inflate(R.layout.item_dialog_no_make, null);
         AlertDialog.Builder noMakeDialog = new AlertDialog.Builder(context);
         noMakeDialog.setView(view);
         mNoMakeDialog = noMakeDialog.create();
@@ -479,5 +505,15 @@ public class CoffeeDetailActivity extends ShareActivity implements View.OnClickL
         } else {
             return false;
         }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        ToastUtil.toast(context, i + "");
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

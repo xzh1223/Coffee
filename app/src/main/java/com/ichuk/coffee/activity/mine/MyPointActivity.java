@@ -84,7 +84,7 @@ public class MyPointActivity extends BaseActivity implements View.OnClickListene
         PointBean pointBean = new PointBean();
         pointBean.setPoint("88");
         PointBean.CoffeeBean coffeeBean = new PointBean.CoffeeBean();
-        coffeeBean.setImg(R.mipmap.ic_launcher);
+        coffeeBean.setImg(R.mipmap.icon_bg_1_2);
         coffeeBean.setIngredient("速溶咖啡、水");
         coffeeBean.setName("Coffee");
         coffeeBean.setPrice("10积分");

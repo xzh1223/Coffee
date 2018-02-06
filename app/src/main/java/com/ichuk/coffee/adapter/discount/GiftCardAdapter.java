@@ -49,7 +49,7 @@ public class GiftCardAdapter extends RecyclerView.Adapter<GiftCardAdapter.ViewHo
     public void onBindViewHolder(GiftCardAdapter.ViewHolder holder, int position) {
         final GiftCardBean giftCardBean = mList.get(position);
         if (giftCardBean != null) {
-            Glide.with(mContext).load(R.mipmap.ic_launcher).into(holder.ivImage);
+            Glide.with(mContext).load(R.mipmap.icon_bg_1_2).into(holder.ivImage);
             holder.tvTitle.setText(giftCardBean.getTitle());
             holder.view.setOnClickListener(new View.OnClickListener() {
                 @Override

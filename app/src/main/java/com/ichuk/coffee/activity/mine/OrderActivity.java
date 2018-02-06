@@ -59,9 +59,6 @@ public class OrderActivity extends BaseActivity implements View.OnClickListener 
      */
     @Override
     protected void setEvent() {
-        tvHeaderTitle.setText(getResources().getString(R.string.my_order));
-        tvSave.setText(getResources().getString(R.string.play_invoice));
-        ivBack.setVisibility(View.VISIBLE);
         ivBack.setOnClickListener(this);
         tvOrderAll.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,8 +110,18 @@ public class OrderActivity extends BaseActivity implements View.OnClickListener 
     @Override
     protected void initView() {
         findViews();
+        setHeader();
         checkShow();
         setRecyclerView();
+    }
+
+    /**
+     * set header
+     */
+    private void setHeader() {
+        tvHeaderTitle.setText(getResources().getString(R.string.my_order));
+        tvSave.setText(getResources().getString(R.string.play_invoice));
+        ivBack.setVisibility(View.VISIBLE);
     }
 
     /**

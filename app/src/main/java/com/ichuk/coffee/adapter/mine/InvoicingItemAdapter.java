@@ -54,7 +54,7 @@ public class InvoicingItemAdapter extends RecyclerView.Adapter<InvoicingItemAdap
     public void onBindViewHolder(final InvoicingItemAdapter.ViewHolder holder, final int position) {
         final MonthOrderBean.CoffeeBean coffeeBean = mList.get(position);
         if (coffeeBean != null) {
-            Glide.with(mContext).load(R.mipmap.ic_launcher).into(holder.ivCoffeeImage);
+            Glide.with(mContext).load(R.mipmap.icon_bg_1_2).into(holder.ivCoffeeImage);
             if (mList.get(position).isSelected) {
                 holder.cbStatus.setChecked(true);
             } else {

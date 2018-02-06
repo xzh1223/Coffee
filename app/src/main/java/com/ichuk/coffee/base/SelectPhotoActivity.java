@@ -63,7 +63,7 @@ public abstract class SelectPhotoActivity extends BaseActivity {
     /**
      * go to album
      */
-    private void toAlbum() {
+    protected void toAlbum() {
         getPermission();
     }
 
@@ -71,7 +71,7 @@ public abstract class SelectPhotoActivity extends BaseActivity {
     /**
      * go to camera
      */
-    private void toCamera() {
+    protected void toCamera() {
         createFile();
         getUri();
         openCamera();

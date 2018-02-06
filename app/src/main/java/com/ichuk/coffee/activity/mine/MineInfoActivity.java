@@ -1,17 +1,20 @@
 package com.ichuk.coffee.activity.mine;
 
+import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
-import com.ichuk.coffee.base.BaseActivity;
+import com.ichuk.coffee.base.SelectPhotoActivity;
 import com.ichuk.coffee.utils.ToastUtil;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MineInfoActivity extends BaseActivity implements View.OnClickListener {
+public class MineInfoActivity extends SelectPhotoActivity implements View.OnClickListener {
 
     private ImageView ivBack;
     private TextView tvHeaderTitle;
@@ -73,18 +76,24 @@ public class MineInfoActivity extends BaseActivity implements View.OnClickListen
     protected void initView() {
         findViews();
         getData();
+        setHeader();
+
+
+    }
+
+    private void setHeader() {
+        ivBack.setVisibility(View.VISIBLE);
         tvHeaderTitle.setText(getResources().getString(R.string.mine_info));
-        tvNickname.setText("xzh");
-        tvSex.setText("男");
-        tvBirthday.setText("1995-12-23");
-        tvPhoneNum.setText("17751146615");
     }
 
     /**
      * get data
      */
     private void getData() {
-
+        tvNickname.setText("xzh");
+        tvSex.setText("男");
+        tvBirthday.setText("1995-12-23");
+        tvPhoneNum.setText("17751146615");
     }
 
     /**
@@ -100,6 +109,7 @@ public class MineInfoActivity extends BaseActivity implements View.OnClickListen
         switch (v.getId()) {
             case R.id.rl_mine_avatar:
                 ToastUtil.toast(context, "avatar");
+                selectPhoto();
                 break;
             case R.id.rl_nickname:
                 toActivity(UpdateNickNameActivity.class);
@@ -121,5 +131,36 @@ public class MineInfoActivity extends BaseActivity implements View.OnClickListen
                 break;
 
         }
+    }
+
+    /**
+     * select photo from phone
+     */
+    public void selectPhoto() {
+        final String[] items = getResources().getStringArray(R.array.picture_item);
+        new AlertDialog.Builder(context).setTitle(getResources().getString(R.string.select))
+                .setItems(items, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        switch (i) {
+                            case 0:
+                                toAlbum();
+                                break;
+                            case 1:
+                                toCamera();
+                                break;
+                        }
+                    }
+                }).show();
+    }
+
+    /**
+     * send image to server and get image's url
+     *
+     * @param smallBitmap
+     */
+    @Override
+    protected void sendImageToServer(Bitmap smallBitmap) {
+        civAvatar.setImageBitmap(smallBitmap);
     }
 }

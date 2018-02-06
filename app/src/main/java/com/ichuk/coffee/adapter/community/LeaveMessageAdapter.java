@@ -108,7 +108,7 @@ public class LeaveMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                     break;
             }
             final CommunityBean communityBean = mList.get(position - 1);
-            Glide.with(mContext).load(R.mipmap.ic_launcher_round).into(viewHolder.civCommunityAvatar);
+            Glide.with(mContext).load(R.mipmap.icon_bg_1_2).into(viewHolder.civCommunityAvatar);
             viewHolder.tvCommunityNickname.setText(communityBean.getName());
             viewHolder.tvCommunityContent.setText(communityBean.getContent());
             viewHolder.tvCommunityLikeNum.setText(communityBean.getLikeNum() + "");

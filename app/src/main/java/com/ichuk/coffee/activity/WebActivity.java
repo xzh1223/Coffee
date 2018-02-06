@@ -1,5 +1,6 @@
 package com.ichuk.coffee.activity;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -50,29 +51,29 @@ public class WebActivity extends BaseActivity implements View.OnClickListener {
     }
 
     /**
-     *  set webView
+     * set webView
      */
+    @SuppressLint("SetJavaScriptEnabled")
     private void setWebView() {
         wvAgreement.loadUrl(mUrl);
-        WebViewClient webViewClient = new WebViewClient(){
+        WebViewClient webViewClient = new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                Log.e("url", "shouldOverrideUrlLoading: " + url );
+                Log.e("url", "shouldOverrideUrlLoading: " + url);
                 view.loadUrl(url);
                 return true;
             }
         };
         wvAgreement.setWebViewClient(webViewClient);
 
-        WebSettings setting=wvAgreement.getSettings();
+        WebSettings setting = wvAgreement.getSettings();
         setting.setJavaScriptEnabled(true);
-        wvAgreement.setWebChromeClient(new WebChromeClient(){
+        wvAgreement.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
-                if(newProgress==100){
+                if (newProgress == 100) {
                     pbWeb.setVisibility(View.GONE);
-                }
-                else{
+                } else {
                     pbWeb.setVisibility(View.VISIBLE);
                     pbWeb.setProgress(newProgress);
                 }
@@ -112,5 +113,14 @@ public class WebActivity extends BaseActivity implements View.OnClickListener {
         if (view == ivBack) {
             finish();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (wvAgreement != null) {
+            wvAgreement.destroy();
+            wvAgreement = null;
+        }
+        super.onDestroy();
     }
 }

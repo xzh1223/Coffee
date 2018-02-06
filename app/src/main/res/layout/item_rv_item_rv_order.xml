@@ -23,8 +23,7 @@
                 android:id="@+id/iv_coffee_image"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:scaleType="fitCenter"
-                android:src="@mipmap/ic_launcher_round" />
+                android:scaleType="fitCenter" />
 
         </LinearLayout>
 
@@ -46,7 +45,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="美式咖啡"
+                android:text=""
                 android:textColor="@color/md_grey_800"
                 android:textSize="15sp" />
 
@@ -59,7 +58,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:gravity="center_vertical"
-                android:text="成分：浓缩咖啡、水" />
+                android:text="" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -72,7 +71,7 @@
                     android:id="@+id/tv_coffee_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="￥9.9"
+                    android:text=""
                     android:textColor="@color/red" />
 
                 <LinearLayout
@@ -85,7 +84,7 @@
                         android:id="@+id/tv_coffee_num"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="x5"/>
+                        android:text=""/>
 
                 </LinearLayout>
 

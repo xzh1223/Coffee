@@ -52,7 +52,7 @@ public class ProductListActivity extends BaseActivity implements View.OnClickLis
         CoffeeBean coffeeBean = new CoffeeBean();
         coffeeBean.setId(1);
         coffeeBean.setName("Coffee");
-        coffeeBean.setImg(R.mipmap.ic_launcher);
+//        coffeeBean.setImg(R.mipmap.ic_launcher);
         coffeeBean.setIngredient("浓缩咖啡、水");
         coffeeBean.setPrice("9.9");
         coffeeBean.setNum(1000);
@@ -60,7 +60,7 @@ public class ProductListActivity extends BaseActivity implements View.OnClickLis
         CoffeeBean coffeeBean2 = new CoffeeBean();
         coffeeBean2.setId(2);
         coffeeBean2.setName("Coffee");
-        coffeeBean2.setImg(R.mipmap.ic_launcher);
+//        coffeeBean2.setImg(R.mipmap.ic_launcher);
         coffeeBean2.setIngredient("浓缩咖啡、水");
         coffeeBean2.setPrice("9.9");
         coffeeBean2.setNum(3000);

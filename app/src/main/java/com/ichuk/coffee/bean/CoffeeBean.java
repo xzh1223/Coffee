@@ -13,7 +13,7 @@ public class CoffeeBean implements Serializable {
     private int img;
     private String ingredient;
     private String price;
-    private int num;
+    public int num;
 
     public int getId() {
         return id;

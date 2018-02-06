@@ -22,8 +22,7 @@
                 android:id="@+id/iv_coffee_image"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:scaleType="fitCenter"
-                android:src="@mipmap/ic_launcher_round" />
+                android:scaleType="fitCenter" />
 
         </LinearLayout>
 
@@ -45,7 +44,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="美式咖啡"
+                android:text=""
                 android:textColor="@color/md_grey_800"
                 android:textSize="15sp" />
 
@@ -55,7 +54,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="成分：浓缩咖啡、水" />
+                android:text="" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -73,7 +72,7 @@
                         android:id="@+id/tv_coffee_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="￥9.9"
+                        android:text=""
                         android:textColor="@color/red" />
 
                     <LinearLayout
@@ -86,7 +85,7 @@
                             android:layout_width="80dp"
                             android:layout_height="4dp"
                             android:layout_gravity="center"
-                            android:progress="80"
+                            android:progress="0"
                             android:max="100"
                             android:background="@drawable/bg_brown"
                             android:progressDrawable="@drawable/progressbar"
@@ -97,7 +96,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
-                            android:text="已售10%"
+                            android:text=""
                             android:textColor="@color/md_grey_500" />
 
                     </LinearLayout>

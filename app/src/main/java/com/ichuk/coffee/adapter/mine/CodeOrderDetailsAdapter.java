@@ -9,6 +9,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
+import com.ichuk.coffee.activity.mine.RefundActivity;
+import com.ichuk.coffee.bean.CodeBean;
 
 import java.util.List;
 
@@ -17,11 +19,11 @@ import java.util.List;
  */
 
 public class CodeOrderDetailsAdapter extends RecyclerView.Adapter<CodeOrderDetailsAdapter.ViewHolder> {
-    private final List<String> mList;
+    private final List<CodeBean> mList;
     private final Context mContext;
     private final int mFlag;
 
-    public CodeOrderDetailsAdapter(Context mContext, List<String> codeList, int flag) {
+    public CodeOrderDetailsAdapter(Context mContext, List<CodeBean> codeList, int flag) {
         this.mContext = mContext;
         this.mList = codeList;
         this.mFlag = flag;
@@ -73,23 +75,32 @@ public class CodeOrderDetailsAdapter extends RecyclerView.Adapter<CodeOrderDetai
      * @param position The position of the item within the adapter's data set.
      */
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        String codeStr = mList.get(position);
-        if (codeStr != null) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
+        final CodeBean codeBean = mList.get(position);
+        if (codeBean != null) {
             if (mFlag == 0) {
                 holder.ivCheckCode.setVisibility(View.GONE);
                 holder.tvUsable.setVisibility(View.VISIBLE);
             } else if (mFlag == 1){
                 holder.ivCheckCode.setVisibility(View.VISIBLE);
                 holder.tvUsable.setVisibility(View.GONE);
+                if (codeBean.isChecked) {
+                    holder.ivCheckCode.setImageResource(R.mipmap.icon_checked);
+                } else {
+                    holder.ivCheckCode.setImageResource(R.mipmap.icon_check);
+                }
                 holder.ivCheckCode.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        if (codeBean.isChecked) {
+                            ((RefundActivity)mContext).setSelected(position, false);
+                        } else {
+                            ((RefundActivity)mContext).setSelected(position, true);
+                        }
                     }
                 });
             }
-            holder.tvCode.setText(codeStr);
+            holder.tvCode.setText(codeBean.getCode());
         }
     }
 

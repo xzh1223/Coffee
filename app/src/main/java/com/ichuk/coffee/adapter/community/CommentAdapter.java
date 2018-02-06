@@ -47,7 +47,7 @@ public class CommentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         ViewHolder viewHolder = (ViewHolder) holder;
         CommentBean commentBean = mList.get(position);
-        Glide.with(mContext).load(R.mipmap.ic_launcher_round).into(viewHolder.civCommentAvatar);
+        Glide.with(mContext).load(R.mipmap.icon_bg_1_2).into(viewHolder.civCommentAvatar);
         viewHolder.tvCommentNickname.setText(commentBean.getName());
         viewHolder.tvCommentTime.setText(commentBean.getTime());
         viewHolder.tvCommentContent.setText(commentBean.getContent());

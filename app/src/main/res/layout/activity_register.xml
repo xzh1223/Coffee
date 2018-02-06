@@ -32,21 +32,22 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:background="@drawable/bg_comment_et"
                 android:orientation="horizontal">
 
-                <ImageView
+                <!--<ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_margin="10dp"
-                    android:src="@mipmap/ic_launcher_round" />
+                    android:src="@mipmap/icon_account" />-->
 
                 <EditText
                     android:id="@+id/et_phone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
+                    android:paddingLeft="10dp"
                     android:hint="@string/input_phone"
                     android:inputType="number" />
 
@@ -60,22 +61,23 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="45dp"
                     android:layout_weight="3"
                     android:background="@drawable/bg_comment_et"
                     android:orientation="horizontal">
 
-                    <ImageView
+                    <!--<ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_margin="10dp"
-                        android:src="@mipmap/ic_launcher_round" />
+                        android:src="@mipmap/ic_launcher_round" />-->
 
                     <EditText
                         android:id="@+id/et_verification_code"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@null"
+                        android:paddingLeft="10dp"
                         android:hint="@string/input_verification_code" />
 
                 </LinearLayout>
@@ -95,16 +97,16 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bg_comment_et"
                 android:orientation="horizontal">
 
-                <ImageView
+                <!--<ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_margin="10dp"
-                    android:src="@mipmap/ic_launcher_round" />
+                    android:src="@mipmap/icon_password" />-->
 
                 <EditText
                     android:id="@+id/et_password"

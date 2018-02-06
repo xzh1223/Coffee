@@ -49,11 +49,11 @@ public class NewProductsAdapter extends RecyclerView.Adapter<NewProductsAdapter.
         NewProductsBean newProductsBean = mList.get(position);
         holder.tvNewProductsInfo.setText(newProductsBean.getInfo());
         holder.tvNewProductsPrice.setText(newProductsBean.getPrice());
-//        Glide.with(mContext).load(R.mipmap.ic_launcher).into(holder.ivNewProductsImage);
-        Glide.with(mContext).load(R.mipmap.ic_launcher).into(holder.ivAccessories1);
-        Glide.with(mContext).load(R.mipmap.ic_launcher).into(holder.ivAccessories2);
-        Glide.with(mContext).load(R.mipmap.ic_launcher).into(holder.ivAccessories3);
-        Glide.with(mContext).load(R.mipmap.ic_launcher).into(holder.ivAccessories4);
+//        Glide.with(mContext).load(R.mipmap.icon_bg_1_2).into(holder.ivNewProductsImage);
+        Glide.with(mContext).load(R.mipmap.icon_bg_1_2).into(holder.ivAccessories1);
+        Glide.with(mContext).load(R.mipmap.icon_bg_1_2).into(holder.ivAccessories2);
+        Glide.with(mContext).load(R.mipmap.icon_bg_1_2).into(holder.ivAccessories3);
+        Glide.with(mContext).load(R.mipmap.icon_bg_1_2).into(holder.ivAccessories4);
         holder.tvAccessories1.setText("Coffee");
         holder.tvAccessories2.setText("Coffee");
         holder.tvAccessories3.setText("Coffee");

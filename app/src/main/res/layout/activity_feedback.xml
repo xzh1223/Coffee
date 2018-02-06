@@ -99,7 +99,7 @@
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@mipmap/ic_launcher" />
+                        android:src="@mipmap/icon_upload_img" />
 
                     <TextView
                         android:layout_width="wrap_content"

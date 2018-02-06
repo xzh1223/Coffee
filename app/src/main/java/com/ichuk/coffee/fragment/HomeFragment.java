@@ -14,7 +14,8 @@ import com.ichuk.coffee.R;
 import com.ichuk.coffee.activity.home.LoginActivity;
 import com.ichuk.coffee.activity.home.ShoppingCartActivity;
 import com.ichuk.coffee.adapter.home.HomeAdapter;
-import com.ichuk.coffee.base.LocationFragment;
+import com.ichuk.coffee.application.LocationApplication;
+import com.ichuk.coffee.base.BaseFragment;
 import com.ichuk.coffee.bean.CoffeeBean;
 import com.jauker.widget.BadgeView;
 import com.youth.banner.Banner;
@@ -28,7 +29,7 @@ import java.util.List;
  * Created by xzh on 2017/12/4.
  */
 
-public class HomeFragment extends LocationFragment implements View.OnClickListener {
+public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     private Banner banner;
     private RecyclerView rvHomeCoffee;
@@ -37,6 +38,7 @@ public class HomeFragment extends LocationFragment implements View.OnClickListen
     private TextView tvToLogin;
     private TextView tvLocation;
     private ImageView ivShoppingCart;
+    private static final String TAG = "HomeFragment";
 
     /**
      * initial widget
@@ -77,10 +79,10 @@ public class HomeFragment extends LocationFragment implements View.OnClickListen
      * get Location
      */
     private void setLocation() {
-//        final LocationApplication app = (LocationApplication) getActivity().getApplication();
+        final LocationApplication app = (LocationApplication) getActivity().getApplication();
         new Handler().postDelayed(new Runnable() {
             public void run() {
-                tvLocation.setText(mCity);
+                tvLocation.setText(app.getmCity());
             }
         }, 1000);
     }
@@ -102,7 +104,7 @@ public class HomeFragment extends LocationFragment implements View.OnClickListen
         CoffeeBean coffeeBean = new CoffeeBean();
         coffeeBean.setId(1);
         coffeeBean.setName("Coffee");
-        coffeeBean.setImg(R.mipmap.ic_launcher);
+        coffeeBean.setImg(R.mipmap.icon_bg_1_2);
         coffeeBean.setIngredient("浓缩咖啡、水");
         coffeeBean.setPrice("9.9");
         coffeeBean.setNum(1000);
@@ -110,7 +112,7 @@ public class HomeFragment extends LocationFragment implements View.OnClickListen
         CoffeeBean coffeeBean2 = new CoffeeBean();
         coffeeBean2.setId(2);
         coffeeBean2.setName("Coffee");
-        coffeeBean2.setImg(R.mipmap.ic_launcher);
+        coffeeBean2.setImg(R.mipmap.icon_bg_1_2);
         coffeeBean2.setIngredient("浓缩咖啡、水");
         coffeeBean2.setPrice("9.9");
         coffeeBean2.setNum(3000);
@@ -118,7 +120,7 @@ public class HomeFragment extends LocationFragment implements View.OnClickListen
         CoffeeBean coffeeBean3 = new CoffeeBean();
         coffeeBean3.setId(3);
         coffeeBean3.setName("Coffee");
-        coffeeBean3.setImg(R.mipmap.ic_launcher);
+        coffeeBean3.setImg(R.mipmap.icon_bg_1_2);
         coffeeBean3.setIngredient("浓缩咖啡、水");
         coffeeBean3.setPrice("8.9");
         coffeeBean3.setNum(4000);
@@ -126,7 +128,7 @@ public class HomeFragment extends LocationFragment implements View.OnClickListen
         CoffeeBean coffeeBean4 = new CoffeeBean();
         coffeeBean4.setId(4);
         coffeeBean4.setName("Coffee");
-        coffeeBean4.setImg(R.mipmap.ic_launcher);
+        coffeeBean4.setImg(R.mipmap.icon_bg_1_2);
         coffeeBean4.setIngredient("浓缩咖啡、水");
         coffeeBean4.setPrice("8.9");
         coffeeBean4.setNum(4000);
@@ -134,7 +136,7 @@ public class HomeFragment extends LocationFragment implements View.OnClickListen
         CoffeeBean coffeeBean5 = new CoffeeBean();
         coffeeBean5.setId(5);
         coffeeBean5.setName("Coffee");
-        coffeeBean5.setImg(R.mipmap.ic_launcher);
+        coffeeBean5.setImg(R.mipmap.icon_bg_1_2);
         coffeeBean5.setIngredient("浓缩咖啡、水");
         coffeeBean5.setPrice("8.9");
         coffeeBean5.setNum(4000);
@@ -161,9 +163,9 @@ public class HomeFragment extends LocationFragment implements View.OnClickListen
      * set banner
      */
     private void setBanner() {
-        imageList.add(R.mipmap.ic_launcher_round);
-        imageList.add(R.mipmap.ic_launcher_round);
-        imageList.add(R.mipmap.ic_launcher_round);
+        imageList.add(R.mipmap.icon_bg_1_2);
+        imageList.add(R.mipmap.icon_bg_1_2);
+        imageList.add(R.mipmap.icon_bg_1_2);
         // 设置加载器
         banner.setImageLoader(new ImageLoader() {
             @Override

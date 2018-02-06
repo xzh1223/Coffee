@@ -23,6 +23,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
     private final Context mContext;
     private int mNum = 0;
     public double mAllMoney = 0;
+    private static final String TAG = "ShoppingCartAdapter";
 
     public ShoppingCartAdapter(Context context, List<ShoppingCardBean> mList) {
         this.mContext = context;
@@ -78,7 +79,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
         }
 
         /**
-         *  set recyclerView
+         * set recyclerView
          */
         public void setRecyclerView(int position) {
             rvCoffee.setLayoutManager(new LinearLayoutManager(mContext));

@@ -50,11 +50,11 @@ public class InvoicingAdapter extends RecyclerView.Adapter<InvoicingAdapter.View
         MonthOrderBean monthOrderBean = mList.get(position);
         if (monthOrderBean != null) {
             holder.tvMonth.setText(monthOrderBean.getMonth());
-            if (position == 0) {
-                holder.tvInfo.setVisibility(View.VISIBLE);
-            } else {
-                holder.tvInfo.setVisibility(View.GONE);
-            }
+//            if (position == 0) {
+//                holder.tvInfo.setVisibility(View.VISIBLE);
+//            } else {
+//                holder.tvInfo.setVisibility(View.GONE);
+//            }
             holder.setRecyclerView(mList.get(position).getCoffeeBeanList(), position);
         }
     }
@@ -72,7 +72,7 @@ public class InvoicingAdapter extends RecyclerView.Adapter<InvoicingAdapter.View
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvMonth;
-        TextView tvInfo;
+//        TextView tvInfo;
         RecyclerView rvCoffee;
         View view;
 
@@ -80,7 +80,7 @@ public class InvoicingAdapter extends RecyclerView.Adapter<InvoicingAdapter.View
             super(itemView);
             view = itemView;
             tvMonth = itemView.findViewById(R.id.tv_month);
-            tvInfo = itemView.findViewById(R.id.tv_info);
+//            tvInfo = itemView.findViewById(R.id.tv_info);
             rvCoffee = itemView.findViewById(R.id.rv_coffee);
         }
 
