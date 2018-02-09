@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.ichuk.coffee.R;
-import com.ichuk.coffee.activity.mine.MessageDetailsActivity;
+import com.ichuk.coffee.activity.WebActivity;
 import com.ichuk.coffee.bean.MessageBean;
 
 import java.util.List;
@@ -56,8 +56,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
             holder.view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(mContext, MessageDetailsActivity.class);
-                    intent.putExtra("content", messageBean.getContent());
+//                    Intent intent = new Intent(mContext, MessageDetailsActivity.class);
+//                    intent.putExtra("content", messageBean.getContent());
+//                    mContext.startActivity(intent);
+                    Intent intent = new Intent(mContext, WebActivity.class);
+                    intent.putExtra("title", messageBean.getTitle());
+                    intent.putExtra("url", "http://www.baidu.com");
                     mContext.startActivity(intent);
                 }
             });
