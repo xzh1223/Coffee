@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -33,7 +32,7 @@
                 android:layout_weight="1"
                 android:background="@color/brown"
                 android:gravity="center"
-                android:text="转赠"
+                android:text="@string/tv_donate"
                 android:textColor="@color/md_white_1000" />
 
             <TextView
@@ -43,7 +42,7 @@
                 android:layout_weight="1"
                 android:background="@color/md_brown_500"
                 android:gravity="center"
-                android:text="去添加卡"
+                android:text="@string/tv_to_add_card"
                 android:textColor="@color/md_white_1000"
                 android:visibility="gone"/>
 
@@ -104,7 +103,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:gravity="center"
-                        android:text="储值卡卡号" />
+                        android:text="@string/et_card_num" />
 
                     <TextView
                         android:id="@+id/tv_card_account"
@@ -133,7 +132,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:gravity="center"
-                        android:text="储值卡密码" />
+                        android:text="@string/et_password" />
 
                     <TextView
                         android:id="@+id/tv_card_password"
@@ -162,7 +161,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:gravity="center"
-                        android:text="购买金额" />
+                        android:text="@string/tv_buy_money" />
 
                     <TextView
                         android:id="@+id/tv_buy_money"
@@ -191,7 +190,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:gravity="center"
-                        android:text="当前余额" />
+                        android:text="@string/tv_current_last_money" />
 
                     <TextView
                         android:id="@+id/tv_last_money"
@@ -220,7 +219,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:gravity="center"
-                        android:text="获得来源" />
+                        android:text="@string/tv_get_from" />
 
                     <TextView
                         android:id="@+id/tv_get_origin"
@@ -250,7 +249,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:gravity="center"
-                        android:text="支付方式" />
+                        android:text="@string/tv_pay_method" />
 
                     <TextView
                         android:id="@+id/tv_pay_type"
@@ -280,7 +279,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:gravity="center"
-                        android:text="购买时间" />
+                        android:text="@string/tv_buy_time" />
 
                     <TextView
                         android:id="@+id/tv_time"

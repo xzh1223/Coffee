@@ -1,38 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context="com.ichuk.coffee.activity.home.SelectCouponActivity">
 
     <include layout="@layout/layout_activity_toolbar" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/md_grey_300"/>
 
     <RelativeLayout
         android:id="@+id/rl_unused"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_margin="10dp"
-        android:background="@color/md_white_1000">
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/md_white_1000"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
 
         <TextView
             android:id="@+id/tv_select_text_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="不使用优惠券"
             android:layout_centerVertical="true"
-            android:textColor="@color/md_grey_700"/>
+            android:layout_marginLeft="10dp"
+            android:text="@string/tv_no_use_coupon"
+            android:textColor="@color/md_grey_700" />
 
         <ImageView
             android:id="@+id/iv_check"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
             android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
             android:src="@mipmap/icon_selected" />
 
 
@@ -41,31 +48,33 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:orientation="horizontal"
         android:layout_marginLeft="10dp"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="有"/>
+            android:text="@string/tv_have" />
+
         <TextView
+            android:id="@+id/tv_usable_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2"
-            android:textColor="@color/red"/>
+            android:textColor="@color/red" />
 
         <TextView
             android:id="@+id/tv_select_text_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="个优惠券可用"/>
+            android:text="@string/tv_coupon_num" />
 
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_coupon"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/rv_coupon"></android.support.v7.widget.RecyclerView>
+        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

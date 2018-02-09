@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -22,7 +21,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="全部" />
+            android:text="@string/tv_all" />
 
         <TextView
             android:id="@+id/tv_order_pending_payment"
@@ -30,7 +29,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="待付款" />
+            android:text="@string/tv_pending_pay" />
 
         <TextView
             android:id="@+id/tv_order_usable"
@@ -38,7 +37,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="未取杯" />
+            android:text="@string/tv_order_usable" />
 
         <TextView
             android:id="@+id/tv_order_refund"
@@ -46,7 +45,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="退款/售后" />
+            android:text="@string/tv_order_refund" />
 
     </LinearLayout>
 

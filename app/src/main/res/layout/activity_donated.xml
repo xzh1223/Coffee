@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -18,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@drawable/coffee_detail_selected"
-        android:text="确认转赠"
+        android:text="@string/btn_ok_donate"
         android:textColor="@color/md_white_1000" />
 
     <LinearLayout
@@ -38,7 +37,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:background="@drawable/bg_comment_et"
-                android:hint="请输入被转赠人的手机号码"
+                android:hint="@string/et_input_donate_phone"
                 android:inputType="number"
                 android:paddingLeft="10dp" />
 
@@ -155,7 +154,7 @@
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
                             android:paddingTop="5dp"
-                            android:text="立即使用"
+                            android:text="@string/tv_use"
                             android:textColor="@color/md_white_1000"
                             android:visibility="gone" />
 
@@ -171,7 +170,7 @@
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
                             android:paddingTop="5dp"
-                            android:text="    转赠    "
+                            android:text="@string/tv_donate"
                             android:textColor="@color/brown"
                             android:visibility="gone" />
 
@@ -196,19 +195,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center"
-                android:text="优惠券" />
+                android:text="@string/tv_coupon" />
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="10dp"
                 card_view:cardUseCompatPadding="true">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="5dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -295,8 +288,6 @@
 
                         </LinearLayout>
                     </LinearLayout>
-
-                </LinearLayout>
 
             </android.support.v7.widget.CardView>
         </LinearLayout>

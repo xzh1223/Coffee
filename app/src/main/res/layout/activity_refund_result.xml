@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -30,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="申请退款成功，等待后台审核"
+                android:text="@string/tv_refund_success"
                 android:textColor="@color/brown"
                 android:textSize="16sp" />
 
@@ -55,7 +54,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="退款金额" />
+            android:text="@string/tv_refund_money" />
 
         <TextView
             android:id="@+id/tv_refund_money"
@@ -76,7 +75,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="退款方式" />
+            android:text="@string/tv_back_methos" />
 
         <TextView
             android:id="@+id/tv_refund_method"
@@ -95,7 +94,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="20dp"
         android:background="@color/brown"
-        android:text="完成"
+        android:text="@string/btn_finish"
         android:textColor="@color/md_white_1000" />
 
 </LinearLayout>

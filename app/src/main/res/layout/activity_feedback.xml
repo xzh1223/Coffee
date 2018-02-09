@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:orientation="vertical"
-    tools:context="com.ichuk.coffee.activity.mine.FeedbackActivity">
+    android:orientation="vertical">
 
     <include layout="@layout/layout_activity_toolbar" />
 
@@ -35,7 +32,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:gravity="center"
-                    android:text="满意程度" />
+                    android:text="@string/tv_feedback_agree_level" />
 
 
                 <android.support.v7.widget.AppCompatRatingBar
@@ -50,7 +47,7 @@
                     android:progressBackgroundTint="@color/md_grey_600"
                     android:progressTint="@color/brown"
                     android:stepSize="1.0"
-                    android:theme="@style/RatingBar"/>
+                    android:theme="@style/RatingBar" />
 
             </LinearLayout>
 
@@ -66,7 +63,7 @@
                     android:background="@color/md_white_1000"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:text="反馈类型"
+                    android:text="@string/tv_feedback_style"
                     android:textColor="@color/md_grey_800" />
 
                 <android.support.v7.widget.RecyclerView
@@ -74,7 +71,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/md_white_1000"
-                    android:paddingBottom="10dp"/>
+                    android:paddingBottom="10dp" />
 
                 <EditText
                     android:id="@+id/et_suggest"
@@ -83,7 +80,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@color/md_white_1000"
                     android:gravity="left"
-                    android:hint="说说您的建议（请不要少于五个字）"
+                    android:hint="@string/et_suggest"
                     android:padding="10dp" />
 
                 <LinearLayout
@@ -105,7 +102,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="上传照片"
+                        android:text="@string/tv_upload_image"
                         android:textColor="@color/md_grey_400" />
 
                 </LinearLayout>

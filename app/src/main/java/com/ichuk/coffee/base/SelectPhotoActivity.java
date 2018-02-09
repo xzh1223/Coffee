@@ -141,13 +141,17 @@ public abstract class SelectPhotoActivity extends BaseActivity {
      * @param imagePath
      */
     private void displayImage(String imagePath) {
-        if (imagePath != null) {
-            Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
-            int degree = ImageTools.getImageDegree(imagePath);
-            smallBitmap = ImageTools.zoomBitmap(bitmap, degree);
+        try {
+            if (imagePath != null) {
+                Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
+                int degree = ImageTools.getImageDegree(imagePath);
+                smallBitmap = ImageTools.zoomBitmap(bitmap, degree);
 //            ivPicture.setImageBitmap(smallBitmap);
-            sendImageToServer(smallBitmap);
-            bitmap.recycle();
+                sendImageToServer(smallBitmap);
+                bitmap.recycle();
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

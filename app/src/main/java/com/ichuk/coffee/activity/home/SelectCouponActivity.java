@@ -35,6 +35,7 @@ public class SelectCouponActivity extends BaseActivity implements View.OnClickLi
     List<CouponBean> couponBeanList = new ArrayList<>();
     private int mPosition = -1;
     private RelativeLayout rlUnused;
+    private TextView tvUsableNum;
 
     /**
      * Find the Views in the layout
@@ -47,6 +48,7 @@ public class SelectCouponActivity extends BaseActivity implements View.OnClickLi
         rvCoupon = findViewById(R.id.rv_coupon);
         tvHeaderTitle = findViewById(R.id.tv_header_title);
         ivBack = findViewById(R.id.iv_back);
+        tvUsableNum = findViewById(R.id.tv_usable_num);
     }
 
 

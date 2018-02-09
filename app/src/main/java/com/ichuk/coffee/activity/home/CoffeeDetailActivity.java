@@ -365,7 +365,8 @@ public class CoffeeDetailActivity extends ShareActivity implements View.OnClickL
      * show custom dialog
      */
     private void showCustomDialog() {
-        @SuppressLint("InflateParams") View view = LayoutInflater.from(context).inflate(R.layout.item_dialog_teste_custom, null);
+        @SuppressLint("InflateParams") View view = LayoutInflater.from(context).inflate(
+                R.layout.item_dialog_teste_custom, null);
         AlertDialog.Builder customDialog = new AlertDialog.Builder(context);
         customDialog.setView(view);
         mCustomDialog = customDialog.create();

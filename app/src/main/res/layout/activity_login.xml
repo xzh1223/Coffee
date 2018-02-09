@@ -172,7 +172,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="QQ登录"/>
+                    android:text="@string/tv_login_by_qq"/>
 
             </LinearLayout>
 
@@ -193,7 +193,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="微信登录"/>
+                    android:text="@string/tv_login_by_wx"/>
 
             </LinearLayout>
 
@@ -214,7 +214,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="微博登录"/>
+                    android:text="@string/tv_login_by_wb"/>
 
             </LinearLayout>
 

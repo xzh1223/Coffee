@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.ichuk.coffee.R;
 import com.ichuk.coffee.activity.home.CoffeeDetailActivity;
 import com.ichuk.coffee.bean.PowderOrJamBean;
-import com.ichuk.coffee.utils.ToastUtil;
 import com.ichuk.coffee.widget.AddOrLessView;
 
 import java.util.List;
@@ -54,6 +53,7 @@ public class CustomTasteAdapter extends RecyclerView.Adapter<CustomTasteAdapter.
             String nameStr = powderOrJamBean.getName() + "(" + powderOrJamBean.getWeight() + "g)";
             holder.tvName.setText(nameStr);
             holder.addLess.setFlag(1);
+            holder.tvName.setTextColor(mContext.getResources().getColor(R.color.md_grey_400));
             holder.addLess.setTextChangedListener(new AddOrLessView.TextChangedListener() {
                 @Override
                 public void onTextChanged(int num, boolean isDelete) {
@@ -63,9 +63,12 @@ public class CustomTasteAdapter extends RecyclerView.Adapter<CustomTasteAdapter.
                     } else {
                         String weightStr = num * powderOrJamBean.getWeight() + "g";
                         holder.tvWeight.setText(weightStr);
-                    }
-                    if (num == 0) {
-                        holder.tvWeight.setText("");
+                        if (num == 0) {
+                            holder.tvWeight.setText("");
+                            holder.tvName.setTextColor(mContext.getResources().getColor(R.color.md_grey_400));
+                        } else {
+                            holder.tvName.setTextColor(mContext.getResources().getColor(R.color.md_grey_800));
+                        }
                     }
                 }
             });
@@ -75,18 +78,18 @@ public class CustomTasteAdapter extends RecyclerView.Adapter<CustomTasteAdapter.
     /**
      * get all num
      */
-    private boolean isMax() {
-        int allNum = 0;
-        for (int i = 0; i < mList.size(); i++) {
-            allNum += mList.get(i).num;
-        }
-        if (allNum > 5) {
-            ToastUtil.toast(mContext, "已达到上限不可添加");
-            return true;
-        } else {
-            return false;
-        }
-    }
+//    private boolean isMax() {
+//        int allNum = 0;
+//        for (int i = 0; i < mList.size(); i++) {
+//            allNum += mList.get(i).num;
+//        }
+//        if (allNum > 5) {
+//            ToastUtil.toast(mContext, "已达到上限不可添加");
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 
     /**
      * Returns the total number of items in the data set held by the adapter.

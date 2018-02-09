@@ -243,29 +243,34 @@ public final class ImageTools {
     public final static int MAX_SIZE = 480;
 
     public static Bitmap zoomBitmap(Bitmap bitmap, int degree) {
-        float resultWidth = 0;
-        float resultHeight = 0;
+        try {
+            float resultWidth = 0;
+            float resultHeight = 0;
 
-        int w = bitmap.getWidth();
-        int h = bitmap.getHeight();
+            int w = bitmap.getWidth();
+            int h = bitmap.getHeight();
 
-        //宽度大于高度--横
-        if (w >= h) {
-            resultWidth = MAX_SIZE;
-            resultHeight = (float) MAX_SIZE * h / w;
+            //宽度大于高度--横
+            if (w >= h) {
+                resultWidth = MAX_SIZE;
+                resultHeight = (float) MAX_SIZE * h / w;
+            }
+            //宽度小于高度--竖
+            else {
+                resultHeight = MAX_SIZE;
+                resultWidth = (float) MAX_SIZE * w / h;
+            }
+            Matrix matrix = new Matrix();
+            float scaleWidth = resultWidth / w;
+            float scaleHeight = resultHeight / h;
+            matrix.postScale(scaleWidth, scaleHeight);
+            matrix.postRotate(degree);
+            Bitmap newbmp = Bitmap.createBitmap(bitmap, 0, 0, w, h, matrix, true);
+            return newbmp;
+        }catch (Exception e) {
+            e.printStackTrace();
         }
-        //宽度小于高度--竖
-        else {
-            resultHeight = MAX_SIZE;
-            resultWidth = (float) MAX_SIZE * w / h;
-        }
-        Matrix matrix = new Matrix();
-        float scaleWidth = resultWidth / w;
-        float scaleHeight = resultHeight / h;
-        matrix.postScale(scaleWidth, scaleHeight);
-        matrix.postRotate(degree);
-        Bitmap newbmp = Bitmap.createBitmap(bitmap, 0, 0, w, h, matrix, true);
-        return newbmp;
+        return bitmap;
     }
 
     /**

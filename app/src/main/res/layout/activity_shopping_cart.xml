@@ -30,13 +30,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="成功删除1件产品，如果有误，可"/>
+            android:text="@string/tv_delete_success"/>
 
         <TextView
             android:id="@+id/tv_undo_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="撤销本次删除"
+            android:text="@string/tv_reset_delete"
             android:textStyle="bold"
             android:textColor="@color/brown"/>
 
@@ -78,7 +78,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="合计：￥" />
+                android:text="@string/tv_sum" />
 
             <TextView
                 android:id="@+id/tv_pay_money"
@@ -102,7 +102,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="立即结账"
+                android:text="@string/tv_to_buy"
                 android:textColor="@color/md_white_1000"
                 android:textSize="17sp" />
 

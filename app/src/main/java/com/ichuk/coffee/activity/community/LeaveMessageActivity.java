@@ -1,7 +1,6 @@
 package com.ichuk.coffee.activity.community;
 
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,21 +11,14 @@ import com.ichuk.coffee.R;
 import com.ichuk.coffee.base.SelectPhotoActivity;
 import com.ichuk.coffee.utils.ToastUtil;
 
-import java.io.File;
-
 public class LeaveMessageActivity extends SelectPhotoActivity implements View.OnClickListener {
 
-    private static final int TAKE_PHOTO = 0;
-    private static final int CHOOSE_PHOTO = 1;
-    private static final int PERMISSION_1 = 2;
     private ImageView ivBack;
     private TextView tvHeaderTitle;
     private TextView tvSave;
     private EditText etContent;
     private LinearLayout llPhoto;
-    private File outputImage;
-    private Uri imageUri;
-    private Bitmap smallBitmap;
+    private ImageView ivPhoto;
 
     /**
      * set event
@@ -36,6 +28,7 @@ public class LeaveMessageActivity extends SelectPhotoActivity implements View.On
         ivBack.setOnClickListener(this);
         tvSave.setOnClickListener(this);
         llPhoto.setOnClickListener(this);
+        ivPhoto.setOnClickListener(this);
     }
 
     /**
@@ -66,6 +59,7 @@ public class LeaveMessageActivity extends SelectPhotoActivity implements View.On
         tvHeaderTitle = findViewById(R.id.tv_header_title);
         etContent = findViewById(R.id.et_content);
         llPhoto = findViewById(R.id.ll_photo);
+        ivPhoto = findViewById(R.id.iv_photo);
     }
 
     /**
@@ -88,6 +82,9 @@ public class LeaveMessageActivity extends SelectPhotoActivity implements View.On
             case R.id.ll_photo:
                 selectPhoto();
                 break;
+            case R.id.iv_photo:
+                selectPhoto();
+                break;
         }
     }
 
@@ -105,6 +102,11 @@ public class LeaveMessageActivity extends SelectPhotoActivity implements View.On
      */
     @Override
     protected void sendImageToServer(Bitmap smallBitmap) {
+        if (smallBitmap != null) {
+            llPhoto.setVisibility(View.GONE);
+            ivPhoto.setVisibility(View.VISIBLE);
+            ivPhoto.setImageBitmap(smallBitmap);
+        }
         ToastUtil.toast(context, "发送图片");
     }
 }

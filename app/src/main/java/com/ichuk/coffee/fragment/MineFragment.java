@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ichuk.coffee.R;
@@ -51,18 +52,21 @@ public class MineFragment extends BaseFragment implements View.OnClickListener, 
     private ImageView ivMineSetting;
     private ImageView ivMineMessage;
     private TextView tvFindAll;
-    private ImageView ivPendingPayment;
-    private TextView tvPendingPayment;
+//    private ImageView ivPendingPayment;
+//    private TextView tvPendingPayment;
     private ImageView ivUsable;
-    private TextView tvUsable;
-    private ImageView ivRefund;
-    private TextView tvRefund;
+//    private TextView tvUsable;
+//    private ImageView ivRefund;
+//    private TextView tvRefund;
     private RecyclerView rvMine;
     private List<MineGridBean> mList = new ArrayList<>();
     private CircleImageView civAccountPic;
     private TextView tvAccountName;
     private Dialog dialog;
     private MineAdapter mAdapter;
+    private LinearLayout llPendingPayment;
+    private LinearLayout llUsable;
+    private LinearLayout llRefund;
 
     /**
      * Find the Views in the layout
@@ -74,13 +78,16 @@ public class MineFragment extends BaseFragment implements View.OnClickListener, 
             ivMineSetting = getView().findViewById(R.id.iv_mine_setting);
             ivMineMessage = getView().findViewById(R.id.iv_mine_message);
             tvFindAll = getView().findViewById(R.id.tv_find_all);
-            ivPendingPayment = getView().findViewById(R.id.iv_pending_payment);
-            tvPendingPayment = getView().findViewById(R.id.tv_pending_payment);
+//            ivPendingPayment = getView().findViewById(R.id.iv_pending_payment);
+//            tvPendingPayment = getView().findViewById(R.id.tv_pending_payment);
             ivUsable = getView().findViewById(R.id.iv_usable);
-            tvUsable = getView().findViewById(R.id.tv_usable);
-            ivRefund = getView().findViewById(R.id.iv_refund);
-            tvRefund = getView().findViewById(R.id.tv_refund);
+//            tvUsable = getView().findViewById(R.id.tv_usable);
+//            ivRefund = getView().findViewById(R.id.iv_refund);
+//            tvRefund = getView().findViewById(R.id.tv_refund);
             rvMine = getView().findViewById(R.id.rv_mine);
+            llPendingPayment = getView().findViewById(R.id.ll_pending_payment);
+            llUsable = getView().findViewById(R.id.ll_usable);
+            llRefund = getView().findViewById(R.id.ll_refund);
         }
     }
 
@@ -125,9 +132,9 @@ public class MineFragment extends BaseFragment implements View.OnClickListener, 
         ivMineSetting.setOnClickListener(this);
         ivMineMessage.setOnClickListener(this);
         tvFindAll.setOnClickListener(this);
-        ivPendingPayment.setOnClickListener(this);
-        ivUsable.setOnClickListener(this);
-        ivRefund.setOnClickListener(this);
+        llPendingPayment.setOnClickListener(this);
+        llUsable.setOnClickListener(this);
+        llRefund.setOnClickListener(this);
     }
 
     /**
@@ -233,19 +240,19 @@ public class MineFragment extends BaseFragment implements View.OnClickListener, 
                 startActivity(intent);
                 break;
             }
-            case R.id.iv_pending_payment: {
+            case R.id.ll_pending_payment: {
                 Intent intent = new Intent(context, OrderActivity.class);
                 intent.putExtra("flag", 1);
                 startActivity(intent);
                 break;
             }
-            case R.id.iv_usable: {
+            case R.id.ll_usable: {
                 Intent intent = new Intent(context, OrderActivity.class);
                 intent.putExtra("flag", 2);
                 startActivity(intent);
                 break;
             }
-            case R.id.iv_refund: {
+            case R.id.ll_refund: {
                 Intent intent = new Intent(context, OrderActivity.class);
                 intent.putExtra("flag", 3);
                 startActivity(intent);

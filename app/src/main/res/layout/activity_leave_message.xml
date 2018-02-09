@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context="com.ichuk.coffee.activity.community.LeaveMessageActivity">
 
     <include layout="@layout/layout_activity_toolbar" />
@@ -13,40 +12,60 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/md_grey_300"/>
+        android:background="@color/md_grey_300" />
 
-    <EditText
-        android:id="@+id/et_content"
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:background="@color/md_white_1000"
-        android:gravity="start"
-        android:hint="说说您的评论（请不要少于五个字）"
-        android:lineSpacingMultiplier="1.2"
-        android:padding="10dp" />
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/ll_photo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:gravity="center"
-        android:background="@drawable/bg_coffee_detail"
-        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@mipmap/icon_upload_img"/>
+            <EditText
+                android:id="@+id/et_content"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="@color/md_white_1000"
+                android:gravity="start"
+                android:hint="@string/et_comment"
+                android:lineSpacingMultiplier="1.2"
+                android:padding="10dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textColor="@color/md_grey_400"
-            android:text="上传照片"/>
+            <LinearLayout
+                android:id="@+id/ll_photo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_coffee_detail"
+                android:gravity="center"
+                android:orientation="vertical">
 
-    </LinearLayout>
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@mipmap/icon_upload_img" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/tv_upload_image"
+                    android:textColor="@color/md_grey_400" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/iv_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
 </LinearLayout>
